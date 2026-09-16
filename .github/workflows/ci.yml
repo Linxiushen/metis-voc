@@ -27,5 +27,6 @@ jobs:
           version: 11.19.0
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
+      - run: node scripts/audit-open-source.mjs --strict
       - run: pnpm test:smoke
       - run: pnpm audit --audit-level=high

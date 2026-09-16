@@ -26,6 +26,8 @@ pnpm exec wrangler queues create metis-voc-concept-archive
 
 把新 D1 UUID 填入 `wrangler.jsonc` 的 `d1_databases[0].database_id`。源码中的全零 UUID 只供本地使用，部署检查会阻止误上线。按需修改 Worker、数据库和 Queue 名称，生产/测试使用独立资源。不要覆盖其他应用的绑定。
 
+自己的资源 ID 仅用于本地部署配置，不应提交到公共仓库。常规源码检查会将它列为需复核项；发布 CI 的严格扫描会拒绝它。发布通用源码时恢复全零占位符，部署时使用自己的 ID。真正的密钥必须通过 secrets 配置，不能写入 vars。
+
 Durable Object 类和迁移已在配置中声明。首次运行通过 `ensureSchema` 建表与兼容升级；`drizzle/` 为历史结构迁移，不应在已有数据库上盲目重复执行。升级前导出数据库并在测试环境演练。
 
 ## 2. 设置生产秘密

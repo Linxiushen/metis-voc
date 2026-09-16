@@ -7,6 +7,13 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const OMIT_DIRS = new Set([".git", "node_modules", ".next", ".vinext", ".wrangler", "dist", "coverage", ".codex-runtime", "outputs", "work", "tmp"]);
+// Root-relative build/runtime locations ignored by this project's .gitignore.
+// Only archive discovery uses this list; explicit files and tracked Git files
+// are always audited, even when they were force-added from these locations.
+const ARCHIVE_LOCAL_PATHS = new Set([
+  ".local", ".openai", "out", "output", "public/bundle", "public/vendor",
+  "research-kit/.venv", "research-kit/data",
+]);
 const BINARY_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".mp4", ".mp3", ".woff", ".woff2", ".ttf", ".otf", ".pdf", ".docx", ".xlsx", ".zip", ".gz", ".pyc"]);
 const SAMPLE_VALUE = /^(?:\s*|\.{3}|\*+|<[^>]*>|\$\{[^}]+\}|(?:your|replace|example|placeholder|dummy|test|fixture|sample|redacted|fake)(?:[-_ :].*)?)$/i;
 const EXPLICIT_TEST_VALUE = /(?:^|[-_ ])(?:test|fixture|dummy|fake|mock|example|unused)(?:[-_ ]|$)/i;
@@ -42,7 +49,7 @@ export function scanText(file, text) {
   match(/[A-Za-z]:[\\/]+(?:Users|Documents and Settings)[\\/]+[^\s"'<>]+/gi, "personal_absolute_path");
   match(/(?:\/Users\/|\/home\/)[^\s/"'<>]+\//g, "personal_absolute_path", "error", (m) => !/\/(?:user|example|runner|node)\/$/.test(m[0]));
   match(/[A-Z0-9._%+-]+@([A-Z0-9.-]+\.[A-Z]{2,})/gi, "personal_email", "review", (m) => !SAFE_EMAIL_DOMAINS.test(m[1]));
-  match(/["'](?:account_id|database_id)["']\s*:\s*["']([A-Za-z0-9-]{20,})["']/g, "production_resource_id", "error", (m) => !SAMPLE_VALUE.test(m[1]) && !/^0+(?:-0+)*$/.test(m[1]));
+  match(/["'](?:account_id|database_id)["']\s*:\s*["']([A-Za-z0-9-]{20,})["']/g, "production_resource_id", "review", (m) => !SAMPLE_VALUE.test(m[1]) && !/^0+(?:-0+)*$/.test(m[1]));
   match(/https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]{24,}\/exec/g, "private_relay_endpoint");
   match(/https:\/\/[a-z0-9.-]+\.(?:workers\.dev|chatgpt\.site)(?:[/?#][^\s"'<>]*)?/gi, "existing_deployment_url", "review", (m) => !/(?:example|your-worker|your-subdomain)/i.test(m[0]));
   match(/https?:\/\/[^\s"'<>]+[?&](?:access_token|api_key|secret|signature|x-amz-signature)=[^&\s"'<>]+/gi, "url_credential");
@@ -64,6 +71,11 @@ async function candidateFiles(root) {
   async function visit(directory, relative = "") {
     for (const entry of await readdir(directory, { withFileTypes: true })) {
       const file = relative ? `${relative}/${entry.name}` : entry.name;
+      if (ARCHIVE_LOCAL_PATHS.has(file)) continue;
+      if (!relative && (
+        /^\.dev\.vars(?:\..*)?$/.test(entry.name) ||
+        (/^\.env(?:\..*)?$/.test(entry.name) && entry.name !== ".env.example")
+      )) continue;
       if (entry.isDirectory()) {
         if (!OMIT_DIRS.has(entry.name)) await visit(path.join(directory, entry.name), file);
       } else if (entry.isFile() || entry.isSymbolicLink()) files.push(file);
