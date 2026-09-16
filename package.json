@@ -1,6 +1,6 @@
 {
   "name": "metis-voc",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Evidence-aware cross-border product research and decision workspace",
   "license": "MIT",
   "private": true,
@@ -20,7 +20,7 @@
     "build:vendor": "vite build --config build/vite.metis-vendor.config.ts",
     "start": "wrangler dev --local --ip 127.0.0.1",
     "test": "node --test tests/*.test.mjs",
-    "audit:reports": "node scripts/audit-reference-content.mjs --fail-on-fallback",
+    "audit:reports": "pnpm run build:vendor && node scripts/audit-reference-content.mjs --fail-on-fallback",
     "test:load": "node --test tests/api-decision-lifecycle.test.mjs && node scripts/load-baseline.mjs",
     "typecheck": "tsc --noEmit --incremental false",
     "check": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run audit:reports && pnpm run audit:source && pnpm run build",
