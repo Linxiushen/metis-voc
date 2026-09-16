@@ -1,0 +1,339 @@
+{
+  "competitorPanel": [
+    {
+      "asin": "B0DEMO8543",
+      "name": "虚构样例角色",
+      "price": 2,
+      "rating": 7,
+      "reviews": 1,
+      "reviewGrowth90d": 4,
+      "monthlySold": 2,
+      "ciLow": 2,
+      "ciHigh": 7,
+      "confidence": "High",
+      "confidenceSource": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "inRanking": true,
+      "needsManualReview": false,
+      "bsrTrend": [
+        5,
+        9,
+        4,
+        8,
+        3,
+        7,
+        2,
+        6
+      ],
+      "grossMarginEst": 1,
+      "grossMarginPct": 5,
+      "buyBox": "卖家自持FBA",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "asin": "B0DEMO2224",
+      "name": "虚构样例角色",
+      "price": 9,
+      "rating": 5,
+      "reviews": 2,
+      "reviewGrowth90d": 4,
+      "monthlySold": 6,
+      "ciLow": 9,
+      "ciHigh": 5,
+      "confidence": "Medium",
+      "confidenceSource": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "inRanking": true,
+      "needsManualReview": false,
+      "bsrTrend": [
+        4,
+        8,
+        3,
+        7,
+        2,
+        6,
+        1,
+        5
+      ],
+      "grossMarginEst": 2,
+      "grossMarginPct": 6,
+      "buyBox": "卖家自持FBA",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "asin": "B0DEMO8609",
+      "name": "虚构样例角色",
+      "price": 3,
+      "rating": 8,
+      "reviews": 3,
+      "reviewGrowth90d": 4,
+      "monthlySold": 1,
+      "ciLow": null,
+      "ciHigh": null,
+      "confidence": "Low",
+      "confidenceSource": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "inRanking": false,
+      "needsManualReview": true,
+      "bsrTrend": [
+        8,
+        3,
+        7,
+        2,
+        6,
+        1,
+        5,
+        9
+      ],
+      "grossMarginEst": 3,
+      "grossMarginPct": 7,
+      "buyBox": "卖家自持FBA",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "asin": "B0DEMO2290",
+      "name": "虚构样例角色",
+      "price": 1,
+      "rating": 2,
+      "reviews": 4,
+      "reviewGrowth90d": 8,
+      "monthlySold": 9,
+      "ciLow": 1,
+      "ciHigh": 6,
+      "confidence": "Medium",
+      "confidenceSource": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "inRanking": true,
+      "needsManualReview": false,
+      "bsrTrend": [
+        3,
+        7,
+        2,
+        6,
+        1,
+        5,
+        9,
+        4
+      ],
+      "grossMarginEst": 9,
+      "grossMarginPct": 4,
+      "buyBox": "卖家自持FBA",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    }
+  ],
+  "confidenceGate": {
+    "rule": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+    "excluded": [
+      "B0xxxC"
+    ],
+    "reviewQueue": [
+      "B0xxxC 需人工核验：上市61天BSR快速上行(斜率陡),疑似广告冲量/刷单,90天后复评是否可进定量池"
+    ]
+  },
+  "scorecard": {
+    "weights": {
+      "salesOpp": 0.1,
+      "margin": 0.4,
+      "whitespace": 0.3,
+      "barrier": 0.3,
+      "supply": 0.5
+    },
+    "candidates": [
+      {
+        "id": "P1",
+        "name": "虚构样例角色",
+        "priceBand": "$25-40",
+        "targetPrice": "$34-38",
+        "rawScores": {
+          "salesOpp": 8,
+          "margin": 0.4,
+          "whitespace": 9,
+          "barrier": 8,
+          "supply": 7
+        },
+        "weightedTotal": 0.6,
+        "rank": 3,
+        "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "id": "P2",
+        "name": "虚构样例角色",
+        "priceBand": "$40-65",
+        "targetPrice": "$52-58",
+        "rawScores": {
+          "salesOpp": 6,
+          "margin": 0.5,
+          "whitespace": 1,
+          "barrier": 9,
+          "supply": 8
+        },
+        "weightedTotal": 0.5,
+        "rank": 4,
+        "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "id": "P3",
+        "name": "虚构样例角色",
+        "priceBand": "$15-25",
+        "targetPrice": "$19-23",
+        "rawScores": {
+          "salesOpp": 4,
+          "margin": 0.6,
+          "whitespace": 6,
+          "barrier": 1,
+          "supply": 9
+        },
+        "weightedTotal": 0.4,
+        "rank": 5,
+        "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      }
+    ]
+  },
+  "opportunityBubble": [
+    {
+      "id": "P1",
+      "label": "甜蜜区标准款",
+      "monthlyDemand": 8,
+      "unitProfit": 5,
+      "opportunitySize": 7,
+      "barrier": "Medium",
+      "priceBand": "$25-40"
+    },
+    {
+      "id": "P2",
+      "label": "溢价加高款",
+      "monthlyDemand": 2,
+      "unitProfit": 4,
+      "opportunitySize": 7,
+      "barrier": "High",
+      "priceBand": "$40-65"
+    },
+    {
+      "id": "P3",
+      "label": "低价走量款",
+      "monthlyDemand": 5,
+      "unitProfit": 3,
+      "opportunitySize": 7,
+      "barrier": "Low",
+      "priceBand": "$15-25"
+    },
+    {
+      "id": "SEG65",
+      "label": "$65+小众段",
+      "monthlyDemand": 8,
+      "unitProfit": 2,
+      "opportunitySize": 7,
+      "barrier": "High",
+      "priceBand": "$65+"
+    }
+  ],
+  "feasibility": {
+    "overallRiskLabel": "中等偏可控 (Conditional GO)",
+    "axes": [
+      {
+        "dim": "供应链",
+        "risk": 4,
+        "keyPoint": "防陷加宽椅脚需改模+加固焊点承重150kg需焊接工艺验证;起订量约1500-2000件",
+        "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "dim": "合规",
+        "risk": 5,
+        "keyPoint": "户外椅类目一般无CPC强制,但加州65化学标签+面料防火标识需备;收纳袋撕破涉及质量非合规",
+        "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "dim": "资金",
+        "risk": 6,
+        "keyPoint": "首批备货约1500件×到岸$9.5≈$14250,加广告铺评+FBA仓储,回款周期约45-60天",
+        "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      }
+    ]
+  },
+  "sensitivity": {
+    "baseUnitProfit": 5,
+    "drivers": [
+      {
+        "variable": "售价 ($36基准, ±$3)",
+        "low": {
+          "val": "$33",
+          "unitProfit": 0.7
+        },
+        "base": 1,
+        "high": {
+          "val": "$39",
+          "unitProfit": 1
+        },
+        "swing": 6,
+        "flipsRank": true,
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "variable": "CVR (基准, ±20%)",
+        "low": {
+          "val": "-20%",
+          "unitProfit": 7
+        },
+        "base": 7,
+        "high": {
+          "val": "+20%",
+          "unitProfit": 1
+        },
+        "swing": 9,
+        "flipsRank": false,
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "variable": "ACOS (28%基准, ±5pt)",
+        "low": {
+          "val": "23%",
+          "unitProfit": 8
+        },
+        "base": 8,
+        "high": {
+          "val": "33%",
+          "unitProfit": 1
+        },
+        "swing": 7,
+        "flipsRank": false,
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "variable": "货值到岸 ($9.5基准, ±15%)",
+        "low": {
+          "val": "$8.1",
+          "unitProfit": 9
+        },
+        "base": 9,
+        "high": {
+          "val": "$10.9",
+          "unitProfit": 1
+        },
+        "swing": 5,
+        "flipsRank": false,
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      }
+    ]
+  },
+  "finalVerdict": {
+    "decision": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+    "chosenPlan": "P1 甜蜜区标准款(防陷加宽椅脚 + 加固焊点承重150kg + 耐撕收纳袋)",
+    "score": 9,
+    "oneLiner": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+  },
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

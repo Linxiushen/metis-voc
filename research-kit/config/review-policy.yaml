@@ -1,0 +1,84 @@
+# ============================================================================
+# 轻人工终审门控策略 —— HITL 触发矩阵 + judge 阈值 + 逐步收缩策略
+# 对齐《跨境选品-Agent系统详细设计-v1.0.md》§4
+# 目标：HITL 干预率从初期≈100% 随指标达标收缩到 <15%，同时 citation accuracy≥0.95、faithfulness≥0.90
+# ============================================================================
+version: 1.0
+mode: strict            # strict(冷启动) | balanced | lean；收缩时逐档放宽，可一键回滚
+
+# ---- 硬阻断（不进人工，直接打回 Planner 增量重跑）--------------------------
+hard_block:
+  fabricated_citation_gt: 0          # 任一 FABRICATED → HARD_BLOCK
+  max_revision_count: 2              # 打回重跑上限，超限强制转 HITL
+
+# ---- HITL 触发规则（任一命中即挂起飞书审批）--------------------------------
+hitl_triggers:
+  low_confidence_in_ranking:         # 触发1
+    rule: "任一进入定量排序的销量点估计 confidence_level == Low"
+    severity: high
+    autopass_never: true             # 业务红线，永不 autopass
+  hard_gate_margin:                  # 触发2
+    rule: "opportunity_score in [68, 72] 或 hard_gate_pass 与 review_wall<500 判定矛盾"
+    severity: medium
+  high_risk_action:                  # 触发3
+    rule: "GTM 推荐'先做'方案 / 定价带 / 对外可汇报高管的最终结论"
+    severity: high
+  citation_unsupported:              # 触发4
+    rule: "单节点 UNSUPPORTED 引用占比 > 0.10"
+    severity: high
+  judge_below_thresh:                # 触发5
+    rule: "任一 judge 维度 < 阈值（见 judge_thresholds）"
+    severity: high
+  crosscheck_disagree:               # 触发6
+    rule: "关键洞察第二模型 devil's advocate == disagree"
+    severity: medium
+  synthetic_respondent:              # 触发7
+    rule: "任何用到合成受访者/合成结论的部分"
+    severity: high
+    autopass_never: true
+  policy_sampling:                   # 触发8
+    rule: "即便全部 autopass，按 sampling_ratio 随机抽审"
+    sampling_ratio: 0.05
+
+# ---- LLM-as-judge 阈值（低于即触发 HITL）----------------------------------
+# citation_accuracy 不由模型自评：走 L0+L1 确定性统计 SUPPORTED/总
+judge_thresholds:
+  faithfulness: 0.85
+  citation_accuracy: 0.95
+  completeness: 0.80
+  source_quality: 0.70
+  actionability: 0.75
+partial_citation_weight: 0.5         # PARTIAL 计入 citation_accuracy 的权重（待标定）
+
+# ---- 关键洞察白名单（仅这四类触发 L3 多模型交叉验证，控成本）--------------
+cross_check_whitelist:
+  - quant_ranking_sales_estimate     # 进入定量排序的销量点估计
+  - opportunity_hard_gate            # 机会分是否过 70 硬门槛
+  - mind_decode_whitespace           # 白空间机会点
+  - gtm_pricing_and_first_choice     # 定价带与"先做"方案
+cross_check_second_model: [deepseek, qwen, glm]   # 异构，非同族
+cross_check_claim_cap: 12            # 单次交叉验证 claim 数上限（预算护栏）
+
+# ---- 终审 checklist 呈现（减轻人工负担）-----------------------------------
+review_checklist:
+  show_only_flagged: true            # 只呈现被标红 N 项，不呈现全文
+  include_summary: true              # + 五节点关键数一屏摘要
+  actions: [approve, edit, reject_rerun]   # 通过/修改/打回
+  allow_inline_comment: true
+
+# ---- 逐步收缩策略（达标才放宽，可回滚）------------------------------------
+shrink_policy:
+  metrics_window: 30                 # 近 N 单
+  graduation_criteria:               # 全部达标才可降一档 mode
+    citation_accuracy_gte: 0.95
+    faithfulness_gte: 0.90
+    human_edit_rate_lt: 0.15         # 近 N 单人工改动率
+  per_dimension: true                # 可按品类/节点/触发类型分别收缩
+  rollback: one_click                # 指标回落一键回严格档
+  never_autopass: [low_confidence_in_ranking, synthetic_respondent]  # 这两类永不放开
+
+# ---- 观测 ------------------------------------------------------------------
+observability:
+  trace: langfuse
+  ledger_table: claim_ledger         # claim_id→source_ids→verdict→confidence→judge_scores
+  track_metrics: [hitl_intervention_rate, citation_accuracy, faithfulness, human_edit_rate, revision_count]

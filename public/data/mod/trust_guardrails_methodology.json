@@ -1,0 +1,404 @@
+{
+  "case": "折叠露营椅 Folding Camping Chair · Amazon US · 近90天",
+  "run_meta": {
+    "report_id": "IA-CHAIR-20260708-01",
+    "generated_at": "2026-07-08T09:12:00Z",
+    "data_window_days": 6,
+    "station": "Amazon US",
+    "category": "Folding Camping Chair",
+    "model_primary": "主生成模型",
+    "model_verifier": "独立校验模型",
+    "judge_model": "LLM-judge"
+  },
+  "guardrail_chain": [
+    {
+      "level": "L0",
+      "name": "虚构样例角色",
+      "checks": 2,
+      "passed": 8,
+      "blocked": 9,
+      "pass_rate": 0.8,
+      "key_findings": [
+        "站点=US/品类=露营椅在白名单",
+        "数据源均在ToS允许清单",
+        "无PII/无违禁品类"
+      ],
+      "status": "pass"
+    },
+    {
+      "level": "L1",
+      "name": "虚构样例角色",
+      "checks": 9,
+      "passed": 6,
+      "blocked": 1,
+      "pass_rate": 0.7,
+      "key_findings": [
+        "46条生成挂到检索证据",
+        "2条无源自由发挥被拦截并重生成(1条竞品猜测/1条季节泛化)"
+      ],
+      "status": "pass"
+    },
+    {
+      "level": "L2",
+      "name": "虚构样例角色",
+      "checks": 3,
+      "passed": 9,
+      "blocked": 2,
+      "pass_rate": 0.6,
+      "key_findings": [
+        "逐条判定 47 SUPPORTED / 5 PARTIAL / 0 UNSUPPORTED",
+        "5条PARTIAL已降级为'方向性判断'并加限定词"
+      ],
+      "status": "pass"
+    },
+    {
+      "level": "L3",
+      "name": "虚构样例角色",
+      "checks": 1,
+      "passed": 7,
+      "blocked": 3,
+      "pass_rate": 0.5,
+      "key_findings": [
+        "6个高风险数值复算",
+        "5 agree / 1 disagree(净利率)转人工"
+      ],
+      "status": "warn"
+    },
+    {
+      "level": "L4",
+      "name": "虚构样例角色",
+      "checks": 4,
+      "passed": 1,
+      "blocked": 4,
+      "pass_rate": 0.4,
+      "key_findings": [
+        "3项触发进入人工:净利率分歧/尺寸差评归因/新品Low源标注",
+        "全部终审通过并留改动记录"
+      ],
+      "status": "pass"
+    }
+  ],
+  "citation_stats": {
+    "total_claims": 3,
+    "total_citations": 8,
+    "supported": 5,
+    "partial": 6,
+    "unsupported": 2,
+    "exempt": 3,
+    "citation_accuracy": 0.3
+  },
+  "citation_donut": [
+    {
+      "label": "SUPPORTED",
+      "count": 1,
+      "pct": 0.2,
+      "color": "#2E9E7A"
+    },
+    {
+      "label": "PARTIAL",
+      "count": 8,
+      "pct": 0.1,
+      "color": "#E0A83B"
+    },
+    {
+      "label": "UNSUPPORTED",
+      "count": 2,
+      "pct": 7,
+      "color": "#C6473E"
+    }
+  ],
+  "judge_scores": [
+    {
+      "dim": "接地性 Groundedness",
+      "score": 8,
+      "threshold": 6,
+      "pass": true
+    },
+    {
+      "dim": "事实一致 Factuality",
+      "score": 2,
+      "threshold": 9,
+      "pass": true
+    },
+    {
+      "dim": "完整性 Completeness",
+      "score": 9,
+      "threshold": 3,
+      "pass": true
+    },
+    {
+      "dim": "相关性 Relevance",
+      "score": 7,
+      "threshold": 6,
+      "pass": true
+    },
+    {
+      "dim": "可辩护性 Defensibility",
+      "score": 1,
+      "threshold": 9,
+      "pass": false
+    }
+  ],
+  "cross_model": [
+    {
+      "claim": "头部B0xxxA月销",
+      "primary_value": "2450",
+      "verifier_value": "2410",
+      "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "delta_pct": 0.3,
+      "action": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "claim": "机会分总分",
+      "primary_value": "72",
+      "verifier_value": "71",
+      "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "delta_pct": 0.2,
+      "action": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "claim": "CR3头部占销量",
+      "primary_value": "38%",
+      "verifier_value": "37%",
+      "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "delta_pct": 0.1,
+      "action": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "claim": "甜蜜区价格段",
+      "primary_value": "$25-40",
+      "verifier_value": "$25-40",
+      "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "delta_pct": 8,
+      "action": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "claim": "DURABILITY差评占比",
+      "primary_value": "34%",
+      "verifier_value": "33%",
+      "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "delta_pct": 0.7,
+      "action": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "claim": "单位经济净利率",
+      "primary_value": "8.0%",
+      "verifier_value": "6.2%",
+      "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "delta_pct": 0.6,
+      "action": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "human_review": [
+    {
+      "id": "HR-1",
+      "trigger_item": "单位经济净利率分歧",
+      "trigger_rule": "交叉验证delta>20% 且 涉及定价决策",
+      "reviewer": "虚构样例角色",
+      "conclusion": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "change_made": "净利率保留~8%,新增'定价上修至$34-38可达12-15%'的敏感性说明"
+    },
+    {
+      "id": "HR-2",
+      "trigger_item": "SIZE尺寸差评归因(>180cm偏矮)",
+      "trigger_rule": "白空间结论(加高款)直接依赖该归因,judge可辩护性<4.0",
+      "reviewer": "虚构样例角色",
+      "conclusion": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "change_made": "'加高款'白空间加限定'主要针对北美高个体群',置信标Medium"
+    },
+    {
+      "id": "HR-3",
+      "trigger_item": "新品B0xxxC月销~600标注",
+      "trigger_rule": "Low置信源进入面向用户输出",
+      "reviewer": "虚构样例角色",
+      "conclusion": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "change_made": "B0xxxC全程标Low/仅BSR单源,排除出CR3与定量对比表"
+    }
+  ],
+  "data_sources": [
+    {
+      "id": "Keepa-3",
+      "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "type": "官方API",
+      "coverage": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "freshness": "T-1日,近90天窗口",
+      "confidence": "High",
+      "compliance": "合规",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "ABA-1",
+      "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "type": "官方API",
+      "coverage": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "freshness": "周更,近90天",
+      "confidence": "High",
+      "compliance": "合规",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "GT-1",
+      "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "type": "公开数据",
+      "coverage": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "freshness": "T-2日,近12月",
+      "confidence": "Medium",
+      "compliance": "合规",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "Fees-1",
+      "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "type": "计算模型",
+      "coverage": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "freshness": "当期费率2026",
+      "confidence": "High",
+      "compliance": "合规",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "REV-8842",
+      "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "type": "公开数据",
+      "coverage": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "freshness": "近90天新增权重,含历史",
+      "confidence": "Medium",
+      "compliance": "ToS敏感",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "SYN-1",
+      "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "type": "合成",
+      "coverage": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "freshness": "本次生成",
+      "confidence": "Low",
+      "compliance": "条件合规",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "methodology": [
+    {
+      "id": "M1",
+      "name": "虚构样例角色",
+      "formula": "confidence = f(源数, 源间一致度): High=三源一致(monthlySold∩BSR回归∩评论增速, CV<15%); Medium=两源(缺monthlySold或FBM库存法失效); Low=单源(仅BSR,不进定量排序)",
+      "inputs": [
+        "Keepa monthlySold",
+        "BSR→销量回归",
+        "评论增速反推",
+        "库存法(FBM时失效)"
+      ],
+      "output": "月销点估计 + 置信区间CI + High/Med/Low",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "M2",
+      "name": "虚构样例角色",
+      "formula": "Opportunity = 100 × Σ(wᵢ·sᵢ), 竞争维取(1−竞争强度); 权重 需求0.28/增速0.22/竞争0.20/变现0.18/季节0.12",
+      "inputs": [
+        "需求0.78",
+        "增速0.61",
+        "竞争0.68(减向,记为强度→贡献0.32)",
+        "变现0.55",
+        "季节0.40"
+      ],
+      "output": "机会分 72/100",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "M3",
+      "name": "虚构样例角色",
+      "formula": "净利 = 售价 − Referral(15%) − FBA配送 − 到岸货值 − 头程 − 广告(ACOS×售价); 净利率=净利/售价",
+      "inputs": [
+        "售价$36",
+        "Referral $5.4",
+        "FBA $6.4",
+        "货值$9.5",
+        "头程$1.8",
+        "广告$10(ACOS~28%)"
+      ],
+      "output": "净利~$2.9, 净利率~8%",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L1",
+      "item": "BSR→销量估算误差",
+      "scope": "所有非monthlySold源的销量点估计",
+      "error_band": "±20~35%(依类目回归拟合与断货噪声)",
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "L2",
+      "item": "评论抓取ToS边界",
+      "scope": "ABSA差评占比与归因",
+      "error_band": "抓取覆盖非100%,长尾评论有采样偏差",
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "L3",
+      "item": "合成受访者边界",
+      "scope": "动机补全/深访模拟(SYN-1)",
+      "error_band": "非真实样本,不具统计代表性",
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "L4",
+      "item": "90天窗口季节偏置",
+      "scope": "增速/季节维与销量年化",
+      "error_band": "窗口若含5-8月峰值会高估年均",
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "audit_trace": [
+    {
+      "claim": "头部竞品B0xxxA月销约2450(High置信)",
+      "anchors": [
+        "Keepa-3"
+      ],
+      "source_record": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "guardrail_path": [
+        "L1接地",
+        "L2 SUPPORTED",
+        "L3 agree(delta1.6%)"
+      ],
+      "confidence": "High"
+    },
+    {
+      "claim": "DURABILITY耐用为最大差评主题34%(2180条)",
+      "anchors": [
+        "REV-8842",
+        "REV-9013"
+      ],
+      "source_record": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "guardrail_path": [
+        "L1接地",
+        "L2 SUPPORTED",
+        "L4抽检(HR-2关联)"
+      ],
+      "confidence": "Medium"
+    },
+    {
+      "claim": "建议定价$34-38且净利率可达甜蜜区",
+      "anchors": [
+        "Fees-1",
+        "ABA-1"
+      ],
+      "source_record": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "guardrail_path": [
+        "L1接地",
+        "L2 PARTIAL(降级为建议)",
+        "L3 disagree→L4终审HR-1"
+      ],
+      "confidence": "Medium"
+    }
+  ],
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

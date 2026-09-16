@@ -1,0 +1,339 @@
+version: 1.0
+_note: 专业评论标注引擎词典（多智能体设计合成）。规则/正则为确定性基线，LLM 增强点见 impl_plan。
+aspect:
+  enum:
+  - QUALITY
+  - DURABILITY
+  - BATTERY
+  - SIZE
+  - FUNCTIONALITY
+  - SHIPPING
+  - PRICE
+  - APPEARANCE
+  - SMELL_NOISE
+  - COMPATIBILITY
+  - INSTRUCTION
+  - CUSTOMER_SERVICE
+  - OVERALL
+  scope_rules:
+    BATTERY:
+    - electronics
+    SMELL_NOISE:
+    - home
+    - appliance
+    - furniture
+    - outdoor
+  canonicalization:
+  - canonical: carry_bag
+    category: SHIPPING
+    synonyms:
+    - carry bag
+    - carrying bag
+    - storage bag
+    - storage sack
+    - pouch
+    - sack
+    - case
+  - canonical: weld_joint
+    category: DURABILITY
+    synonyms:
+    - weld
+    - welding
+    - joint
+    - seam
+    - connector
+    - hinge
+  - canonical: battery_life
+    category: BATTERY
+    synonyms:
+    - battery life
+    - battery
+    - charge
+    - runtime
+    - run time
+    - juice
+    - power
+  - canonical: seat_height
+    category: SIZE
+    synonyms:
+    - seat height
+    - too low
+    - too tall
+    - low seat
+    - height of seat
+    - sits low
+  - canonical: fit_sizing
+    category: SIZE
+    synonyms:
+    - fit
+    - sizing
+    - size
+    - runs large
+    - runs small
+    - too big
+    - too small
+    - dimensions
+  - canonical: build_material
+    category: QUALITY
+    synonyms:
+    - material
+    - fabric
+    - build
+    - build quality
+    - construction
+    - make
+    - workmanship
+  - canonical: smell
+    category: SMELL_NOISE
+    synonyms:
+    - smell
+    - odor
+    - odour
+    - stink
+    - chemical smell
+    - off-gassing
+  - canonical: noise
+    category: SMELL_NOISE
+    synonyms:
+    - noise
+    - noisy
+    - loud
+    - squeak
+    - rattle
+    - hum
+    - quiet
+  - canonical: instructions_manual
+    category: INSTRUCTION
+    synonyms:
+    - instructions
+    - manual
+    - directions
+    - guide
+    - assembly instructions
+    - setup guide
+  - canonical: customer_service
+    category: CUSTOMER_SERVICE
+    synonyms:
+    - customer service
+    - support
+    - seller response
+    - refund
+    - return process
+    - warranty
+    - rma
+  - canonical: compatibility
+    category: COMPATIBILITY
+    synonyms:
+    - compatible
+    - fits with
+    - works with
+    - adapter
+    - accessory
+    - attachment
+  - canonical: price_value
+    category: PRICE
+    synonyms:
+    - price
+    - value
+    - worth it
+    - expensive
+    - overpriced
+    - cheap for the price
+    - great deal
+    - bang for buck
+polarity_base_strength:
+  '0.9':
+  - terrible
+  - broke
+  - snapped
+  - love
+  - excellent
+  - perfect
+  - useless
+  '0.7':
+  - flimsy
+  - cheap
+  - sturdy
+  - durable
+  - great
+  - damaged
+  - overpriced
+  '0.5':
+  - good
+  - bad
+  - works
+  - comfortable
+  - loud
+  - small-fit
+  '0.3':
+  - okay
+  - fine
+  - decent
+  - a little off
+labels:
+  use_case_jtbd:
+    impl: hybrid
+    values:
+    - camping_outdoor
+    - tailgate_party
+    - fishing
+    - beach_pool
+    - sports_event
+    - backyard_patio
+    - travel_portable
+    - office_desk
+    - gaming
+    - gift_giving
+    - everyday_home
+    patterns:
+      camping_outdoor: camping|campsite|campground|hiking|backpacking|RV|tent|off.?grid
+      tailgate_party: tailgate|tailgating|cookout|bbq|barbecue|party|gathering|get.?together
+      fishing: fishing|fish|lake|dock|pier|kayak|boat
+      beach_pool: beach|sand|poolside|pool|oceanside|seaside
+      sports_event: soccer game|little league|football game|sidelines|bleachers|kids.? games|sporting event
+      backyard_patio: backyard|patio|deck|porch|yard|garden
+      travel_portable: travel|flight|airplane|road trip|carry.?on|fits in (?:the )?trunk|easy to (?:carry|transport|pack)
+      office_desk: office|desk|work from home|cubicle|wfh
+      gaming: gaming|streaming setup|long gaming sessions
+      gift_giving: gift|present|gave (?:it|this) to|bought for my
+      everyday_home: living room|bedroom|everyday use|daily use|around the house
+  defect_mode:
+    impl: rule
+    values:
+    - frame_broke
+    - stitching_seam_failure
+    - zipper_failure
+    - hardware_loose_stripped
+    - fabric_tear
+    - buckle_clip_snapped
+    - leg_bent_collapsed
+    - coating_peeling_rust
+    - cupholder_broke
+    - electronics_dead
+    - battery_swell_fail
+    - leak
+    - no_defect
+    patterns:
+      frame_broke: frame (?:broke|bent|snapped|cracked)|frame is flimsy|frame gave (?:out|way)
+      stitching_seam_failure: stitch(?:ing)? (?:came|ripped|unraveled)|seam (?:ripped|split|tore)|threads coming
+      zipper_failure: zipper (?:broke|stuck|jammed|split|won'?t)|broken zipper
+      hardware_loose_stripped: screws? (?:stripped|loose|missing)|bolts? (?:loose|missing)|nuts? came off|stripped thread
+      fabric_tear: fabric (?:tore|ripped)|tore (?:a )?hole|ripped after|material tore
+      buckle_clip_snapped: buckle (?:broke|snapped)|clip (?:broke|snapped)|clasp broke
+      leg_bent_collapsed: legs? (?:bent|collapsed|buckled|gave out)|collapsed under
+      coating_peeling_rust: peeling|rust(?:ed|ing)?|coating (?:came|flaked)|paint chipp
+      cupholder_broke: cup ?holder (?:broke|ripped|tore|useless)
+      electronics_dead: stopped (?:working|charging)|won'?t (?:turn on|power)|dead after|quit working
+      battery_swell_fail: battery (?:swell|swollen|died|won'?t hold)|won'?t hold a charge
+      leak: leak(?:s|ed|ing)?|water got in|seeped
+  intent:
+    impl: hybrid
+    values:
+    - praise
+    - complaint
+    - comparison
+    - question
+    - feature_request
+    - return_reason
+    - usage_tip
+    patterns:
+      praise: love it|highly recommend|best .* i(?:'ve| have) ever|so happy with|exceeded expectations|works great
+      complaint: disappointed|waste of money|do not buy|terrible|stopped working|would not recommend
+      comparison: better than|worse than|compared to|vs\b|unlike (?:my|the) (?:old|previous)|switched from
+      question: does (?:it|this) (?:come|work|fit)\??|can (?:i|it)|is (?:it|this) .*\?|anyone know|how do (?:i|you)
+      feature_request: wish it (?:had|came)|i wish there was|would be (?:great|nice|better) if|please add|needs a|should (?:have|include) (?:a|an)
+      return_reason: (?:i )?returned (?:it|this)|had to return|sent it back|requested a refund|returning because
+      usage_tip: pro tip|what i did was|i recommend (?:using|buying)|make sure to|tip:|workaround
+  persona:
+    impl: hybrid
+    values:
+    - for_tall
+    - for_heavy_bigandtall
+    - for_elderly
+    - for_kids
+    - for_pets
+    - for_professional
+    - for_beginner
+    - for_disability_mobility
+    - for_plus_size
+    - self_use
+    - for_gift_recipient
+    patterns:
+      for_tall: for tall|tall people|6.?[2-9]"|i(?:'m| am) tall|long legs|tall enough
+      for_heavy_bigandtall: big and tall|heavy person|plus.?size|[23]\d\d ?lbs?|holds my weight|for larger|weight capacity
+      for_elderly: elderly|my (?:mom|dad|mother|father|grandma|grandpa)|senior|aging parents|easy for (?:her|him) to get (?:up|out)
+      for_kids: for my kids?|toddler|child|children|my son|my daughter
+      for_pets: my dog|my cat|pet|for the dog
+      for_professional: professional use|contractor|commercial|for my business|everyday at work|heavy.?duty use
+      for_beginner: beginner|first.?time|new to|novice|entry.?level
+      for_disability_mobility: disabled|wheelchair|mobility|bad (?:back|knees|hips)|surgery recovery|arthritis
+      for_plus_size: plus.?size|curvy|fuller figure
+      for_gift_recipient: bought for my|gave to my|gift for
+  feature_request:
+    impl: hybrid
+    values:
+    - missing_feature
+    - wants_more_of
+    - wants_less_of
+    - wants_variant_option
+    - wants_accessory
+    - size_gap
+    - material_upgrade_wish
+    - no_unmet_need
+    patterns:
+      trigger: wish it (?:had|came with|included|was)|if only it (?:had|were|was)|i wish there (?:was|were)|would (?:be (?:great|nice|perfect|better)|have been better) if|should (?:have|include|come with|be)|the
+        only thing missing|just needs? (?:a|an|more)|please (?:add|make|include|offer)
+      wants_more_of: (?:needs?|wish it had) more (?:padding|storage|room|support|cushion)
+      wants_variant_option: (?:wish it came|available) in (?:a )?(?:bigger|larger|different) (?:size|color)
+      wants_accessory: needs? a (?:carrying )?(?:case|bag|cover|strap)
+    note: slot_filling(具体缺什么)为LLM增强点
+  competitor:
+    impl: hybrid
+    values:
+    - switched_from_competitor
+    - switched_to_this
+    - better_than_alt
+    - worse_than_alt
+    - considered_alt
+    - repeat_same_brand
+    - named_competitor
+    - no_mention
+    patterns:
+      switched_from_competitor: switched from|upgraded from|replaced my (?:old )?|coming from (?:a )?|used to (?:have|use|own)
+      better_than_alt: better than|way better than|superior to|beats (?:my|the)|holds up better than
+      worse_than_alt: not as (?:good|sturdy|comfortable) as|worse than|my old one was better|inferior to
+      considered_alt: was going to (?:buy|get)|almost bought|instead of (?:the|a)|compared to (?:the )?
+      repeat_same_brand: my (?:second|third|fourth)|bought again|third one i(?:'ve| have) bought
+    note: named_competitor品牌实体串需NER/LLM;句式框架规则先抓
+  severity:
+    impl: hybrid
+    values:
+    - deal_breaker
+    - major
+    - minor
+    - cosmetic_nit
+    - none
+    patterns:
+      deal_breaker: deal.?breaker|do(?:n'?t| not) (?:buy|waste)|returning (?:it|this)|unusable|dangerous|safety (?:hazard|issue)|never again|complete (?:waste|junk)|one star
+      major: (?:really|very|extremely) disappointed|big problem|major (?:issue|flaw)|can'?t use it for
+      minor: minor (?:issue|complaint|gripe)|small (?:issue|problem)|not a big deal|other than that|aside from
+      cosmetic_nit: nitpick|just cosmetic|only complaint is (?:the color|the look)|superficial
+    amplifiers: rating<=2抬底至major;显式returned/refund→deal_breaker
+  emotion:
+    impl: hybrid
+    values:
+    - delight
+    - satisfaction
+    - neutral
+    - frustration
+    - anger
+    - regret
+    - disappointment
+    patterns:
+      delight: love(?:d)? it|obsessed|absolutely amazing|blown away|best purchase|can'?t (?:live without|recommend enough)|!{2,}
+      satisfaction: happy with|satisfied|works well|no complaints|does the job|glad i bought
+      frustration: frustrating|annoying|ridiculous|so frustrating|pain to|waste of time
+      anger: furious|angry|scam|ripped off|disgusting|appalled
+      regret: regret (?:buying|purchasing)|should(?:'ve| have) (?:known|bought|returned)|wish i (?:hadn'?t|had never)|sorry i bought
+      disappointment: disappointed|let down|expected (?:better|more)|underwhelmed|sadly
+    note: ALL.?CAPS正/负向作情绪强调修饰;反讽与混合情绪交LLM

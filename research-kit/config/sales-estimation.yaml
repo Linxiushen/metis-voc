@@ -1,0 +1,75 @@
+# ============================================================================
+# 销量估算 + 置信区间 配置（核心差异化模块）
+# 核心事实：BSR↔销量是「分类目、非线性(幂律/对数)」关系，无通用公式
+#          每个顶级类目单独用真实订单回归拟合校准曲线再插值
+# 输出：point / ci_low / ci_high / confidence_level / source_flags / anomaly_flags
+# ============================================================================
+version: 1.0
+target_unit: units_per_month
+
+# ---- 三源并行取数 ----------------------------------------------------------
+sources:
+  A_bsr_conversion:
+    method: 类目 × BSR分段 幂律/对数插值曲线
+    segments: [ "100-999", "1000-100000", "100000+" ]
+    anchors: {basic: 6, advanced: 11}      # 段间对数插值；锚点用真实订单校准
+    weight_hint: 随排名变差递减
+  B_inventory_flow:
+    method: 相邻两日库存快照差（扣补货正跳变）累加为月销
+    missing_when: [stockout, hidden_inventory, FBM]   # 置为缺失，不填 0
+    weight_hint: 稳定在售品最高
+  C_review_velocity:
+    method: 月新增评论 ÷ 类目留评率 → 隐含月销
+    default_review_rate: 0.015             # 1.5%，须按类目 1-2% 校准回归
+    corr_with_cumulative_sales: 0.65       # 作趋势印证
+    weight_hint: 仅辅助/印证
+
+# ---- 最高置信锚（若命中，权重最高，其余源仅校验）--------------------------
+high_confidence_anchor:
+  keepa_monthly_sold: true                 # "Bought in past month"，月销≥50 才有
+
+# ---- 融合 ------------------------------------------------------------------
+fusion:
+  point_estimate: weighted_geometric_mean  # 或 bayesian_weighted
+  weight_basis: 该源在该 BSR 段/类目的历史命中率
+  ensemble_error_reduction: [0.20, 0.24]   # 多源集成经验降误差 20-24%
+  interval_from: CV                         # CV = std/mean 映射区间宽度
+  output_percentiles: [P25, P50, P75]       # 或 [P10, P50, P90]
+
+# ---- 误差带（按 BSR 段，来自公开评测）-------------------------------------
+error_bands:
+  - {bsr_range: "<1000",        band_pct: [0.10, 0.15]}
+  - {bsr_range: "1000-10000",   band_pct: [0.15, 0.20]}
+  - {bsr_range: "10000-100000", band_pct: [0.20, 0.25]}
+  - {bsr_range: ">100000_or_new", band_pct: [0.30, 0.40]}   # 或仅定性
+
+# ---- 置信度分级（离散标签，供下游过滤）------------------------------------
+confidence_levels:
+  High:
+    when: ">=2源一致(相对偏差<20%)且命中 monthlySold；或 BSR<10k 且库存法有效"
+    ci: "±<=20%"
+  Medium:
+    when: "仅单一强源；或源间偏差 20-50%；或 BSR 10k-100k"
+    ci: "±20-30%"
+  Low:
+    when: "仅 BSR 单源且排名>100k；或新品(评论<10 或 上架<90天)；或检测到批量单/刷单/断货"
+    ci: "仅给数量级/区间"
+    exclude_from_ranking: true            # ⚠️ 不进入定量排序，只做定性提示
+
+# ---- 必做偏差校正 ----------------------------------------------------------
+corrections:
+  variant_aggregation:
+    note: 父体 BSR = 全家族合计；父体估计按子体评论占比(或流量词占比)拆到子体
+  buyers_vs_orders_vs_units:
+    note: Amazon 显示的「子体销量」实为买家数量；高复购类目按复购系数上修
+    example: "400+人购买 -> 订单544 -> 销量597"
+  orders_to_units:
+    note: 高多件购买类目(消耗品/多件装)乘「件数/订单」上修系数
+  seasonality_promo_stockout:
+    flag_windows: [PrimeDay, LightningDeal, stockout]
+    action: 从常态估计剔除或降权
+
+# ---- 数据源停更应对 --------------------------------------------------------
+source_switch:
+  keepa_rating_count_frozen_since: 2025-04-09   # ratingCount 历史自此停更
+  note: ratingCount 历史该点后切第三方逐条统计或 monthlySold；对账阈值待定

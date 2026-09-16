@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title">
+  <title id="title">Metis VOC — evidence to product decisions</title>
+  <rect width="1200" height="630" fill="#191c1e"/>
+  <path d="M95 400V215L185 340L275 215V400" fill="none" stroke="#d2c7b3" stroke-width="18" stroke-linejoin="round"/>
+  <g font-family="Arial, sans-serif" fill="#ebe7df">
+    <text x="345" y="305" font-size="88" font-weight="600">METIS VOC</text>
+    <text x="351" y="368" font-size="27" fill="#b7bab8">Evidence → Insight → Decision</text>
+    <text x="95" y="545" font-size="18" fill="#8c9493">OPEN SOURCE / PRODUCT RESEARCH WORKSPACE</text>
+  </g>
+</svg>

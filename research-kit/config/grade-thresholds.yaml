@@ -1,0 +1,65 @@
+# ============================================================================
+# 统一评价等级引擎配置 —— grade_engine.py 消费
+# 逆向自 灵眸/LynxAI「评价等级」矩阵；双路径互证：
+#   路径A 子指标加权合成 Score10；路径B 星级路径 Score10=((r_w-1)/4)*10*trust
+#   两路殊途同归到同一 0-10 量纲，字母阈值 8/7/6 复现观察 8.16→A / 7.16→B / 6.00→C
+# 口径锁定：分级唯一走 Score10；集中度统一 CR3；占比统一销量加权；0-10 唯一量纲
+# ============================================================================
+version: 1.0
+
+# ---- 分级阈值（全局唯一，任何视图不得自带阈值）----------------------------
+grades:
+  - {letter: A, min: 8.0, color: "#16a34a", label: 强机会}
+  - {letter: B, min: 7.0, color: "#eab308", label: 可进入}
+  - {letter: C, min: 6.0, color: "#f97316", label: 谨慎}
+  - {letter: D, min: 0.0, color: "#ef4444", label: 回避}
+missing_color: "#94a3b8"          # 缺数据('0%'/'-')灰显，不参与配色/加权
+
+# ---- 硬门槛（命中即封顶 C；与机会分 hard_gate 同源）------------------------
+gate_fail_caps_at: C
+gate_rules:
+  compliance_not_low: true        # 合规≠low
+  top3_review_ge: 500             # 头部评论墙≥500
+  net_margin_lt: 0.08             # 净利率<8%
+  sales_confidence_low: true      # 销量置信=Low
+
+# ---- 9 子指标：方向 + 归一化上限 x_cap（品类分位标定，非硬编码）-----------
+# direction: pos=越高越利好(正向饱和) / neg=越低越利好(竞争墙,反向)
+indicators:
+  growth:            {dir: pos, cap: 2.00, label: 市场增长率}
+  new_link:          {dir: pos, cap: 1.00, label: 新品链接占比}
+  new_gmv:           {dir: pos, cap: 1.00, label: 新品销售额占比}
+  price_elasticity:  {dir: pos, cap: 1.00, label: 销售价格空间弹性}
+  price_growth:      {dir: pos, cap: 1.00, label: 单价均值增长率}
+  concentration:     {dir: neg, cap: 1.00, label: 头部品牌集中度CR3}
+  review_wall:       {dir: neg, cap: 50.0, label: 头部平均评论数}
+  star_wall:         {dir: neg, cap: 5.00, label: 头部平均星级}
+  net_margin:        {dir: pos, cap: 0.35, label: 单位净利率}
+
+# ---- Score10 合成权重（Σ=1，与机会分内核同源：需求&增速.55/竞争墙.30/变现.15）
+# 可被 seller_spec 卖家画像覆写（工厂重变现/铺货重增速…）
+weights:
+  growth: 0.20
+  new_link: 0.15
+  new_gmv: 0.15
+  price_growth: 0.05
+  concentration: 0.10
+  review_wall: 0.10
+  star_wall: 0.10
+  price_elasticity: 0.10
+  net_margin: 0.05
+
+# ---- 卖家画像自适应权重覆写（可选，示例）----------------------------------
+seller_overrides:
+  factory:  {net_margin: 0.10, price_elasticity: 0.12, growth: 0.16}   # 工厂重变现/成本
+  brand:    {growth: 0.22, star_wall: 0.12, review_wall: 0.12}         # 品牌重增速/差异
+  reseller: {growth: 0.26, review_wall: 0.12, net_margin: 0.02}        # 铺货重上升期/低竞争
+
+# ---- 👍 利好标记：归一化强度阈值 --------------------------------------------
+good_mark_min_n: 0.60             # ni≥0.6 且方向利好 → 👍 + 淡绿底
+
+# ---- 星级路径 trust（评论数越多越可信）-------------------------------------
+star_path:
+  trust_base: 0.85
+  trust_span: 0.15
+  trust_log_ceiling: 501          # trust = base + span*min(1, ln(1+n)/ln(501))

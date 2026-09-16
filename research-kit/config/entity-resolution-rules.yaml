@@ -1,0 +1,69 @@
+# ============================================================================
+# 实体解析规则（ASIN / 品牌 / SKU 归一）— 所有下游分析的地基
+# 解决："某品牌跨站点是不是同一个""A型号和B型号是不是同一SKU"
+# ============================================================================
+version: 1.0
+
+# ---- 主键设计 --------------------------------------------------------------
+keys:
+  asin_pk: [marketplace, asin]        # 同一 ASIN 跨站点独立
+  product_key:                        # 稳定商品实体键（跨站点跨变体归一）
+    priority:                         # 按序回退，缺高优先标识符时降级
+      - GTIN
+      - UPC
+      - EAN
+      - brand_model_fingerprint       # normalize(brand) + model_number
+      - parent_asin_fingerprint
+
+# ---- 桥接维表 map_asin_product --------------------------------------------
+bridge_table:
+  name: map_asin_product
+  one_row_per: asin
+  fields: [asin, marketplace, product_key, parent_asin, match_rule, gtin, updated_at]
+  match_rule_values: [gtin, upc, ean, brand_model, parent]
+
+# ---- 变体家族（parent / child）--------------------------------------------
+variants:
+  parent_asin: nullable               # child 指向 parent；parent 自身为不可购买聚合体
+  variation_theme: [size, color, style, flavor, pattern]   # 类目相关
+  flattened_attrs: [attr_color, attr_size, attr_style]
+  semistructured: attributes MAP<STRING,STRING>            # 吸收未知/演进的变体轴
+  source_alignment:
+    sp_api: relationships 按 marketplaceId 分组
+    keepa: product.parentAsin + product.variationCSV(逗号分隔子ASIN列表)展开
+
+# ---- 品牌归一 --------------------------------------------------------------
+brand_normalization:
+  steps: [lowercase, trim_whitespace, alias_map_lookup]
+  alias_map: config/brand-alias.yaml   # 别名映射字典（待维护）
+  fingerprint: normalize(brand) + '|' + model_number
+
+# ---- 匹配流水线（置信度递进）----------------------------------------------
+matching_pipeline:
+  steps:
+    - normalize
+    - deterministic: [GTIN, UPC, EAN, "store+product_id"]
+    - probabilistic_fuzzy: ["brand+model", "title similarity"]
+    - ml_embedding: [embedding_match, gnn_link_prediction]
+    - survivorship: 合成 品牌/SKU/品类 黄金记录（最早/最全为准）
+  low_confidence_action: HITL 裁决回写 → 形成数据飞轮
+  tools: [Splink, Zingg, Senzing]
+
+# ---- 2025-2026 必须应对的 Amazon 演进（用 SCD2 记录切换点）----------------
+amazon_evolutions:
+  variation_theme_restructure:
+    window: 2025-09 起 / 2025-11 完成
+    impact: parent/child 归属与枚举可能变
+    mitigation: 用半结构化 attributes MAP 吸收，而非硬编码列
+  review_sharing_policy_change:
+    window: 2026-02-12 至 2026-05-31（分类目滚动）
+    impact: 评论不再跨「有显著功能差异的 child」共享
+    mitigation:
+      - 评论聚合区分 parent 汇总评论数 与 child 独立评论
+      - dim_asin_scd2.review_sharing_policy 列记录口径切换点
+      - 回溯时按当时口径重算历史评论指标
+
+# ---- 冲突处理 --------------------------------------------------------------
+conflict:
+  gtin_maps_to_multiple_product_key: 以最早/最全记录为准并告警
+  cross_source_merge: 保留 source 血缘

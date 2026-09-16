@@ -1,0 +1,53 @@
+# ============================================================================
+# 利基机会分（Opportunity Score）配置 — OP_SCAN 节点消费
+# 公式：Opportunity(0-100) = 100 × (需求×0.30 + 增速×0.25 − 竞争×0.25 + 变现×0.15 + 季节×0.05)
+#      各维度先归一化到 0-1；竞争为减项
+# ============================================================================
+version: 1.0
+scale: [0, 100]
+cadence: weekly            # 周级批处理跑分；月初重扫新利基
+
+weights:
+  demand: 0.30
+  growth: 0.25
+  competition: -0.25       # 减项：竞争越激烈机会越低
+  monetization: 0.15
+  season: 0.05
+
+dimensions:
+  demand:
+    signals:
+      - {source: aba_search_terms, field: searchFrequencyRank, transform: inverse}  # SFR 越小需求越大 → 倒序
+      - {source: niche, field: search_volume}
+      - {source: aba_sqp, field: funnel, note: 自有品牌用 impressions->clicks->cartAdds->purchases 漏斗}
+  growth:
+    signals:
+      - {source: google_trends, field: slope_5y_weekly}
+      - {source: keyword_planner, field: monthly_series_mom}
+      - {source: keepa, field: deltaPercent90_monthlySold}
+      - {source: [pinterest, tiktok], field: early_trend_velocity, note: 早期信号}
+  competition:                # 越高越难切入（减项）
+    signals:
+      - {source: aba, field: top3_click_share_concentration}
+      - {source: niche, field: seller_count}
+      - {source: niche, field: out_of_stock_rate}
+      - {source: reviews, field: top3_review_wall}
+  monetization:
+    signals:
+      - {source: pricing, field: median_price, sweet_spot_usd: [15, 50]}   # 甜蜜区得高分
+      - {source: product_fees, field: gross_margin}
+      - {source: data_kiosk_economics, field: netProceeds}
+  season:
+    signals:
+      - {source: google_trends, field: seasonality_strength, note: 波动大扣分或标注季节性风险}
+
+# ---- 硬门槛（先过滤再排序）------------------------------------------------
+hard_gate:
+  min_opportunity_score: 70
+  max_top3_review_count: 500
+  compliance_risk: low
+  action_if_fail: exclude          # 不进入定量排名
+
+# ---- 与销量置信度联动 ------------------------------------------------------
+confidence_gate:
+  exclude_low_confidence_from_ranking: true   # 低置信销量估算只做定性提示

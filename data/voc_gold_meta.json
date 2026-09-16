@@ -1,0 +1,35 @@
+{
+  "title": "VOC 证据引擎 · 评论标注 Gold（真实清洗+ABSA标注管道产出）",
+  "nav_short": "VOC证据",
+  "icon": "users",
+  "subsections": [
+    {
+      "id": "opportunity_whitespace",
+      "title": "机会白空间排序（改良切入点：高负面 × 提及 × 退货风险）"
+    },
+    {
+      "id": "neg_aspect_weighted",
+      "title": "差评方面（加权负面占比）"
+    },
+    {
+      "id": "aspect_importance",
+      "title": "方面重要度（与星级弹性 = 哪个方面最拉低评分）"
+    },
+    {
+      "id": "kano",
+      "title": "Kano 方面分类（必备 / 性能 / 惊喜）"
+    },
+    {
+      "id": "usecase_aspect_matrix",
+      "title": "用途 × 方面 负面热力（哪个细分在意哪个方面）"
+    },
+    {
+      "id": "competitor_gap",
+      "title": "竞品方面 gap（本品 vs 竞品池）"
+    },
+    {
+      "id": "weighted_rollup",
+      "title": "加权 rollup（asin × 方面 · 证据权重加权）"
+    }
+  ]
+}

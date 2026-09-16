@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrative furniture concept — synthetic example</title>
+  <desc id="desc">An original line drawing of a two-drawer cabinet. This illustrates the concept module and is not a generated product rendering or manufacturing drawing.</desc>
+  <rect width="1200" height="800" fill="#e9e5dc"/>
+  <path d="M100 648H1100" stroke="#c7c1b5" stroke-width="2"/>
+  <g fill="none" stroke="#5d584e" stroke-width="3" stroke-linejoin="round">
+    <path fill="#cbc2b0" d="M300 270L470 185L885 240L715 340Z"/>
+    <path fill="#ddd4c4" d="M300 270L715 340V600L300 520Z"/>
+    <path fill="#aaa18f" d="M715 340L885 240V500L715 600Z"/>
+    <path d="M325 305L688 366V450L325 383ZM325 400L688 469V570L325 495Z"/>
+    <path d="M464 357L545 372M464 460L545 477" stroke-width="6"/>
+    <path d="M325 530V625M690 595V655M855 518V593" stroke-width="10"/>
+  </g>
+  <g font-family="Arial, sans-serif" fill="#46433e">
+    <text x="70" y="80" font-size="20" letter-spacing="4">METIS / CONCEPT WORKSPACE</text>
+    <text x="70" y="730" font-size="22">SYNTHETIC EXAMPLE · NOT A PRODUCTION SPECIFICATION</text>
+    <text x="70" y="765" font-size="16">Replace with your own licensed assets and validated dimensions.</text>
+  </g>
+</svg>

@@ -1,0 +1,625 @@
+{
+  "schemaVersion": "metis-synthetic-1",
+  "observed": "2000-01-01",
+  "scope": [
+    "drawer-cabinet",
+    "coffee-bar-counter"
+  ],
+  "synthetic": true,
+  "source_mode": "synthetic_fixture",
+  "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+  "evidence_mode": "template_demo",
+  "decision_readiness": "insufficient_evidence",
+  "method": {
+    "definition": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+    "guardrails": [
+      "不能作为真实 VOC",
+      "不能据此批准采购或上市"
+    ]
+  },
+  "categories": {
+    "drawer-cabinet": [
+      {
+        "id": "VOC-DC-EXT-01",
+        "channel": "Synthetic",
+        "product": "虚构 drawer-cabinet 样例 1",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/drawer-cabinet/VOC-DC-EXT-01",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-DC-EXT-01-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-DC-EXT-01-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-DC-EXT-01-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      },
+      {
+        "id": "VOC-DC-EXT-02",
+        "channel": "Synthetic",
+        "product": "虚构 drawer-cabinet 样例 2",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/drawer-cabinet/VOC-DC-EXT-02",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-DC-EXT-02-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-DC-EXT-02-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-DC-EXT-02-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      },
+      {
+        "id": "VOC-DC-EXT-03",
+        "channel": "Synthetic",
+        "product": "虚构 drawer-cabinet 样例 3",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/drawer-cabinet/VOC-DC-EXT-03",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-DC-EXT-03-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-DC-EXT-03-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-DC-EXT-03-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      },
+      {
+        "id": "VOC-DC-EXT-04",
+        "channel": "Synthetic",
+        "product": "虚构 drawer-cabinet 样例 4",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/drawer-cabinet/VOC-DC-EXT-04",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-DC-EXT-04-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-DC-EXT-04-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-DC-EXT-04-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      },
+      {
+        "id": "VOC-DC-EXT-05",
+        "channel": "Synthetic",
+        "product": "虚构 drawer-cabinet 样例 5",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/drawer-cabinet/VOC-DC-EXT-05",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-DC-EXT-05-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-DC-EXT-05-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-DC-EXT-05-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      }
+    ],
+    "coffee-bar-counter": [
+      {
+        "id": "VOC-CB-EXT-01",
+        "channel": "Synthetic",
+        "product": "虚构 coffee-bar-counter 样例 1",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/coffee-bar-counter/VOC-CB-EXT-01",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-CB-EXT-01-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-CB-EXT-01-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-CB-EXT-01-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      },
+      {
+        "id": "VOC-CB-EXT-02",
+        "channel": "Synthetic",
+        "product": "虚构 coffee-bar-counter 样例 2",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/coffee-bar-counter/VOC-CB-EXT-02",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-CB-EXT-02-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-CB-EXT-02-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-CB-EXT-02-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      },
+      {
+        "id": "VOC-CB-EXT-03",
+        "channel": "Synthetic",
+        "product": "虚构 coffee-bar-counter 样例 3",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/coffee-bar-counter/VOC-CB-EXT-03",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-CB-EXT-03-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-CB-EXT-03-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-CB-EXT-03-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      },
+      {
+        "id": "VOC-CB-EXT-04",
+        "channel": "Synthetic",
+        "product": "虚构 coffee-bar-counter 样例 4",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/coffee-bar-counter/VOC-CB-EXT-04",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-CB-EXT-04-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-CB-EXT-04-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-CB-EXT-04-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      },
+      {
+        "id": "VOC-CB-EXT-05",
+        "channel": "Synthetic",
+        "product": "虚构 coffee-bar-counter 样例 5",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/coffee-bar-counter/VOC-CB-EXT-05",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-CB-EXT-05-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-CB-EXT-05-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-CB-EXT-05-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      },
+      {
+        "id": "VOC-CB-EXT-06",
+        "channel": "Synthetic",
+        "product": "虚构 coffee-bar-counter 样例 6",
+        "rating": "不适用（合成样例）",
+        "ratingCount": 0,
+        "reviewCount": 0,
+        "observed": "2000-01-01",
+        "url": "https://example.com/metis/synthetic/coffee-bar-counter/VOC-CB-EXT-06",
+        "pageType": "synthetic_fixture",
+        "sampleCaveat": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "evidenceType": "synthetic_fixture",
+        "synthetic": true,
+        "source_mode": "synthetic_fixture",
+        "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+        "evidence_mode": "template_demo",
+        "decision_readiness": "insufficient_evidence",
+        "signals": [
+          {
+            "polarity": "negative",
+            "theme": "装配与说明",
+            "paraphrase": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "evidence": "【虚构样例】演示角色希望操作步骤标出部件方向。",
+            "productAction": "测试两版说明图的理解方式。",
+            "evidenceAnchor": "VOC-CB-EXT-06-DEMO-1",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "positive",
+            "theme": "尺寸与场景适配",
+            "paraphrase": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "evidence": "【虚构样例】演示角色认为尺寸示意方便规划空间。",
+            "productAction": "用纸板模型测试尺寸卡的表达。",
+            "evidenceAnchor": "VOC-CB-EXT-06-DEMO-2",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          },
+          {
+            "polarity": "mixed",
+            "theme": "包装与履约",
+            "paraphrase": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "evidence": "【虚构样例】演示角色希望配件收纳位置容易识别。",
+            "productAction": "设计配件分组标识并进行模拟开箱。",
+            "evidenceAnchor": "VOC-CB-EXT-06-DEMO-3",
+            "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "trace": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+            "synthetic": true
+          }
+        ]
+      }
+    ]
+  },
+  "counts": {
+    "drawer-cabinet": {
+      "sources": 5,
+      "signals": 15,
+      "channels": 1
+    },
+    "coffee-bar-counter": {
+      "sources": 6,
+      "signals": 18,
+      "channels": 1
+    },
+    "total": {
+      "sources": 11,
+      "signals": 33
+    }
+  }
+}

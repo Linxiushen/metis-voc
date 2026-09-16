@@ -1,0 +1,116 @@
+# ============================================================================
+# 节点 I/O 契约 —— 五节点 + 护栏 + 交付层的 消费/产出/编排/HITL 契约
+# 对齐《跨境选品-Agent系统详细设计-v1.0.md》§3-5、§8
+# Planner 按此契约编译 plan_dag；每节点声明消费哪些表、产出哪些字段、编排模式、HITL 触点。
+# ============================================================================
+version: 1.0
+
+chain: [OP_SCAN, MKT_STRUCT, MIND_DECODE, CPT_VERIFY, GTM_PLAN]
+
+nodes:
+  OP_SCAN:
+    objective: 值不值得打——利基机会排序 + 硬门槛过滤 + 候选池
+    consumes:
+      ads_niche_opportunity: [niche_id, category, price_band, demand_score, growth_score, competition_score, monetization_score, season_score, opportunity_score, hard_gate_pass, review_wall_top3, scored_week]
+      dws_asin_daily: [asin, product_key, bsr_avg30, sales_point, sales_ci_low, sales_ci_high, confidence_level, source_flags, anomaly_flags, rating_avg, review_growth7]
+      dim_asin_scd2: [product_key, root_category, category_path, brand, title]
+    produces: [niche_ranking, excluded_niches, candidate_pool, qualitative_only_asins, go_nogo_summary, section_markdown]
+    orchestration: single           # 强依赖深链
+    model: sonnet
+    hard_rules:
+      gate: "score>=70 AND top3_review<500 AND compliance_low → GO; score>=70 AND top3_review>=500 → CONDITIONAL(red_ocean); else NO_GO"
+      confidence_gate: "in_quant_ranking = confidence_level in [High, Medium]"
+      data_drift: "|recompute_opportunity - opportunity_score| > 2 → flag + HITL"
+    hitl_touchpoints: [low_confidence_sales, red_ocean_conditional, score_near_threshold_70_73, no_niche_match, stale_score]
+
+  MKT_STRUCT:
+    objective: 谁在赢、为什么赢——价格段/集中度/卖家结构/变体家族/需求增速/制胜要素
+    consumes:
+      dws_asin_daily: [sales_point, sales_ci_low, sales_ci_high, confidence_level, bsr_avg30, bsr_slope30, rating_avg, rating_trend, review_growth7, buybox_win_rate, anomaly_flags]
+      fact_asin_metric_daily: [metric_type(AMAZON/BUYBOX/SALES/COUNT_REVIEWS), value_ffill, ma7, ma30, day_change]
+      dim_asin_scd2: [brand, parent_asin, variation_theme, attr_color, attr_size, buybox_seller_id, category_path, review_sharing_policy]
+      upstream_state: [candidate_asin_pool, top3_click_share_concentration, review_wall_top3]
+    produces: [price_bands, concentration, seller_structure, variant_families, demand_trend, winning_factors, market_persona_summary, handoff_to_downstream]
+    orchestration: single
+    model: sonnet
+    hard_rules:
+      confidence_gate: "Low 置信 sales_point 不进 CR3/HHI/份额分母"
+      qualitative_factor: "winning_factors 定性项 needs_voc_confirmation=true（禁止越权当结论）"
+      cross_check: "销量口径 CR3 与 ABA click_share 背离 → cross_check_consistency=divergent + 降置信"
+    hitl_touchpoints: [low_conf_sample_too_thin, concentration_cross_check_divergent, variant_family_anomaly]
+
+  MIND_DECODE:
+    objective: 为何买/为何放弃——差评方面→未满足需求→白空间→卖点
+    consumes:
+      dws_asin_daily: [neg_aspect_top5]
+      dwd_review_absa: [aspect_category, polarity, polarity_score, confidence, model_version]
+      dwd_review: [review_id, asin, rating, title, body, review_ts, verified_purchase, helpful_votes, variant_size, variant_color, is_vine, lang, source, embedding]
+      dwd_review_topics: [topic_label, sentiment, mentions_count, star_rating_impact, customer_snippet]
+      config: [review-absa-taxonomy.yaml]
+    produces: [neg_aspect_table, unmet_needs, sellpoint_suggestions, persona_signals, citation_map, review_window_meta]
+    orchestration: orchestrator_worker    # 唯一多智能体节点（广度优先）
+    model: {lead: opus, worker: sonnet}
+    hard_rules:
+      worker_cap: "min(有效aspect数, 8); 仅对 mention_count>=50 的 aspect 开 worker"
+      condensed_return: "worker 只回传结构化摘要，不回传评论全量（控 15x token）"
+      whitespace: "某 aspect >=60% 竞品 neg_ratio 高于品类均值 AND 官方 topics 无正向解决 → ⭐白空间"
+      anchor_priority: "官方 neg_aspect_top5 / dwd_review_topics 优先；第三方 ABSA 背离即降置信"
+      evidence_weighting: "verified_purchase/helpful_votes 加权；过滤 is_vine"
+    hitl_touchpoints: [whitespace_before_final, opportunity_low_or_thin_data, anchor_vs_absa_divergent, safety_sensitive_snippet]
+
+  CPT_VERIFY:
+    objective: 做哪个/先做哪个——销量核验+毛利+门控+优先级
+    consumes:
+      dws_asin_daily: [sales_point, sales_ci_low, sales_ci_high, confidence_level, source_flags, anomaly_flags, bsr_avg30, rating_avg, review_growth7, neg_aspect_top5]
+      fact_price_history: [metric_type(SALES/AMAZON/NEW/BUYBOX/COUNT_REVIEWS/LIGHTNING_DEAL), event_ts, value_int]
+      dim_asin_scd2: [brand, parent_asin, product_key]
+      sp_api_product_fees: [ReferralFee, FBAFees]
+      data_kiosk_economics: [netProceeds, fees, returns]        # 仅自有 ASIN
+      upstream_state: [unmet_needs, whitespace_directions]
+      config: [sales-estimation.yaml, opportunity-scoring.yaml, product-economics.yaml]
+    produces: [sales_verify, price_history_replay, margin, ranked_shortlist, qualitative_flags, recommendation, hitl]
+    orchestration: single           # 强依赖深链；对N个ASIN取数用异步批处理(工具级并行)
+    model: {default: sonnet, escalate: opus}
+    hard_rules:
+      confidence_source: "直接消费 dws_asin_daily.confidence_level，不重算"
+      gate_three_state: "High/Med → 定量排序; Low → 剔出排序+打🔴+强制HITL复核卡（确定性if/else, 单测覆盖'Low必不进ranked_shortlist'）"
+      margin_confidence: "自有 Economics=High; 竞品 Product Fees 估算=Medium（不混淆）"
+      priority_score: "w1*销量 + w2*毛利 + w3*白空间匹配 + w4*(负)壁垒"
+      contamination: "断货/促销窗口(anomaly_flags)销量剔除/降权，剔后样本不足则降一档置信"
+    hitl_touchpoints: [any_low_confidence, margin_below_floor, do_first_and_pricing_before_publish, stockout_vs_clearance_ambiguous]
+
+  GTM_PLAN:
+    objective: 怎么打——定价/卖点/关键词/时机/评论墙
+    consumes:
+      dws_asin_daily: [price_band, rating_trend, review_growth7]
+      ads_niche_opportunity: [monetization_score, season_score]
+      dwd_review_absa: [aspect_category, neg_ratio]      # 差评→卖点/改良
+      aba: [SQP, Search_Terms, searchFrequencyRank]
+    produces: [pricing_band, core_sellpoints, keyword_matrix, launch_timing, review_wall_strategy, target_review_velocity]
+    orchestration: single
+    model: sonnet
+    hitl_touchpoints: [pricing_and_first_product_before_publish]
+
+guardrail_subgraph:
+  position: after GTM_PLAN, before delivery
+  layers:
+    L0: 确定性规则(source_id存在性/格式/可回溯; 缺失→FABRICATED)
+    L1: CitationAgent(独立上下文逐条 SUPPORTED/PARTIAL/UNSUPPORTED/FABRICATED)
+    L2: Context Validator(无证据→降级标注块, 不删除)
+    L3: 多模型交叉验证(仅关键洞察白名单, 异构第二模型 devil's advocate)
+    L4: LLM-as-judge(faithfulness/citation_accuracy/completeness/source_quality/actionability)
+  key_insight_whitelist: [quant_ranking_sales_estimate, opportunity_hard_gate, mind_decode_whitespace, gtm_pricing_and_first_choice]
+  gate: "FABRICATED>0 → HARD_BLOCK 打回 Planner(增量重跑, revision_count<=2); 否则按 review-policy.yaml"
+  produces: [gate_decision, claim_ledger, scorecard, citation_stats, review_checklist, downgraded_claims]
+
+delivery_layer:
+  objective: 渲染+交互+导出（确定性模板, 非LLM自由生成）
+  consumes: [final_state.node_outputs, citation_registry, bronze(溯源指针), tenant_config]
+  produces: [report_json, pdf_url, pptx_url, lark_doc_token]
+  gates:
+    Gate_0: 研究计划先确认(Gemini式, interrupt, 未确认不烧执行token)
+    Gate_1: 交付前轻人工终审(飞书审批, 只呈现标红N项)
+  render: 确定性模板(Jinja2/MDX); LLM仅润色 narrative_summary(限字段+引用已有[来源#]+温度0.2)
+  confidence_ui: {High: 🟢参与排序, Medium: 🟡带±区间灰条, Low: 🔴仅数量级+灰显+不进排序水印+HITL置顶}
+  view_profiles: {P1: go/no-go决策摘要优先, P4: 可白标+批量对比矩阵+批注层}
+  data_scope: {private_only: 禁用一切公网/第三方源+仅私域水印, public_ok: 全源}

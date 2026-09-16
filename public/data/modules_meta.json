@@ -1,0 +1,473 @@
+[
+ {
+  "module_id": "input-research-brief-wizard",
+  "title": "输入 · 专业研究简报向导（Analyst Intake Wizard）",
+  "subsections": [
+   {
+    "id": "s1-seller-profile",
+    "title": "① 卖家画像 Seller Profile",
+    "viz": "segmented-radio + capability-radar"
+   },
+   {
+    "id": "s2-research-goals",
+    "title": "② 研究目标 Research Goals",
+    "viz": "multi-select-chips + weight-mapping-sankey"
+   },
+   {
+    "id": "s3-category-scope",
+    "title": "③ 品类与范围 Category & Scope",
+    "viz": "token-input + range-slider + multi-select"
+   },
+   {
+    "id": "s4-constraints-compliance",
+    "title": "④ 约束与合规 Constraints & Compliance",
+    "viz": "toggle-grid + red-flag-badges"
+   },
+   {
+    "id": "s5-data-methods",
+    "title": "⑤ 数据与方法 Data & Methods",
+    "viz": "source-toggle-cards + confidence-gauge"
+   },
+   {
+    "id": "s6-opportunity-weights",
+    "title": "⑥ 机会分权重自定义 Opportunity Weights",
+    "viz": "five-slider-panel + normalized-donut"
+   },
+   {
+    "id": "s7-delivery-prefs",
+    "title": "⑦ 交付偏好 Delivery Preferences",
+    "viz": "view-checklist + export-radio"
+   }
+  ]
+ },
+ {
+  "module_id": "exec_summary_decision_scorecard",
+  "title": "执行摘要 · 决策建议 · 加权综合记分卡",
+  "subsections": [
+   {
+    "id": "verdict_banner",
+    "title": "一句话决策 + 门槛条件",
+    "viz": "decision_banner"
+   },
+   {
+    "id": "core_logic_cards",
+    "title": "核心决策逻辑三条",
+    "viz": "reasoning_cards"
+   },
+   {
+    "id": "weighted_scorecard_radar",
+    "title": "加权综合记分卡（雷达）",
+    "viz": "scorecard_radar"
+   },
+   {
+    "id": "weighted_contribution_bar",
+    "title": "各维度加权贡献分解（条形）",
+    "viz": "horizontal_weighted_bar"
+   },
+   {
+    "id": "kpi_dashboard",
+    "title": "关键数字仪表盘",
+    "viz": "kpi_tiles"
+   },
+   {
+    "id": "action_checklist",
+    "title": "下一步行动清单",
+    "viz": "action_checklist"
+   },
+   {
+    "id": "assumptions_panel",
+    "title": "关键假设与前提",
+    "viz": "assumption_table"
+   }
+  ]
+ },
+ {
+  "module_id": "OP_SCAN",
+  "title": "品类机会扫描 · 折叠露营椅 (Amazon US, 近90天)",
+  "subsections": [
+   {
+    "id": "OP_SCAN_TAMSAMSOM",
+    "title": "市场规模漏斗 TAM / SAM / SOM (带假设与区间)",
+    "viz": "gauge"
+   },
+   {
+    "id": "OP_SCAN_LIFECYCLE",
+    "title": "品类生命周期定位 (导入/成长/成熟/衰退)",
+    "viz": "gauge"
+   },
+   {
+    "id": "OP_SCAN_SEASONALITY",
+    "title": "需求季节性曲线 (12月折线, 季节指数)",
+    "viz": "line"
+   },
+   {
+    "id": "OP_SCAN_TREND5Y",
+    "title": "5年搜索趋势斜率 (结构性增长 vs 季节噪声)",
+    "viz": "line"
+   },
+   {
+    "id": "OP_SCAN_BARRIERS",
+    "title": "进入壁垒多维评分 (评论墙/集中/资金/合规)",
+    "viz": "radar"
+   },
+   {
+    "id": "OP_SCAN_NICHE_HEATMAP",
+    "title": "利基机会热力矩阵 (价格带 × 子品类)",
+    "viz": "heatmap"
+   },
+   {
+    "id": "OP_SCAN_SCATTER",
+    "title": "机会 × 竞争 散点图 (每利基一点, 气泡=销量)",
+    "viz": "scatter"
+   },
+   {
+    "id": "OP_SCAN_RADAR5",
+    "title": "机会分五维雷达 (需求/增速/竞争/变现/季节)",
+    "viz": "radar"
+   },
+   {
+    "id": "OP_SCAN_SENSITIVITY",
+    "title": "敏感性分析 (权重变动下机会分区间)",
+    "viz": "gauge"
+   }
+  ]
+ },
+ {
+  "module_id": "MKT_STRUCT",
+  "title": "市场结构解剖 · 折叠露营椅 (Amazon US · 近90天)",
+  "subsections": [
+   {
+    "id": "price_tier_matrix",
+    "title": "价格段量价利三角 (占比/均销/均分/毛利/结构标签)",
+    "viz": "bars"
+   },
+   {
+    "id": "concentration_hhi",
+    "title": "竞争集中度 CR3/CR5/HHI 指数解读",
+    "viz": "table"
+   },
+   {
+    "id": "brand_tier_waterfall",
+    "title": "品牌梯队份额瀑布 (头部→腰部→肩部→长尾)",
+    "viz": "waterfall"
+   },
+   {
+    "id": "buybox_donut",
+    "title": "BuyBox格局与跟卖烈度 (自营/FBA/FBM)",
+    "viz": "donut"
+   },
+   {
+    "id": "variant_strategy",
+    "title": "变体家族策略 (铺量霸屏 vs 单品打爆 · SKU数分布)",
+    "viz": "bars"
+   },
+   {
+    "id": "price_elasticity_scatter",
+    "title": "价格弹性散点 (价格-销量幂律拟合)",
+    "viz": "scatter"
+   },
+   {
+    "id": "seller_geo_survival",
+    "title": "卖家国别 & 新品90天存活率",
+    "viz": "bars"
+   },
+   {
+    "id": "sov_demand_trend",
+    "title": "SOV声量份额 & 需求增速曲线",
+    "viz": "bars"
+   }
+  ]
+ },
+ {
+  "module_id": "MIND_DECODE",
+  "title": "消费者心智解码 · VOC 深度洞察（折叠露营椅 · Amazon US · 近90天）",
+  "subsections": [
+   {
+    "id": "absa_radar_12",
+    "title": "12类ABSA方面 · 正负双向情感雷达",
+    "viz": "radar"
+   },
+   {
+    "id": "neg_top_bars",
+    "title": "差评方面Top榜（频率×⭐战略标记）",
+    "viz": "bars"
+   },
+   {
+    "id": "pos_drivers_bars",
+    "title": "好评驱动因素（为什么会买/复购）",
+    "viz": "bars"
+   },
+   {
+    "id": "sentiment_timeline_12w",
+    "title": "情感随时间趋势 · 12周情感时序",
+    "viz": "line"
+   },
+   {
+    "id": "unmet_priority_bubble",
+    "title": "未满足需求优先级矩阵（频率×严重度×可解决性）",
+    "viz": "bubble"
+   },
+   {
+    "id": "jtbd_list",
+    "title": "JTBD 待办任务清单（用户雇这把椅子来做什么）",
+    "viz": "bars"
+   },
+   {
+    "id": "segment_scene",
+    "title": "人群×使用场景细分（变体size/color聚类）",
+    "viz": "bars"
+   },
+   {
+    "id": "scene_distribution",
+    "title": "使用场景分布（评论语义占比）",
+    "viz": "bars"
+   },
+   {
+    "id": "competitor_heatmap",
+    "title": "竞品口碑热力对比（3竞品×12方面 neg_ratio）",
+    "viz": "heatmap"
+   },
+   {
+    "id": "return_risk_absa",
+    "title": "退货风险方面归因（差评→退货概率）",
+    "viz": "bars"
+   },
+   {
+    "id": "culture_language",
+    "title": "文化/语言差异提示（US站点表达特征）",
+    "viz": "bars"
+   },
+   {
+    "id": "evidence_quotes",
+    "title": "代表性差评证据（可溯源 claim→source）",
+    "viz": "bars"
+   }
+  ]
+ },
+ {
+  "module_id": "CPT_VERIFY",
+  "title": "选品验证 · 竞品面板 + 多方案加权打分 + 机会规模与敏感性 (Verification & Decision Scorecard)",
+  "subsections": [
+   {
+    "id": "comp_panel",
+    "title": "完整竞品面板 (含 BSR 趋势 sparkline + 置信度门控)",
+    "viz": "table"
+   },
+   {
+    "id": "scorecard",
+    "title": "多方案加权打分卡 (5维加权 + 排名)",
+    "viz": "scorecard"
+   },
+   {
+    "id": "opp_bubble",
+    "title": "机会规模气泡图 (需求量 × 单位毛利 = 机会规模)",
+    "viz": "bubble"
+   },
+   {
+    "id": "feasibility",
+    "title": "可行性风险雷达 (供应链 / 合规 / 资金)",
+    "viz": "scorecard"
+   },
+   {
+    "id": "sensitivity",
+    "title": "敏感性分析 (价格/CVR/ACOS 扰动 → 净利与排名翻转)",
+    "viz": "table"
+   }
+  ]
+ },
+ {
+  "module_id": "output_unit_economics_finance",
+  "title": "单位经济与财务模型 · Unit Economics & P&L",
+  "subsections": [
+   {
+    "id": "ue_waterfall",
+    "title": "单位经济瀑布图（单笔订单利润拆解）",
+    "viz": "waterfall"
+   },
+   {
+    "id": "margin_gauge",
+    "title": "毛利率/净利率仪表盘",
+    "viz": "gauge"
+   },
+   {
+    "id": "break_even",
+    "title": "盈亏平衡分析（保本销量+临界ACOS）",
+    "viz": "table"
+   },
+   {
+    "id": "forecast_12m",
+    "title": "12个月销量与利润滚动预测",
+    "viz": "line"
+   },
+   {
+    "id": "cashflow",
+    "title": "现金流与备货占用（回款节奏）",
+    "viz": "line"
+   },
+   {
+    "id": "pricing_scenarios",
+    "title": "三档定价情景对比（$30/$34/$38）",
+    "viz": "table"
+   },
+   {
+    "id": "sensitivity",
+    "title": "利润敏感性矩阵（ACOS×货值）",
+    "viz": "table"
+   }
+  ]
+ },
+ {
+  "module_id": "gtm_plan",
+  "title": "上市打法 GTM Plan · 折叠露营椅 Amazon US",
+  "subsections": [
+   {
+    "id": "pricing_strategy",
+    "title": "定价策略 · 渗透/撇脂/竞品护栏 + 价格弹性",
+    "viz": "table+annotated_price_ladder"
+   },
+   {
+    "id": "positioning_canvas",
+    "title": "差异化定位画布 · 我方 vs CR3头部",
+    "viz": "radar"
+   },
+   {
+    "id": "listing_blueprint",
+    "title": "Listing蓝图 · 标题公式/五点卖点(差评反推)/A+/主图",
+    "viz": "structured_cards"
+   },
+   {
+    "id": "keyword_matrix",
+    "title": "关键词矩阵 · 主词/长尾/防御/竞品词四层",
+    "viz": "table"
+   },
+   {
+    "id": "ad_strategy",
+    "title": "广告策略 · 阶段打法 + 目标ACOS曲线 + 预算分配",
+    "viz": "bars+line"
+   },
+   {
+    "id": "launch_gantt",
+    "title": "上市节奏甘特 · 备货→入仓→软启动→冲榜→放量",
+    "viz": "gantt"
+   },
+   {
+    "id": "review_growth",
+    "title": "评论增长模型 · 90天300+评论路径",
+    "viz": "line"
+   },
+   {
+    "id": "inventory_plan",
+    "title": "库存/补货计划 · 安全库存 + 补货点",
+    "viz": "table+line"
+   }
+  ]
+ },
+ {
+  "module_id": "risk_register_sensitivity_confidence",
+  "title": "风险登记册 + 敏感性 / 置信度分析",
+  "subsections": [
+   {
+    "id": "risk_register_table",
+    "title": "风险登记册（8条 · 概率×影响×缓解×责任）",
+    "viz": "table"
+   },
+   {
+    "id": "risk_heatmap",
+    "title": "风险热力图（概率 × 影响 5×5 矩阵）",
+    "viz": "heatmap"
+   },
+   {
+    "id": "unit_profit_tornado",
+    "title": "单位净利敏感性（龙卷风图）",
+    "viz": "tornado"
+   },
+   {
+    "id": "score_weight_robustness",
+    "title": "机会分对权重的稳健性",
+    "viz": "bars"
+   },
+   {
+    "id": "gmv_profit_pxx_range",
+    "title": "首年GMV / 净利 蒙特卡洛区间（P10-P50-P90）",
+    "viz": "range"
+   },
+   {
+    "id": "assumption_register",
+    "title": "关键假设登记（置信度 + 证据锚）",
+    "viz": "table"
+   }
+  ]
+ },
+ {
+  "module_id": "trust_guardrails_methodology",
+  "title": "可信度与护栏 · 方法论与数据来源（深化）",
+  "subsections": [
+   {
+    "id": "guardrail_chain",
+    "title": "护栏链 L0→L4 执行结果",
+    "viz": "table_pipeline"
+   },
+   {
+    "id": "citation_stats",
+    "title": "引用可溯源统计 · SUPPORTED占比",
+    "viz": "donut"
+   },
+   {
+    "id": "judge_radar",
+    "title": "LLM-judge 五维质量分",
+    "viz": "bars"
+   },
+   {
+    "id": "cross_model",
+    "title": "多模型交叉验证 · agree/disagree",
+    "viz": "table_diff"
+   },
+   {
+    "id": "human_review",
+    "title": "轻人工终审记录",
+    "viz": "table_audit"
+   },
+   {
+    "id": "data_sources",
+    "title": "数据来源清单",
+    "viz": "table_sources"
+   },
+   {
+    "id": "methodology",
+    "title": "方法论说明",
+    "viz": "cards_formula"
+   },
+   {
+    "id": "limitations",
+    "title": "局限与免责",
+    "viz": "callout_list"
+   },
+   {
+    "id": "audit_trace",
+    "title": "审计追溯 · claim→source链路样例",
+    "viz": "tree_trace"
+   }
+  ]
+ },
+ {
+  "module_id": "competitor_teardown",
+  "title": "竞品深度拆解 · Competitor Teardown（头部3 ASIN 逐一解剖 + 对比矩阵 + 攻击面）",
+  "subsections": [
+   {
+    "id": "teardown_cards",
+    "title": "竞品拆解卡（逐一解剖）",
+    "viz": "card"
+   },
+   {
+    "id": "matrix_heatmap",
+    "title": "竞品 × 维度打分热力矩阵",
+    "viz": "heatmap"
+   },
+   {
+    "id": "attack_surface",
+    "title": "攻击面分析表（软肋 → 我方对策）",
+    "viz": "table"
+   }
+  ]
+ }
+]

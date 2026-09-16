@@ -1,0 +1,415 @@
+{
+  "pricing": [
+    {
+      "strategy": "渗透定价",
+      "priceRange": "$32",
+      "targetPrice": 2,
+      "stage": "冲榜期 W7-10",
+      "elasticity": "中等弹性(降$1约+6~8%量)",
+      "netMargin": "约5%",
+      "guardrail": "贴中位价$32快速起量,牺牲利润换排名"
+    },
+    {
+      "strategy": "目标定价",
+      "priceRange": "$34-38",
+      "targetPrice": 1,
+      "stage": "回本稳定期 W15+",
+      "elasticity": "甜蜜区$25-40,弹性可控",
+      "netMargin": "约8% (净利$2.9)",
+      "guardrail": "锚定甜蜜区4.4评分带,不入$15-25红海"
+    },
+    {
+      "strategy": "撇脂定价",
+      "priceRange": "$42",
+      "targetPrice": 5,
+      "stage": "溢价加高款/防陷款",
+      "elasticity": "低弹性但转化承压",
+      "netMargin": "约13%",
+      "guardrail": "仅用于差异化SKU(加高/防陷),需A+强背书"
+    }
+  ],
+  "priceLadder": [
+    {
+      "segment": "$15-25",
+      "share": 0.6,
+      "rating": 7,
+      "label": "红海-回避"
+    },
+    {
+      "segment": "$25-40",
+      "share": 0.5,
+      "rating": 1,
+      "label": "甜蜜区-锚定"
+    },
+    {
+      "segment": "$40-65",
+      "share": 0.4,
+      "rating": 8,
+      "label": "溢价-撇脂SKU"
+    },
+    {
+      "segment": "$65+",
+      "share": 0.3,
+      "rating": 2,
+      "label": "小众-放弃"
+    }
+  ],
+  "positioning": {
+    "dimensions": [
+      "耐用性",
+      "防陷设计",
+      "尺寸适配",
+      "性价比",
+      "收纳便携",
+      "品牌信任"
+    ],
+    "series": [
+      {
+        "name": "虚构样例角色",
+        "scores": [
+          6,
+          1,
+          5,
+          9,
+          4,
+          8
+        ]
+      },
+      {
+        "name": "虚构样例角色",
+        "scores": [
+          9,
+          4,
+          8,
+          3,
+          7,
+          2
+        ]
+      },
+      {
+        "name": "虚构样例角色",
+        "scores": [
+          3,
+          7,
+          2,
+          6,
+          1,
+          5
+        ]
+      },
+      {
+        "name": "虚构样例角色",
+        "scores": [
+          6,
+          1,
+          5,
+          9,
+          4,
+          8
+        ]
+      }
+    ]
+  },
+  "listing": {
+    "titleFormula": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+    "bullets": [
+      {
+        "point": "加固焊点·承重150kg不晃动",
+        "sourceDefect": "DURABILITY 耐用差评",
+        "absaShare": "34% (2180条)",
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "point": "防陷加宽椅脚·沙地软地不下陷",
+        "sourceDefect": "白空间①防陷 / FUNCTIONALITY",
+        "absaShare": "11% (640条)+8竞品0解决",
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "point": "加高款>180cm·高个子坐姿不憋屈",
+        "sourceDefect": "SIZE 尺寸偏矮",
+        "absaShare": "19% (1020条)",
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "point": "耐撕加厚收纳袋·反复收纳不破",
+        "sourceDefect": "SHIPPING 收纳袋撕破",
+        "absaShare": "15% (890条)",
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "point": "稳定三角结构·长期使用不松动",
+        "sourceDefect": "QUALITY 稳定性",
+        "absaShare": "28% (1760条)",
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      }
+    ],
+    "aplus": [
+      "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "沙滩防陷场景实拍(区隔竞品白底)",
+      "收纳袋抗撕拉力测试",
+      "加高款身高适配对照图",
+      "折叠收纳3步演示"
+    ],
+    "heroImage": "沙滩防陷使用场景主图(差异化,8竞品均为纯白底棚拍)"
+  },
+  "keywords": [
+    {
+      "keyword": "camping chair",
+      "tier": "主词",
+      "volume": 6,
+      "competition": "高",
+      "relevance": 8,
+      "suggestedBid": 6
+    },
+    {
+      "keyword": "folding camping chair",
+      "tier": "主词",
+      "volume": 9,
+      "competition": "高",
+      "relevance": 0.2,
+      "suggestedBid": 2
+    },
+    {
+      "keyword": "camping chair for sand",
+      "tier": "长尾",
+      "volume": 7,
+      "competition": "低",
+      "relevance": 0.1,
+      "suggestedBid": 0.4
+    },
+    {
+      "keyword": "heavy duty camping chair",
+      "tier": "长尾",
+      "volume": 1,
+      "competition": "中",
+      "relevance": 0.8,
+      "suggestedBid": 0.5
+    },
+    {
+      "keyword": "tall camping chair for big man",
+      "tier": "长尾",
+      "volume": 8,
+      "competition": "低",
+      "relevance": 0.7,
+      "suggestedBid": 0.6
+    },
+    {
+      "keyword": "beach chair anti sink",
+      "tier": "长尾",
+      "volume": 2,
+      "competition": "低",
+      "relevance": 0.6,
+      "suggestedBid": 0.7
+    },
+    {
+      "keyword": "[我方品牌] camping chair",
+      "tier": "防御",
+      "volume": 5,
+      "competition": "低",
+      "relevance": 4,
+      "suggestedBid": 0.8
+    },
+    {
+      "keyword": "[B0xxxA品牌词]",
+      "tier": "竞品词",
+      "volume": 3,
+      "competition": "中",
+      "relevance": 0.4,
+      "suggestedBid": 0.1
+    }
+  ],
+  "adStrategy": {
+    "phases": [
+      {
+        "phase": "冲榜期",
+        "weekRange": "W7-10",
+        "targetAcos": 3,
+        "dailyBudget": 5,
+        "allocation": {
+          "SP": 4,
+          "SB": 8,
+          "SD": 1
+        }
+      },
+      {
+        "phase": "稳定期",
+        "weekRange": "W11-14",
+        "targetAcos": 2,
+        "dailyBudget": 9,
+        "allocation": {
+          "SP": 7,
+          "SB": 2,
+          "SD": 4
+        }
+      },
+      {
+        "phase": "回本期",
+        "weekRange": "W15+",
+        "targetAcos": 1,
+        "dailyBudget": 4,
+        "allocation": {
+          "SP": 1,
+          "SB": 5,
+          "SD": 7
+        }
+      }
+    ],
+    "acosCurve": [
+      {
+        "week": 9,
+        "acos": 3
+      },
+      {
+        "week": 1,
+        "acos": 4
+      },
+      {
+        "week": 2,
+        "acos": 5
+      },
+      {
+        "week": 3,
+        "acos": 6
+      },
+      {
+        "week": 9,
+        "acos": 3
+      },
+      {
+        "week": 1,
+        "acos": 4
+      },
+      {
+        "week": 2,
+        "acos": 5
+      },
+      {
+        "week": 3,
+        "acos": 6
+      },
+      {
+        "week": 4,
+        "acos": 7
+      },
+      {
+        "week": 1,
+        "acos": 4
+      }
+    ]
+  },
+  "gantt": [
+    {
+      "phase": "备货打样",
+      "startWeek": 2,
+      "endWeek": 7,
+      "milestone": "验版定稿",
+      "keyActions": "确认防陷椅脚/加高款/加固焊点样品,拍A+素材"
+    },
+    {
+      "phase": "头程+FBA入仓",
+      "startWeek": 5,
+      "endWeek": 8,
+      "milestone": "FBA可售日",
+      "keyActions": "海运头程(~35天),标签合规,库存上架"
+    },
+    {
+      "phase": "软启动铺评",
+      "startWeek": 8,
+      "endWeek": 9,
+      "milestone": "首30评(Vine)",
+      "keyActions": "Vine 30条种子评,Listing上线,低价$32"
+    },
+    {
+      "phase": "冲榜期",
+      "startWeek": 7,
+      "endWeek": 1,
+      "milestone": "进类目Top50",
+      "keyActions": "广告ACOS45%冲量,主词+竞品词,秒杀促销"
+    },
+    {
+      "phase": "放量稳定",
+      "startWeek": 1,
+      "endWeek": 2,
+      "milestone": "首300评/上修$36",
+      "keyActions": "ACOS收敛28%,长尾扩量,价格上修甜蜜区"
+    }
+  ],
+  "reviewGrowth": [
+    {
+      "day": 9,
+      "cumReviews": 5,
+      "dailyOrders": 9,
+      "phase": "Vine启动"
+    },
+    {
+      "day": 7,
+      "cumReviews": 4,
+      "dailyOrders": 4,
+      "phase": "Vine启动"
+    },
+    {
+      "day": 5,
+      "cumReviews": 3,
+      "dailyOrders": 8,
+      "phase": "软启动"
+    },
+    {
+      "day": 3,
+      "cumReviews": 2,
+      "dailyOrders": 3,
+      "phase": "软启动"
+    },
+    {
+      "day": 1,
+      "cumReviews": 1,
+      "dailyOrders": 7,
+      "phase": "冲榜放量"
+    },
+    {
+      "day": 8,
+      "cumReviews": 9,
+      "dailyOrders": 2,
+      "phase": "冲榜放量"
+    },
+    {
+      "day": 6,
+      "cumReviews": 8,
+      "dailyOrders": 6,
+      "phase": "冲榜放量"
+    }
+  ],
+  "inventory": [
+    {
+      "stage": "首单(新品爬坡)",
+      "forecastMonthlySales": 5,
+      "safetyStock": 5,
+      "reorderPoint": 2,
+      "leadTimeDays": 2,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "stage": "冲榜期",
+      "forecastMonthlySales": 1,
+      "safetyStock": 9,
+      "reorderPoint": 7,
+      "leadTimeDays": 3,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "stage": "旺季5-8月",
+      "forecastMonthlySales": 2,
+      "safetyStock": 4,
+      "reorderPoint": 3,
+      "leadTimeDays": 8,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

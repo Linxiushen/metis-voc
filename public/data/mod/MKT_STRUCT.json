@@ -1,0 +1,402 @@
+{
+  "price_tiers": [
+    {
+      "tier": "$15-25",
+      "share_pct": 0.2,
+      "avg_monthly_sales": 3,
+      "avg_rating": 5,
+      "label": "红海",
+      "est_gross_margin_pct": 0.5,
+      "sku_count": 4,
+      "seller_count": 8
+    },
+    {
+      "tier": "$25-40",
+      "share_pct": 0.1,
+      "avg_monthly_sales": 4,
+      "avg_rating": 4,
+      "label": "甜蜜区",
+      "est_gross_margin_pct": 0.6,
+      "sku_count": 7,
+      "seller_count": 9
+    },
+    {
+      "tier": "$40-65",
+      "share_pct": 0.8,
+      "avg_monthly_sales": 5,
+      "avg_rating": 3,
+      "label": "溢价",
+      "est_gross_margin_pct": 0.7,
+      "sku_count": 1,
+      "seller_count": 5
+    },
+    {
+      "tier": "$65+",
+      "share_pct": 0.7,
+      "avg_monthly_sales": 6,
+      "avg_rating": 2,
+      "label": "小众",
+      "est_gross_margin_pct": 0.8,
+      "sku_count": 4,
+      "seller_count": 1
+    }
+  ],
+  "concentration": {
+    "cr3_pct": 5,
+    "cr5_pct": 4,
+    "hhi": 2,
+    "hhi_band": "竞争性市场(HHI<1500)",
+    "hhi_interpretation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+    "top_asins": [
+      {
+        "rank": 6,
+        "asin": "B0DEMO7509",
+        "brand": "虚构样例角色",
+        "share_pct": 0.4,
+        "review_wall": 3,
+        "cumulative_share_pct": 0.4
+      },
+      {
+        "rank": 3,
+        "asin": "B0DEMO3894",
+        "brand": "虚构样例角色",
+        "share_pct": 0.3,
+        "review_wall": 7,
+        "cumulative_share_pct": 0.5
+      },
+      {
+        "rank": 4,
+        "asin": "B0DEMO7575",
+        "brand": "虚构样例角色",
+        "share_pct": 0.2,
+        "review_wall": 2,
+        "cumulative_share_pct": 0.6
+      },
+      {
+        "rank": 5,
+        "asin": "B0DEMO1256",
+        "brand": "虚构样例角色",
+        "share_pct": 0.1,
+        "review_wall": 6,
+        "cumulative_share_pct": 0.7
+      },
+      {
+        "rank": 6,
+        "asin": "B0DEMO4937",
+        "brand": "虚构样例角色",
+        "share_pct": 0.8,
+        "review_wall": 5,
+        "cumulative_share_pct": 0.8
+      }
+    ]
+  },
+  "brand_tiers_waterfall": [
+    {
+      "segment": "头部 Top3",
+      "label": "头部",
+      "share_pct": 0.1,
+      "running_total_pct": 5,
+      "brand_count": 2,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "segment": "腰部 4-10名",
+      "label": "腰部",
+      "share_pct": 0.8,
+      "running_total_pct": 6,
+      "brand_count": 6,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "segment": "肩部 11-30名",
+      "label": "肩部",
+      "share_pct": 0.7,
+      "running_total_pct": 7,
+      "brand_count": 1,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "segment": "长尾 30名后",
+      "label": "长尾",
+      "share_pct": 0.6,
+      "running_total_pct": 3,
+      "brand_count": 9,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "buybox": {
+    "distribution": [
+      {
+        "type": "FBA 第三方",
+        "share_pct": 0.8
+      },
+      {
+        "type": "FBM 第三方",
+        "share_pct": 0.7
+      },
+      {
+        "type": "AMZ 自营",
+        "share_pct": 0.6
+      }
+    ],
+    "hijack_intensity": "低",
+    "hijack_note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+  },
+  "variant_strategy": {
+    "families": [
+      {
+        "asin": "B0DEMO5223",
+        "brand": "虚构样例角色",
+        "variant_count": 1,
+        "strategy": "铺量霸屏",
+        "monthly_sales": 2
+      },
+      {
+        "asin": "B0DEMO1608",
+        "brand": "虚构样例角色",
+        "variant_count": 4,
+        "strategy": "铺量霸屏",
+        "monthly_sales": 5
+      },
+      {
+        "asin": "B0DEMO5289",
+        "brand": "虚构样例角色",
+        "variant_count": 7,
+        "strategy": "单品打爆",
+        "monthly_sales": 8
+      },
+      {
+        "asin": "B0DEMO8970",
+        "brand": "虚构样例角色",
+        "variant_count": 1,
+        "strategy": "铺量霸屏",
+        "monthly_sales": 2
+      },
+      {
+        "asin": "B0DEMO2651",
+        "brand": "虚构样例角色",
+        "variant_count": 4,
+        "strategy": "单品打爆",
+        "monthly_sales": 9
+      }
+    ],
+    "sku_distribution": [
+      {
+        "variant_bucket": "1 (单品)",
+        "family_pct": 3
+      },
+      {
+        "variant_bucket": "2-4",
+        "family_pct": 2
+      },
+      {
+        "variant_bucket": "5-8",
+        "family_pct": 1
+      },
+      {
+        "variant_bucket": "9+",
+        "family_pct": 9
+      }
+    ]
+  },
+  "price_elasticity": {
+    "points": [
+      {
+        "price": 2,
+        "monthly_sales": 2,
+        "tier": "红海"
+      },
+      {
+        "price": 9,
+        "monthly_sales": 5,
+        "tier": "红海"
+      },
+      {
+        "price": 3,
+        "monthly_sales": 8,
+        "tier": "甜蜜区"
+      },
+      {
+        "price": 1,
+        "monthly_sales": 2,
+        "tier": "甜蜜区"
+      },
+      {
+        "price": 8,
+        "monthly_sales": 5,
+        "tier": "甜蜜区"
+      },
+      {
+        "price": 2,
+        "monthly_sales": 8,
+        "tier": "溢价"
+      },
+      {
+        "price": 9,
+        "monthly_sales": 2,
+        "tier": "溢价"
+      },
+      {
+        "price": 3,
+        "monthly_sales": 9,
+        "tier": "溢价"
+      },
+      {
+        "price": 1,
+        "monthly_sales": 3,
+        "tier": "小众"
+      }
+    ],
+    "fitted": {
+      "elasticity_coeff": 7,
+      "r2": 0.7,
+      "model": "幂律 Q = a·P^E, E=-1.62 (价格每升10%销量约降16%，需求富有弹性)",
+      "sweet_spot_price_range": "$34-38"
+    }
+  },
+  "seller_geo": [
+    {
+      "country": "中国 CN",
+      "share_pct": 0.2,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "country": "美国 US",
+      "share_pct": 0.1,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "country": "其他",
+      "share_pct": 0.8,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "newcomer_survival": {
+    "window_days": 6,
+    "launched": 5,
+    "survived_100units": 6,
+    "survival_rate_pct": 0.4,
+    "cohort_curve": [
+      {
+        "day": 3,
+        "alive_pct": 3
+      },
+      {
+        "day": 1,
+        "alive_pct": 6
+      },
+      {
+        "day": 8,
+        "alive_pct": 9
+      },
+      {
+        "day": 6,
+        "alive_pct": 3
+      },
+      {
+        "day": 4,
+        "alive_pct": 6
+      },
+      {
+        "day": 2,
+        "alive_pct": 9
+      }
+    ]
+  },
+  "sov": [
+    {
+      "brand": "虚构样例角色",
+      "sov_pct": 7,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "brand": "虚构样例角色",
+      "sov_pct": 8,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "brand": "虚构样例角色",
+      "sov_pct": 9,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "brand": "虚构样例角色",
+      "sov_pct": 1,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "brand": "虚构样例角色",
+      "sov_pct": 2,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "demand_trend": [
+    {
+      "month": "2025-08",
+      "index": 7,
+      "is_peak": true
+    },
+    {
+      "month": "2025-09",
+      "index": 1,
+      "is_peak": false
+    },
+    {
+      "month": "2025-10",
+      "index": 8,
+      "is_peak": false
+    },
+    {
+      "month": "2025-11",
+      "index": 2,
+      "is_peak": false
+    },
+    {
+      "month": "2025-12",
+      "index": 9,
+      "is_peak": false
+    },
+    {
+      "month": "2026-01",
+      "index": 7,
+      "is_peak": false
+    },
+    {
+      "month": "2026-02",
+      "index": 1,
+      "is_peak": false
+    },
+    {
+      "month": "2026-03",
+      "index": 8,
+      "is_peak": false
+    },
+    {
+      "month": "2026-04",
+      "index": 2,
+      "is_peak": false
+    },
+    {
+      "month": "2026-05",
+      "index": 9,
+      "is_peak": true
+    },
+    {
+      "month": "2026-06",
+      "index": 5,
+      "is_peak": true
+    },
+    {
+      "month": "2026-07",
+      "index": 3,
+      "is_peak": true
+    }
+  ],
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

@@ -1,0 +1,555 @@
+{
+  "risk_register": [
+    {
+      "id": "R1",
+      "category": "供应链/质量",
+      "risk": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "probability": 2,
+      "impact": 2,
+      "exposure": 5,
+      "level": "Critical",
+      "residual": 8,
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "trigger": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "owner": "虚构样例角色",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "id": "R2",
+      "category": "季节性",
+      "risk": "需求峰值集中5-8月(季节维度0.40)，若3-4月未完成备货铺评，将错过整个旺季，全年GMV腰斩且库存积压至次年",
+      "probability": 1,
+      "impact": 5,
+      "exposure": 4,
+      "level": "High",
+      "residual": 2,
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "trigger": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "owner": "虚构样例角色",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "id": "R3",
+      "category": "合规/带电抛重",
+      "risk": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "probability": 5,
+      "impact": 3,
+      "exposure": 7,
+      "level": "High",
+      "residual": 1,
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "trigger": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "owner": "虚构样例角色",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "id": "R4",
+      "category": "竞争/红海",
+      "risk": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "probability": 9,
+      "impact": 6,
+      "exposure": 6,
+      "level": "High",
+      "residual": 4,
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "trigger": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "owner": "虚构样例角色",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "id": "R5",
+      "category": "数据准确度",
+      "risk": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "probability": 4,
+      "impact": 9,
+      "exposure": 5,
+      "level": "Medium",
+      "residual": 3,
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "trigger": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "owner": "虚构样例角色",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "id": "R6",
+      "category": "汇率/成本",
+      "risk": "到岸货值$9.5+头程$1.8以人民币结算，人民币升值或海运涨价将抬高成本；净利仅$2.9/单，成本+10%即吃掉约1/3利润",
+      "probability": 8,
+      "impact": 7,
+      "exposure": 8,
+      "level": "Medium",
+      "residual": 2,
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "trigger": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "owner": "虚构样例角色",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "id": "R7",
+      "category": "平台政策",
+      "risk": "Amazon政策变动(佣金结构、Vine规则、广告位/竞价机制、FBA仓储附加费旺季上浮)可能改变单位经济与铺评节奏",
+      "probability": 3,
+      "impact": 1,
+      "exposure": 7,
+      "level": "Medium",
+      "residual": 5,
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "trigger": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "owner": "虚构样例角色",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "id": "R8",
+      "category": "供应链/物流",
+      "risk": "收纳袋撕破(SHIPPING差评15%,890条)与运输破损反映包装抗撕不足，退货与差评双损，且拉低LISTING星级",
+      "probability": 7,
+      "impact": 8,
+      "exposure": 1,
+      "level": "Medium",
+      "residual": 4,
+      "mitigation": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "trigger": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "owner": "虚构样例角色",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    }
+  ],
+  "heatmap": {
+    "x_labels": [
+      "1 轻微",
+      "2 较小",
+      "3 中等",
+      "4 重大",
+      "5 致命"
+    ],
+    "y_labels": [
+      "1 极低",
+      "2 较低",
+      "3 中等",
+      "4 较高",
+      "5 极高"
+    ],
+    "zones": [
+      {
+        "pMin": 6,
+        "pMax": 2,
+        "iMin": 8,
+        "iMax": 4,
+        "band": "green"
+      },
+      {
+        "pMin": 7,
+        "pMax": 3,
+        "iMin": 9,
+        "iMax": 5,
+        "band": "yellow"
+      },
+      {
+        "pMin": 8,
+        "pMax": 4,
+        "iMin": 1,
+        "iMax": 6,
+        "band": "yellow"
+      },
+      {
+        "pMin": 9,
+        "pMax": 5,
+        "iMin": 2,
+        "iMax": 7,
+        "band": "orange"
+      },
+      {
+        "pMin": 1,
+        "pMax": 6,
+        "iMin": 3,
+        "iMax": 8,
+        "band": "orange"
+      },
+      {
+        "pMin": 7,
+        "pMax": 3,
+        "iMin": 9,
+        "iMax": 5,
+        "band": "yellow"
+      },
+      {
+        "pMin": 8,
+        "pMax": 4,
+        "iMin": 1,
+        "iMax": 6,
+        "band": "orange"
+      },
+      {
+        "pMin": 9,
+        "pMax": 5,
+        "iMin": 2,
+        "iMax": 7,
+        "band": "red"
+      },
+      {
+        "pMin": 1,
+        "pMax": 6,
+        "iMin": 3,
+        "iMax": 8,
+        "band": "red"
+      }
+    ],
+    "points": [
+      {
+        "id": "R1",
+        "p": 1,
+        "i": 3,
+        "label": "焊点/耐用"
+      },
+      {
+        "id": "R2",
+        "p": 2,
+        "i": 4,
+        "label": "错过旺季"
+      },
+      {
+        "id": "R3",
+        "p": 3,
+        "i": 5,
+        "label": "合规抛重"
+      },
+      {
+        "id": "R4",
+        "p": 4,
+        "i": 6,
+        "label": "红海竞争"
+      },
+      {
+        "id": "R5",
+        "p": 5,
+        "i": 7,
+        "label": "数据准确度"
+      },
+      {
+        "id": "R6",
+        "p": 6,
+        "i": 8,
+        "label": "汇率成本"
+      },
+      {
+        "id": "R7",
+        "p": 7,
+        "i": 9,
+        "label": "平台政策"
+      },
+      {
+        "id": "R8",
+        "p": 8,
+        "i": 1,
+        "label": "包装物流"
+      }
+    ]
+  },
+  "sensitivity": {
+    "target": "单位净利",
+    "base_value": 9,
+    "unit": "USD/单",
+    "drivers": [
+      {
+        "variable": "ACOS 广告成本",
+        "low_label": "22%",
+        "high_label": "35%",
+        "low_value": 3,
+        "high_value": 0.6
+      },
+      {
+        "variable": "到岸货值",
+        "low_label": "$8.5",
+        "high_label": "$11.0",
+        "low_value": 6,
+        "high_value": 4
+      },
+      {
+        "variable": "售价",
+        "low_label": "$34",
+        "high_label": "$38",
+        "low_value": 9,
+        "high_value": 3
+      },
+      {
+        "variable": "FBA配送费",
+        "low_label": "$5.8",
+        "high_label": "$7.2",
+        "low_value": 3,
+        "high_value": 2
+      },
+      {
+        "variable": "退货率",
+        "low_label": "3%",
+        "high_label": "8%",
+        "low_value": 6,
+        "high_value": 1
+      },
+      {
+        "variable": "头程运费",
+        "low_label": "$1.4",
+        "high_label": "$2.4",
+        "low_value": 9,
+        "high_value": 9
+      }
+    ]
+  },
+  "score_weight_sensitivity": {
+    "base_score": 7,
+    "dims": [
+      {
+        "dim": "需求",
+        "value": 0.1,
+        "base_weight": 0.6
+      },
+      {
+        "dim": "增速",
+        "value": 0.8,
+        "base_weight": 0.5
+      },
+      {
+        "dim": "竞争(减)",
+        "value": 0.7,
+        "base_weight": 0.4
+      },
+      {
+        "dim": "变现",
+        "value": 0.6,
+        "base_weight": 0.3
+      },
+      {
+        "dim": "季节",
+        "value": 0.5,
+        "base_weight": 0.2
+      }
+    ],
+    "scenarios": [
+      {
+        "name": "虚构样例角色",
+        "weights": [
+          0.7,
+          0.6,
+          0.5,
+          0.4,
+          0.3
+        ],
+        "score": 8
+      },
+      {
+        "name": "虚构样例角色",
+        "weights": [
+          0.8,
+          0.7,
+          0.6,
+          0.5,
+          0.4
+        ],
+        "score": 2
+      },
+      {
+        "name": "虚构样例角色",
+        "weights": [
+          0.1,
+          0.8,
+          0.7,
+          0.6,
+          0.5
+        ],
+        "score": 9
+      },
+      {
+        "name": "虚构样例角色",
+        "weights": [
+          0.2,
+          0.1,
+          0.8,
+          0.7,
+          0.6
+        ],
+        "score": 7
+      },
+      {
+        "name": "虚构样例角色",
+        "weights": [
+          0.3,
+          0.2,
+          0.1,
+          0.8,
+          0.7
+        ],
+        "score": 1
+      }
+    ]
+  },
+  "monte_carlo": {
+    "inputs": [
+      {
+        "name": "虚构样例角色",
+        "dist": "三角分布",
+        "params": "min 900 / mode 1400 / max 2100 (锚定甜蜜区$25-40及P50竞品)"
+      },
+      {
+        "name": "虚构样例角色",
+        "dist": "均匀分布",
+        "params": "$34–$38 (定价建议区间)"
+      },
+      {
+        "name": "虚构样例角色",
+        "dist": "正态分布",
+        "params": "均值28% / 标准差5%，截断[18%,40%]"
+      },
+      {
+        "name": "虚构样例角色",
+        "dist": "正态分布",
+        "params": "均值$9.5 / 标准差$0.8"
+      },
+      {
+        "name": "虚构样例角色",
+        "dist": "三角分布",
+        "params": "min 3% / mode 5% / max 8%"
+      }
+    ],
+    "outputs": [
+      {
+        "metric": "首年GMV",
+        "unit": "万USD",
+        "p10": 2,
+        "p50": 9,
+        "p90": 7,
+        "mean": 4
+      },
+      {
+        "metric": "首年净利",
+        "unit": "万USD",
+        "p10": 9,
+        "p50": 7,
+        "p90": 5,
+        "mean": 5,
+        "prob_negative": 0.1
+      },
+      {
+        "metric": "单位净利",
+        "unit": "USD/单",
+        "p10": 7,
+        "p50": 5,
+        "p90": 3,
+        "mean": 2,
+        "prob_negative": 0.8
+      },
+      {
+        "metric": "净利率",
+        "unit": "%",
+        "p10": 5,
+        "p50": 3,
+        "p90": 1,
+        "mean": 3,
+        "prob_negative": 0.7
+      }
+    ]
+  },
+  "assumptions": [
+    {
+      "id": "A1",
+      "assumption": "P50月销量落在甜蜜区区间",
+      "value": "~1400单/月",
+      "confidence": "Medium",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ],
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A2",
+      "assumption": "可稳定实现甜蜜区定价",
+      "value": "$34–38",
+      "confidence": "High",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ],
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A3",
+      "assumption": "ACOS可控在均值附近",
+      "value": "~28%",
+      "confidence": "Medium",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ],
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A4",
+      "assumption": "到岸货值稳定",
+      "value": "$9.5",
+      "confidence": "Medium",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ],
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A5",
+      "assumption": "白空间需求真实且可占位",
+      "value": "防陷+加高款",
+      "confidence": "Medium",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ],
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A6",
+      "assumption": "焊点承重可量产达标",
+      "value": "150kg",
+      "confidence": "Low",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ],
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A7",
+      "assumption": "旺季节奏可如期执行",
+      "value": "3-4月备货铺评",
+      "confidence": "Medium",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ],
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

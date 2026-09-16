@@ -1,0 +1,466 @@
+{
+  "unit_price": 1,
+  "currency": "USD",
+  "waterfall": [
+    {
+      "step": "售价 Sale Price",
+      "type": "base",
+      "amount": 6,
+      "balance": 1,
+      "pct_of_price": 1
+    },
+    {
+      "step": "Referral佣金 15%",
+      "type": "deduct",
+      "amount": 9,
+      "balance": 2,
+      "pct_of_price": 2
+    },
+    {
+      "step": "FBA配送费",
+      "type": "deduct",
+      "amount": 7,
+      "balance": 3,
+      "pct_of_price": 7
+    },
+    {
+      "step": "货值(到岸)",
+      "type": "deduct",
+      "amount": 1,
+      "balance": 4,
+      "pct_of_price": 3
+    },
+    {
+      "step": "头程运费",
+      "type": "deduct",
+      "amount": 8,
+      "balance": 5,
+      "pct_of_price": 4
+    },
+    {
+      "step": "广告(ACOS~28%)",
+      "type": "deduct",
+      "amount": 2,
+      "balance": 6,
+      "pct_of_price": 9
+    },
+    {
+      "step": "净利 Net Profit",
+      "type": "result",
+      "amount": 5,
+      "balance": 7,
+      "pct_of_price": 5
+    }
+  ],
+  "margins": {
+    "gross_profit": 7,
+    "gross_margin_pct": 0.6,
+    "net_profit": 8,
+    "net_margin_pct": 0.5,
+    "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+  },
+  "gauge": [
+    {
+      "metric": "毛利率",
+      "value": 2,
+      "zones": [
+        {
+          "max": 4,
+          "label": "薄",
+          "color": "#e05a4d"
+        },
+        {
+          "max": 2,
+          "label": "一般",
+          "color": "#e8b84b"
+        },
+        {
+          "max": 9,
+          "label": "健康",
+          "color": "#4c9f70"
+        },
+        {
+          "max": 7,
+          "label": "优秀",
+          "color": "#2f7d54"
+        }
+      ]
+    },
+    {
+      "metric": "净利率",
+      "value": 5,
+      "zones": [
+        {
+          "max": 9,
+          "label": "亏损风险",
+          "color": "#e05a4d"
+        },
+        {
+          "max": 7,
+          "label": "偏薄",
+          "color": "#e8b84b"
+        },
+        {
+          "max": 5,
+          "label": "健康",
+          "color": "#4c9f70"
+        },
+        {
+          "max": 3,
+          "label": "优秀",
+          "color": "#2f7d54"
+        }
+      ]
+    }
+  ],
+  "break_even": {
+    "fixed_investment_usd": 4,
+    "investment_breakdown": {
+      "首批备货货值": 7,
+      "头程": 4,
+      "开模/包装打样": 2,
+      "初期广告铺量": 7
+    },
+    "unit_net_profit": 3,
+    "be_units": 6,
+    "be_units_note": "累计约2050单收回首批固定投入(近似首批库存量)",
+    "payback_months": 2,
+    "be_acos_pct": 2,
+    "be_acos_note": "广告花费达售价38.1%($13.7)时单位净利归零",
+    "current_acos_pct": 5,
+    "acos_safety_margin_pct": 0.8,
+    "acos_table": [
+      {
+        "acos_pct": 4,
+        "ad_cost": 7,
+        "unit_net": 8,
+        "profitable": true
+      },
+      {
+        "acos_pct": 7,
+        "ad_cost": 3,
+        "unit_net": 7,
+        "profitable": true
+      },
+      {
+        "acos_pct": 6,
+        "ad_cost": 4,
+        "unit_net": 0.3,
+        "profitable": true
+      },
+      {
+        "acos_pct": 9,
+        "ad_cost": 5,
+        "unit_net": 9,
+        "profitable": false
+      },
+      {
+        "acos_pct": 8,
+        "ad_cost": 6,
+        "unit_net": 3,
+        "profitable": false
+      }
+    ]
+  },
+  "forecast_12m": [
+    {
+      "month": "2026-03",
+      "units": 6,
+      "unit_net": 3,
+      "monthly_net": 4,
+      "season_factor": 0.5,
+      "phase": "备货铺评"
+    },
+    {
+      "month": "2026-04",
+      "units": 9,
+      "unit_net": 2,
+      "monthly_net": 8,
+      "season_factor": 0.4,
+      "phase": "爬坡"
+    },
+    {
+      "month": "2026-05",
+      "units": 7,
+      "unit_net": 5,
+      "monthly_net": 3,
+      "season_factor": 1,
+      "phase": "旺季"
+    },
+    {
+      "month": "2026-06",
+      "units": 5,
+      "unit_net": 4,
+      "monthly_net": 7,
+      "season_factor": 4,
+      "phase": "旺季"
+    },
+    {
+      "month": "2026-07",
+      "units": 8,
+      "unit_net": 7,
+      "monthly_net": 6,
+      "season_factor": 7,
+      "phase": "峰值"
+    },
+    {
+      "month": "2026-08",
+      "units": 6,
+      "unit_net": 6,
+      "monthly_net": 1,
+      "season_factor": 1,
+      "phase": "旺季"
+    },
+    {
+      "month": "2026-09",
+      "units": 9,
+      "unit_net": 9,
+      "monthly_net": 5,
+      "season_factor": 0.7,
+      "phase": "回落"
+    },
+    {
+      "month": "2026-10",
+      "units": 7,
+      "unit_net": 8,
+      "monthly_net": 9,
+      "season_factor": 0.6,
+      "phase": "淡季"
+    },
+    {
+      "month": "2026-11",
+      "units": 5,
+      "unit_net": 7,
+      "monthly_net": 4,
+      "season_factor": 0.5,
+      "phase": "节日小波"
+    },
+    {
+      "month": "2026-12",
+      "units": 8,
+      "unit_net": 1,
+      "monthly_net": 8,
+      "season_factor": 0.4,
+      "phase": "淡季"
+    },
+    {
+      "month": "2027-01",
+      "units": 1,
+      "unit_net": 2,
+      "monthly_net": 1,
+      "season_factor": 0.2,
+      "phase": "谷底"
+    },
+    {
+      "month": "2027-02",
+      "units": 4,
+      "unit_net": 1,
+      "monthly_net": 5,
+      "season_factor": 0.1,
+      "phase": "回暖"
+    }
+  ],
+  "forecast_totals": {
+    "annual_units": 7,
+    "annual_net_profit": 8,
+    "avg_unit_net": 8,
+    "peak_month": "2026-07",
+    "trough_month": "2027-01"
+  },
+  "cashflow": [
+    {
+      "month": "M0(2026-03)",
+      "net_cash": 3,
+      "cum_cash": 5,
+      "inventory_locked": 2,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "month": "M1(2026-04)",
+      "net_cash": 2,
+      "cum_cash": 4,
+      "inventory_locked": 3,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "month": "M2(2026-05)",
+      "net_cash": 5,
+      "cum_cash": 7,
+      "inventory_locked": 8,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "month": "M3(2026-06)",
+      "net_cash": 4,
+      "cum_cash": 6,
+      "inventory_locked": 9,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "month": "M4(2026-07)",
+      "net_cash": 3,
+      "cum_cash": 9,
+      "inventory_locked": 1,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "month": "M5(2026-08)",
+      "net_cash": 6,
+      "cum_cash": 8,
+      "inventory_locked": 2,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "month": "M6(2026-09)",
+      "net_cash": 5,
+      "cum_cash": 7,
+      "inventory_locked": 3,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "month": "M7(2026-10)",
+      "net_cash": 8,
+      "cum_cash": 1,
+      "inventory_locked": 8,
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "cashflow_summary": {
+    "max_cash_drawdown": 8,
+    "breakeven_cash_month": "M5.2",
+    "cash_positive_month": "M7",
+    "settlement_lag_days": 2,
+    "total_cash_cycle_days": 3
+  },
+  "pricing_scenarios": [
+    {
+      "price": 3,
+      "referral": 8,
+      "fba": 7,
+      "cogs_landed": 8,
+      "ad_cost": 5,
+      "unit_net": 3,
+      "net_margin_pct": 0.2,
+      "est_monthly_units": 9,
+      "monthly_net": 2,
+      "positioning": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "price": 1,
+      "referral": 7,
+      "fba": 5,
+      "cogs_landed": 3,
+      "ad_cost": 6,
+      "unit_net": 2,
+      "net_margin_pct": 0.3,
+      "est_monthly_units": 1,
+      "monthly_net": 1,
+      "positioning": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "price": 4,
+      "referral": 1,
+      "fba": 8,
+      "cogs_landed": 7,
+      "ad_cost": 7,
+      "unit_net": 5,
+      "net_margin_pct": 0.4,
+      "est_monthly_units": 2,
+      "monthly_net": 5,
+      "positioning": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "price": 2,
+      "referral": 9,
+      "fba": 6,
+      "cogs_landed": 2,
+      "ad_cost": 8,
+      "unit_net": 4,
+      "net_margin_pct": 0.5,
+      "est_monthly_units": 3,
+      "monthly_net": 9,
+      "positioning": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "pricing_recommendation": {
+    "suggested_range": "$34-38",
+    "primary_target": 3,
+    "rationale": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+  },
+  "sensitivity": {
+    "rows": [
+      3,
+      7,
+      2
+    ],
+    "rows_label": "货值到岸USD",
+    "cols": [
+      1,
+      5,
+      9
+    ],
+    "cols_label": "ACOS %",
+    "cells": [
+      [
+        {
+          "unit_net": 8,
+          "net_margin_pct": 0.8
+        },
+        {
+          "unit_net": 7,
+          "net_margin_pct": 0.1
+        },
+        {
+          "unit_net": 6,
+          "net_margin_pct": 0.2
+        }
+      ],
+      [
+        {
+          "unit_net": 3,
+          "net_margin_pct": 0.7
+        },
+        {
+          "unit_net": 2,
+          "net_margin_pct": 0.8
+        },
+        {
+          "unit_net": 0.1,
+          "net_margin_pct": 0.1
+        }
+      ],
+      [
+        {
+          "unit_net": 7,
+          "net_margin_pct": 0.6
+        },
+        {
+          "unit_net": 6,
+          "net_margin_pct": 0.7
+        },
+        {
+          "unit_net": 9,
+          "net_margin_pct": 0.8
+        }
+      ]
+    ],
+    "insight": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+  },
+  "evidence_anchors": [
+    "[Fees-1]",
+    "[Keepa-3]",
+    "[ABA-1]",
+    "[GT-1]"
+  ],
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

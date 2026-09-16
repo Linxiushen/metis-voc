@@ -1,0 +1,322 @@
+{
+  "decision": {
+    "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+    "confidence": "Medium",
+    "one_liner": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+    "gating_conditions": [
+      "定价锚定甜蜜区$34-38，净利率目标≥12%（简版8%不达标，为硬门槛）",
+      "首批必须落地防陷/加固两处差异化，否则退回$15-25红海无壁垒",
+      "供应商能提供承重150kg焊点强化+耐撕收纳袋方案（打样验证通过）"
+    ]
+  },
+  "core_logic": [
+    {
+      "id": "L1",
+      "type": "opportunity",
+      "headline": "需求真实、甜蜜区未饱和——机会分72/100，五维需求0.78领跑",
+      "detail": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "id": "L2",
+      "type": "risk",
+      "headline": "耐用性是最大差评也是最大壁垒——DURABILITY 34%(2180条)未被8竞品解决",
+      "detail": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    },
+    {
+      "id": "L3",
+      "type": "financial",
+      "headline": "简版单位经济净利率仅8%，须靠定价上修与差异化溢价救回",
+      "detail": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "evidence": [
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      ]
+    }
+  ],
+  "scorecard": {
+    "total_score": 5,
+    "grade": "B+ / 值得推进(有条件)",
+    "evidence_confidence": {
+      "High": 4,
+      "Medium": 1,
+      "Low": 3
+    },
+    "dimensions": [
+      {
+        "key": "demand",
+        "label": "需求强度",
+        "raw_score": 5,
+        "weight": 0.7,
+        "weighted": 0.6,
+        "direction": "higher_better",
+        "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source_node": "需求节点",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "key": "profit",
+        "label": "利润潜力",
+        "raw_score": 8,
+        "weight": 0.8,
+        "weighted": 0.7,
+        "direction": "higher_better",
+        "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source_node": "单位经济节点",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "key": "competition",
+        "label": "竞争格局(减压后)",
+        "raw_score": 2,
+        "weight": 0.1,
+        "weighted": 0.8,
+        "direction": "lower_better已归一",
+        "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source_node": "竞争节点",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "key": "risk",
+        "label": "风险可控性",
+        "raw_score": 5,
+        "weight": 0.2,
+        "weighted": 0.1,
+        "direction": "higher_better",
+        "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source_node": "差评/供应链",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "key": "whitespace",
+        "label": "白空间机会",
+        "raw_score": 8,
+        "weight": 0.3,
+        "weighted": 0.2,
+        "direction": "higher_better",
+        "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source_node": "白空间节点",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "key": "credibility",
+        "label": "证据可信度",
+        "raw_score": 2,
+        "weight": 0.4,
+        "weighted": 0.3,
+        "direction": "higher_better",
+        "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source_node": "全链路",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "key": "seasonality",
+        "label": "季节适配",
+        "raw_score": 5,
+        "weight": 0.5,
+        "weighted": 0.4,
+        "direction": "higher_better",
+        "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source_node": "需求节点",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      }
+    ]
+  },
+  "kpi_tiles": [
+    {
+      "key": "opportunity",
+      "label": "机会分",
+      "value": 7,
+      "unit": "/100",
+      "sub": "综合五维加权",
+      "trend": "flat",
+      "tone": "good"
+    },
+    {
+      "key": "scorecard",
+      "label": "综合记分卡",
+      "value": 1,
+      "unit": "/100",
+      "sub": "B+ 有条件推进",
+      "trend": "flat",
+      "tone": "good"
+    },
+    {
+      "key": "first_move",
+      "label": "推荐先做",
+      "value": "防陷加宽椅脚款",
+      "unit": "",
+      "sub": "定价$34-38甜蜜区",
+      "tone": "good"
+    },
+    {
+      "key": "top_monthly_sales",
+      "label": "头部竞品月销",
+      "value": 6,
+      "unit": "件/月",
+      "sub": "B0xxxA · CI[2050,2900] High",
+      "trend": "up",
+      "tone": "neutral"
+    },
+    {
+      "key": "y1_gmv",
+      "label": "预计首年GMV",
+      "value": "88万–146万",
+      "unit": "美元",
+      "sub": "区间估计(保守~进取)",
+      "tone": "neutral"
+    },
+    {
+      "key": "net_margin",
+      "label": "预计净利率",
+      "value": "12–15",
+      "unit": "%",
+      "sub": "上修定价后目标(简版8%)",
+      "trend": "up",
+      "tone": "warn"
+    }
+  ],
+  "action_items": [
+    {
+      "id": "A1",
+      "priority": "P0",
+      "title": "打样验证防陷加宽椅脚+承重150kg焊点强化",
+      "owner_role": "虚构样例角色",
+      "category": "产品开发",
+      "effort": "L",
+      "depends_on": [],
+      "due_offset": "T+0~4周",
+      "acceptance": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A2",
+      "priority": "P0",
+      "title": "定价与单位经济复算，锁定$34-38并达净利率≥12%",
+      "owner_role": "虚构样例角色",
+      "category": "财务建模",
+      "effort": "S",
+      "depends_on": [
+        "A1"
+      ],
+      "due_offset": "T+2周",
+      "acceptance": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A3",
+      "priority": "P1",
+      "title": "耐撕收纳袋+杯架加深，闭环Top5差评方面",
+      "owner_role": "虚构样例角色",
+      "category": "产品开发",
+      "effort": "M",
+      "depends_on": [
+        "A1"
+      ],
+      "due_offset": "T+3~6周",
+      "acceptance": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A4",
+      "priority": "P1",
+      "title": "关键词与Listing：主词camping chair+长尾sand/heavy duty",
+      "owner_role": "虚构样例角色",
+      "category": "上市准备",
+      "effort": "M",
+      "depends_on": [
+        "A2"
+      ],
+      "due_offset": "T+5~7周",
+      "acceptance": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A5",
+      "priority": "P1",
+      "title": "3-4月备货铺评，卡位5-8月旺季",
+      "owner_role": "虚构样例角色",
+      "category": "供应链/时机",
+      "effort": "M",
+      "depends_on": [
+        "A1",
+        "A2"
+      ],
+      "due_offset": "3-4月",
+      "acceptance": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A6",
+      "priority": "P2",
+      "title": "评估加高款(>180cm)作为第二SKU梯队",
+      "owner_role": "虚构样例角色",
+      "category": "产品线规划",
+      "effort": "M",
+      "depends_on": [
+        "A1"
+      ],
+      "due_offset": "T+8周后",
+      "acceptance": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "id": "A7",
+      "priority": "P2",
+      "title": "建立竞品月销与断货监控(B0xxxA/B/C)",
+      "owner_role": "虚构样例角色",
+      "category": "监控",
+      "effort": "S",
+      "depends_on": [],
+      "due_offset": "持续",
+      "acceptance": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "key_assumptions": [
+    {
+      "id": "K1",
+      "assumption": "上修定价$34-38可被甜蜜区接受且不显著掉量",
+      "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "sensitivity": "high",
+      "if_breaks": "净利率回落至8%，决策降级为no-go需重估"
+    },
+    {
+      "id": "K2",
+      "assumption": "广告ACOS可控制在约28%",
+      "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "sensitivity": "high",
+      "if_breaks": "ACOS每+5pt净利率约-3~4pt，侵蚀溢价空间"
+    },
+    {
+      "id": "K3",
+      "assumption": "防陷/加固差异化能真正落地并形成壁垒",
+      "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "sensitivity": "high",
+      "if_breaks": "退回$15-25红海无壁垒，机会分大幅下修"
+    },
+    {
+      "id": "K4",
+      "assumption": "到岸货值$9.5+头程$1.8成本稳定",
+      "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "sensitivity": "medium",
+      "if_breaks": "原材料/海运波动直接压缩净利"
+    },
+    {
+      "id": "K5",
+      "assumption": "首年GMV区间基于头部2450件/月与甜蜜区中位价$32推算的市场可获份额",
+      "basis": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "sensitivity": "medium",
+      "if_breaks": "实际获客与转化低于假设则落保守端88万"
+    }
+  ],
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

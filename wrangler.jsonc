@@ -1,0 +1,131 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "metis-voc-ai",
+  "compatibility_date": "2026-05-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./worker/index.ts",
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "metis-voc-db",
+      // Local development uses an isolated emulated D1 database.
+      // Replace with YOUR database ID before deploying (see docs/DEPLOYMENT.md).
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  // Optional PRODUCT_IMAGES R2 binding: see docs/DEPLOYMENT.md.
+  "queues": {
+    "producers": [
+      {
+        "binding": "RESEARCH_QUEUE",
+        "queue": "metis-voc-research"
+      },
+      {
+        "binding": "CONCEPT_ARCHIVE_QUEUE",
+        "queue": "metis-voc-concept-archive"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "metis-voc-research",
+        "max_batch_size": 1,
+        "max_batch_timeout": 1,
+        "max_retries": 3,
+        "dead_letter_queue": "metis-voc-research-dlq",
+        "max_concurrency": 2,
+        "retry_delay": 5
+      },
+      {
+        "queue": "metis-voc-concept-archive",
+        "max_batch_size": 1,
+        "max_batch_timeout": 1,
+        "max_retries": 3,
+        "dead_letter_queue": "metis-voc-concept-archive-dlq",
+        "max_concurrency": 2,
+        "retry_delay": 10
+      }
+    ]
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "DECISION_COORDINATOR",
+        "class_name": "DecisionCoordinator"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["DecisionCoordinator"]
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "REGISTER_RATE_LIMIT",
+      "namespace_id": "3518401201",
+      "simple": { "limit": 10, "period": 60 }
+    },
+    {
+      "name": "LOGIN_RATE_LIMIT",
+      "namespace_id": "3518401202",
+      "simple": { "limit": 60, "period": 60 }
+    },
+    {
+      "name": "PROVIDER_RATE_LIMIT",
+      "namespace_id": "3518401203",
+      "simple": { "limit": 2, "period": 60 }
+    },
+    {
+      "name": "RESEARCH_RATE_LIMIT",
+      "namespace_id": "3518401204",
+      "simple": { "limit": 5, "period": 60 }
+    },
+    {
+      "name": "CONCEPT_RATE_LIMIT",
+      "namespace_id": "3518401205",
+      "simple": { "limit": 2, "period": 60 }
+    },
+    {
+      "name": "DECISION_RATE_LIMIT",
+      "namespace_id": "3518401206",
+      "simple": { "limit": 2, "period": 10 }
+    }
+  ],
+  "triggers": {
+    "crons": ["* * * * *"]
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.1,
+      "persist": true
+    }
+  },
+  "vars": {
+    "DEEPSEEK_BASE_URL": "https://api.deepseek.com",
+    "DEEPSEEK_MODEL": "deepseek-chat",
+    "QWEN_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "QWEN_MODEL": "qwen-plus",
+    "KEEPAMORE_BASE_URL": "https://mcp.keepamore.com/api",
+    "LOVART_BASE_URL": "https://lgw.lovart.ai",
+    "LOVART_PROXY_URL": "",
+    "LOVART_IMAGE_MODEL": "generate_image_gpt_image_2_high",
+    "PAID_PROVIDER_CALLS_ENABLED": "false",
+    "ENABLE_EXAMPLE_REPORTS": "false",
+    "ALLOWED_API_ORIGINS": ""
+  }
+}

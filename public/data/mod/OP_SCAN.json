@@ -1,0 +1,489 @@
+{
+  "opportunity_score": 2,
+  "verdict": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+  "tam_sam_som": [
+    {
+      "level": "TAM",
+      "label": "折叠露营椅 · 全美线上可寻址市场",
+      "value_usd": 9,
+      "value_display": "合成示例值",
+      "method": "自下而上: 类目在架活跃ASIN数 × 加权月销 × 中位价 × 12，含Amazon+旁站线上估算",
+      "assumptions": [
+        "活跃ASIN约3,200个",
+        "加权月均销量约350件/ASIN",
+        "中位成交价$32",
+        "Amazon占线上约68%再上折算全网"
+      ],
+      "low_usd": 9,
+      "high_usd": 8,
+      "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "level": "SAM",
+      "label": "可服务市场 · Amazon US + $15-65主流价格带 + FBA可达",
+      "value_usd": 3,
+      "value_display": "合成示例值",
+      "method": "TAM × Amazon线上占比68% × 主流价格带($15-65)占销量93% × FBA可履约折算",
+      "assumptions": [
+        "剔除$65+小众(仅7%)",
+        "剔除超大件/定制款",
+        "限US本土FBA履约"
+      ],
+      "low_usd": 1,
+      "high_usd": 2,
+      "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    },
+    {
+      "level": "SOM",
+      "label": "可获得市场 · 新入场者12-18个月现实可拿份额",
+      "value_usd": 6,
+      "value_display": "合成示例值",
+      "method": "SAM × 目标利基($25-40)销量占比34% × 新品牌18个月可达份额约10.3%(考虑CR3=38%头部挤压)",
+      "assumptions": [
+        "聚焦$25-40甜蜜区",
+        "18个月爬坡至利基第4-6名",
+        "广告ACOS≤28%可持续",
+        "无重大合规拦截"
+      ],
+      "low_usd": 2,
+      "high_usd": 1,
+      "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+    }
+  ],
+  "lifecycle": {
+    "stage": "成长",
+    "position_pct": 1,
+    "yoy_growth": 0.2,
+    "review_velocity_yoy": 0.3,
+    "new_asin_ratio": 0.1,
+    "price_erosion_yoy": 5,
+    "signals": [
+      "需求同比+19%、评论增速+27%，快于价格侵蚀(-4%)，属健康成长后段",
+      "新ASIN占比23%仍有增量玩家涌入，但CR3=38%头部已成型 → 成长中晚期",
+      "评论墙已达8240/6910/5300(>5000)，成熟化信号显现，窗口正在收窄"
+    ],
+    "stages": [
+      {
+        "key": "intro",
+        "label": "导入",
+        "range": [
+          2,
+          6
+        ]
+      },
+      {
+        "key": "growth",
+        "label": "成长",
+        "range": [
+          5,
+          9
+        ]
+      },
+      {
+        "key": "mature",
+        "label": "成熟",
+        "range": [
+          4,
+          8
+        ]
+      },
+      {
+        "key": "decline",
+        "label": "衰退",
+        "range": [
+          3,
+          7
+        ]
+      }
+    ]
+  },
+  "seasonality": {
+    "months": [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
+    ],
+    "index": [
+      9,
+      4,
+      8,
+      3,
+      7,
+      2,
+      6,
+      1,
+      5,
+      9,
+      6,
+      1
+    ],
+    "peak_months": [
+      "5月",
+      "6月",
+      "7月",
+      "8月"
+    ],
+    "trough_months": [
+      "1月",
+      "12月"
+    ],
+    "amplitude": 3,
+    "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+  },
+  "trend_5y": {
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "search_index": [
+      1,
+      5,
+      9,
+      4,
+      8
+    ],
+    "slope_per_year": 10.2,
+    "r2": 0.7,
+    "cagr": 0.8,
+    "interpretation": "5年搜索热度年均斜率+10.2、R²=0.98拟合极稳，CAGR约9.2% → 结构性增长而非季节噪声，露营/户外长期渗透支撑",
+    "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+  },
+  "entry_barriers": {
+    "composite": 2,
+    "dimensions": [
+      {
+        "dimension": "评论墙壁垒",
+        "score": 8,
+        "weight": 0.7,
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "dimension": "品牌集中度",
+        "score": 2,
+        "weight": 0.8,
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "dimension": "资金/库存壁垒",
+        "score": 9,
+        "weight": 0.1,
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "dimension": "合规/认证",
+        "score": 3,
+        "weight": 0.2,
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "dimension": "供应链/差异化",
+        "score": 1,
+        "weight": 0.3,
+        "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "source": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      }
+    ]
+  },
+  "niche_matrix": {
+    "price_bands": [
+      "$15-25",
+      "$25-40",
+      "$40-65",
+      "$65+"
+    ],
+    "sub_categories": [
+      "标准款",
+      "加固承重款",
+      "加高款(>180cm)",
+      "防陷/沙地款"
+    ],
+    "cells": [
+      {
+        "band": "$15-25",
+        "sub": "标准款",
+        "opp_score": 4,
+        "sales_mid": 7,
+        "competition": "高",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$15-25",
+        "sub": "加固承重款",
+        "opp_score": 7,
+        "sales_mid": 1,
+        "competition": "高",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$15-25",
+        "sub": "加高款(>180cm)",
+        "opp_score": 1,
+        "sales_mid": 4,
+        "competition": "中",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$15-25",
+        "sub": "防陷/沙地款",
+        "opp_score": 4,
+        "sales_mid": 7,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$25-40",
+        "sub": "标准款",
+        "opp_score": 7,
+        "sales_mid": 1,
+        "competition": "中",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$25-40",
+        "sub": "加固承重款",
+        "opp_score": 1,
+        "sales_mid": 4,
+        "competition": "中",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$25-40",
+        "sub": "加高款(>180cm)",
+        "opp_score": 4,
+        "sales_mid": 7,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$25-40",
+        "sub": "防陷/沙地款",
+        "opp_score": 7,
+        "sales_mid": 1,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$40-65",
+        "sub": "标准款",
+        "opp_score": 1,
+        "sales_mid": 4,
+        "competition": "中",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$40-65",
+        "sub": "加固承重款",
+        "opp_score": 4,
+        "sales_mid": 7,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$40-65",
+        "sub": "加高款(>180cm)",
+        "opp_score": 6,
+        "sales_mid": 4,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$40-65",
+        "sub": "防陷/沙地款",
+        "opp_score": 9,
+        "sales_mid": 7,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$65+",
+        "sub": "标准款",
+        "opp_score": 3,
+        "sales_mid": 1,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$65+",
+        "sub": "加固承重款",
+        "opp_score": 6,
+        "sales_mid": 4,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$65+",
+        "sub": "加高款(>180cm)",
+        "opp_score": 9,
+        "sales_mid": 7,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      {
+        "band": "$65+",
+        "sub": "防陷/沙地款",
+        "opp_score": 3,
+        "sales_mid": 1,
+        "competition": "低",
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      }
+    ]
+  },
+  "opp_competition_scatter": [
+    {
+      "niche": "$15-25 标准款(红海)",
+      "x_competition": 4,
+      "y_opportunity": 6,
+      "bubble_sales": 4,
+      "band": "$15-25",
+      "is_target": false
+    },
+    {
+      "niche": "$25-40 标准款(甜蜜区主力)",
+      "x_competition": 7,
+      "y_opportunity": 9,
+      "bubble_sales": 9,
+      "band": "$25-40",
+      "is_target": false
+    },
+    {
+      "niche": "$25-40 加固承重款★",
+      "x_competition": 1,
+      "y_opportunity": 3,
+      "bubble_sales": 5,
+      "band": "$25-40",
+      "is_target": true
+    },
+    {
+      "niche": "$25-40 加高款★",
+      "x_competition": 4,
+      "y_opportunity": 6,
+      "bubble_sales": 6,
+      "band": "$25-40",
+      "is_target": true
+    },
+    {
+      "niche": "$25-40 防陷/沙地款★★",
+      "x_competition": 7,
+      "y_opportunity": 4,
+      "bubble_sales": 2,
+      "band": "$25-40",
+      "is_target": true
+    },
+    {
+      "niche": "$40-65 加固承重款",
+      "x_competition": 5,
+      "y_opportunity": 7,
+      "bubble_sales": 7,
+      "band": "$40-65",
+      "is_target": false
+    },
+    {
+      "niche": "$40-65 防陷/沙地款",
+      "x_competition": 8,
+      "y_opportunity": 1,
+      "bubble_sales": 8,
+      "band": "$40-65",
+      "is_target": false
+    },
+    {
+      "niche": "$65+ 标准款(小众)",
+      "x_competition": 2,
+      "y_opportunity": 4,
+      "bubble_sales": 4,
+      "band": "$65+",
+      "is_target": false
+    }
+  ],
+  "radar_5dim": {
+    "dims": [
+      "需求",
+      "增速",
+      "竞争(减压)",
+      "变现",
+      "季节"
+    ],
+    "scores": [
+      0.8,
+      0.7,
+      0.6,
+      0.5,
+      0.4
+    ],
+    "weights": [
+      0.6,
+      0.5,
+      0.4,
+      0.3,
+      0.2
+    ],
+    "benchmark": [
+      0.4,
+      0.3,
+      0.2,
+      0.1,
+      0.8
+    ]
+  },
+  "sensitivity": {
+    "base_score": 8,
+    "scenarios": [
+      {
+        "name": "虚构样例角色",
+        "desc": "默认权重",
+        "weight_shift": "需求.28/增速.22/竞争.22/变现.20/季节.08",
+        "score": 7
+      },
+      {
+        "name": "虚构样例角色",
+        "desc": "看多市场规模",
+        "weight_shift": "需求+0.10, 变现-0.10",
+        "score": 1
+      },
+      {
+        "name": "虚构样例角色",
+        "desc": "利润导向保守",
+        "weight_shift": "变现+0.12, 需求-0.06, 增速-0.06",
+        "score": 8
+      },
+      {
+        "name": "虚构样例角色",
+        "desc": "规避红海",
+        "weight_shift": "竞争+0.10, 季节-0.02, 变现-0.08",
+        "score": 2
+      },
+      {
+        "name": "虚构样例角色",
+        "desc": "全年运营视角",
+        "weight_shift": "季节权重归0再归一化",
+        "score": 9
+      }
+    ],
+    "low": 7,
+    "high": 9,
+    "robust": true,
+    "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+  },
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

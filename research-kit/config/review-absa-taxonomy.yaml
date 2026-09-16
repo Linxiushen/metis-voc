@@ -1,0 +1,67 @@
+# ============================================================================
+# 评论 ABSA 方面级情感分类体系（选品维度）— MIND_DECODE 节点消费
+# 范式：ACOS 四元组 (aspect_term, aspect_category, opinion_term, polarity)
+#      一条评论按句展开多行；LLM 做 aspect mediator 解耦抽取与分类（跨域免重训）
+#      polarity_score 连续 -1..1（对齐 SemEval-2026 DimABSA 维度化情感）
+# 用途：Gold 按 asin×aspect_category 汇总 avg_polarity/neg_ratio/mention_count
+#      -> neg_aspect_top5 -> 选品直接判断「能否通过改良某方面切入」
+# ============================================================================
+version: 1.0
+polarity_values: [pos, neg, neu]
+polarity_score_range: [-1.0, 1.0]
+calibration_anchor: sp_api_customer_feedback   # 用官方聚合 topics/情感做锚校准第三方全文抽取
+
+aspect_categories:
+  QUALITY:
+    label: 做工质量
+    seeds: [material, build quality, cheap, flimsy, sturdy, well made, defect, inconsistent]
+  DURABILITY:
+    label: 耐用性
+    signals_return_risk: true          # 直接指向退货风险
+    seeds: [broke, stopped working, lasted, wore out, fell apart, durable, lifespan]
+  BATTERY:
+    label: 续航/电池
+    category_scope: electronics
+    seeds: [battery life, charge, drains, dies quickly, runtime]
+  SIZE:
+    label: 尺寸/合身
+    high_freq_in: [apparel, home]
+    seeds: [too big, too small, runs large, runs small, fit, sizing, dimensions]
+  FUNCTIONALITY:
+    label: 功能
+    seeds: [works as described, easy to use, doesn't work, feature, functionality, performance]
+  SHIPPING:
+    label: 物流/包装
+    seeds: [arrived damaged, packaging, delivery, shipping, box crushed, fast shipping]
+  PRICE:
+    label: 价格/性价比
+    seeds: [overpriced, worth it, value, expensive, cheap for the price, great deal]
+  APPEARANCE:
+    label: 外观/颜色
+    seeds: [looks like picture, color, different than pictured, design, aesthetic, ugly]
+  SMELL_NOISE:
+    label: 气味/噪音
+    category_scope: [home, appliance]
+    seeds: [smell, odor, chemical smell, loud, noisy, quiet]
+  COMPATIBILITY:
+    label: 兼容性/配件匹配
+    seeds: [compatible, doesn't fit, works with, accessory, adapter]
+  INSTRUCTION:
+    label: 说明书/安装
+    seeds: [instructions, hard to assemble, manual, setup, confusing directions]
+  CUSTOMER_SERVICE:
+    label: 客服/售后
+    seeds: [customer service, refund, return process, seller response, warranty]
+
+# ---- Gold 汇总输出 ---------------------------------------------------------
+gold_rollup:
+  group_by: [asin, aspect_category]
+  metrics: [avg_polarity, neg_ratio, mention_count]
+  neg_aspect_top5:
+    order_by: neg_ratio desc, mention_count desc
+    consumed_by: [MIND_DECODE, GTM_PLAN]     # 痛点定位 + 卖点/改良点转化
+
+# ---- 幂等 ------------------------------------------------------------------
+idempotency:
+  key: [review_id, sentence_idx, aspect_term, model_version]
+  on_model_upgrade: 只回填新版本行，旧版本保留可对比

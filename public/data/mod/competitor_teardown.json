@@ -1,0 +1,522 @@
+{
+  "meta": {
+    "category": "折叠露营椅 Folding Camping Chair",
+    "marketplace": "Amazon US",
+    "window": "近90天",
+    "currency": "USD",
+    "generatedAt": "2026-07-08"
+  },
+  "competitors": [
+    {
+      "asin": "B0DEMO1430",
+      "rank": 5,
+      "title": "虚构样例商品 7",
+      "positioning": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "segment": "红海",
+      "confidence": "High",
+      "confidence_note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "in_ranking": true,
+      "price": 4,
+      "price_band": "$15-25",
+      "monthly_sold": 3,
+      "sold_ci": [
+        2,
+        6
+      ],
+      "trend_90d": [
+        {
+          "d": "D0",
+          "sold": 3
+        },
+        {
+          "d": "D15",
+          "sold": 9
+        },
+        {
+          "d": "D30",
+          "sold": 1
+        },
+        {
+          "d": "D45",
+          "sold": 2
+        },
+        {
+          "d": "D60",
+          "sold": 3
+        },
+        {
+          "d": "D75",
+          "sold": 9
+        },
+        {
+          "d": "D90",
+          "sold": 1
+        }
+      ],
+      "trend_label": "稳定领跑(旺季前爬坡)",
+      "rating": 6,
+      "review_count": 6,
+      "review_wall_level": ">5000",
+      "rating_dist": {
+        "1": 7,
+        "2": 8,
+        "3": 9,
+        "4": 1,
+        "5": 2
+      },
+      "usp": [
+        "承重推广宽泛(未标准化kg)",
+        "低价走量",
+        "多色可选",
+        "带杯架",
+        "轻便收纳"
+      ],
+      "weakness_absa": [
+        {
+          "aspect": "DURABILITY 耐用",
+          "pct": 8,
+          "mentions": 5,
+          "star": false,
+          "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+        },
+        {
+          "aspect": "QUALITY 稳定性",
+          "pct": 6,
+          "mentions": 8,
+          "star": true,
+          "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+        },
+        {
+          "aspect": "SIZE 尺寸(>180cm偏矮)",
+          "pct": 4,
+          "mentions": 7,
+          "star": true,
+          "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+        }
+      ],
+      "variants": {
+        "count": 4,
+        "dims": [
+          "颜色x4",
+          "单椅/2件套"
+        ],
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      "buybox": {
+        "seller": "虚构样例角色",
+        "seller_type": "虚构样例角色",
+        "ownership_pct": 3,
+        "price_stability": "稳定(90天波动<5%)"
+      },
+      "listing_age_days": 2,
+      "gross_margin": {
+        "price": 2,
+        "referral": 2,
+        "fba": 3,
+        "cogs_landed": 2,
+        "freight": 4,
+        "ad": 5,
+        "net": 9,
+        "net_rate": 0.1
+      },
+      "attack_points": [
+        "低价挤压利润(净利为负靠规模)",
+        "耐用/稳定性差评双高",
+        ">180cm尺寸不覆盖"
+      ]
+    },
+    {
+      "asin": "B0DEMO5111",
+      "rank": 6,
+      "title": "虚构样例商品 5",
+      "positioning": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "segment": "甜蜜区",
+      "confidence": "Medium",
+      "confidence_note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "in_ranking": true,
+      "price": 2,
+      "price_band": "$25-40",
+      "monthly_sold": 8,
+      "sold_ci": [
+        1,
+        5
+      ],
+      "trend_90d": [
+        {
+          "d": "D0",
+          "sold": 4
+        },
+        {
+          "d": "D15",
+          "sold": 1
+        },
+        {
+          "d": "D30",
+          "sold": 2
+        },
+        {
+          "d": "D45",
+          "sold": 3
+        },
+        {
+          "d": "D60",
+          "sold": 4
+        },
+        {
+          "d": "D75",
+          "sold": 5
+        },
+        {
+          "d": "D90",
+          "sold": 2
+        }
+      ],
+      "trend_label": "温和上升(甜蜜区红利)",
+      "rating": 4,
+      "review_count": 7,
+      "review_wall_level": ">5000",
+      "rating_dist": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5
+      },
+      "usp": [
+        "加厚坐垫舒适",
+        "承重标注150kg",
+        "带侧袋+杯架",
+        "折叠免安装",
+        "钢管框架"
+      ],
+      "weakness_absa": [
+        {
+          "aspect": "SHIPPING 物流(收纳袋撕破)",
+          "pct": 4,
+          "mentions": 9,
+          "star": false,
+          "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+        },
+        {
+          "aspect": "FUNCTIONALITY 功能(杯架浅)",
+          "pct": 2,
+          "mentions": 3,
+          "star": false,
+          "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+        },
+        {
+          "aspect": "QUALITY 稳定性(软地面下陷)",
+          "pct": 9,
+          "mentions": 2,
+          "star": true,
+          "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+        }
+      ],
+      "variants": {
+        "count": 1,
+        "dims": [
+          "颜色x3",
+          "加宽款x1"
+        ],
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      "buybox": {
+        "seller": "虚构样例角色",
+        "seller_type": "虚构样例角色",
+        "ownership_pct": 4,
+        "price_stability": "中(FBM偶尔断货让出BuyBox)"
+      },
+      "listing_age_days": 3,
+      "gross_margin": {
+        "price": 9,
+        "referral": 4,
+        "fba": 4,
+        "cogs_landed": 1,
+        "freight": 5,
+        "ad": 9,
+        "net": 1,
+        "net_rate": 0.8
+      },
+      "attack_points": [
+        "收纳袋撕破物流差评(可低成本改良)",
+        "软地面下陷未解决",
+        "FBM导致BuyBox不稳"
+      ]
+    },
+    {
+      "asin": "B0DEMO1496",
+      "rank": 3,
+      "title": "虚构样例商品 8",
+      "positioning": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "segment": "溢价",
+      "confidence": "Low",
+      "confidence_note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "in_ranking": false,
+      "price": 5,
+      "price_band": "$40-65",
+      "monthly_sold": 4,
+      "sold_ci": [
+        9,
+        4
+      ],
+      "trend_90d": [
+        {
+          "d": "D0",
+          "sold": 5
+        },
+        {
+          "d": "D15",
+          "sold": 6
+        },
+        {
+          "d": "D30",
+          "sold": 3
+        },
+        {
+          "d": "D45",
+          "sold": 4
+        },
+        {
+          "d": "D60",
+          "sold": 5
+        },
+        {
+          "d": "D75",
+          "sold": 6
+        },
+        {
+          "d": "D90",
+          "sold": 3
+        }
+      ],
+      "trend_label": "爬坡新品(61天,趋势未定型)",
+      "rating": 7,
+      "review_count": 3,
+      "review_wall_level": "<1000",
+      "rating_dist": {
+        "1": 4,
+        "2": 5,
+        "3": 6,
+        "4": 7,
+        "5": 8
+      },
+      "usp": [
+        "超轻<1.2kg",
+        "铝合金架",
+        "便携登山定位",
+        "快装",
+        "溢价包装"
+      ],
+      "weakness_absa": [
+        {
+          "aspect": "SIZE 尺寸(承重偏低)",
+          "pct": 9,
+          "mentions": 8,
+          "star": false,
+          "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+        },
+        {
+          "aspect": "QUALITY 稳定性(轻量牺牲稳定)",
+          "pct": 7,
+          "mentions": 7,
+          "star": true,
+          "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+        }
+      ],
+      "variants": {
+        "count": 2,
+        "dims": [
+          "颜色x2"
+        ],
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      "buybox": {
+        "seller": "虚构样例角色",
+        "seller_type": "虚构样例角色",
+        "ownership_pct": 9,
+        "price_stability": "稳定(独占,但基数小)"
+      },
+      "listing_age_days": 4,
+      "gross_margin": {
+        "price": 7,
+        "referral": 6,
+        "fba": 9,
+        "cogs_landed": 9,
+        "freight": 1,
+        "ad": 9,
+        "net": 6,
+        "net_rate": 0.7
+      },
+      "attack_points": [
+        "评论墙薄弱(易赶超)",
+        "轻量牺牲承重/稳定",
+        "价格溢价但无护城河"
+      ]
+    }
+  ],
+  "matrix": {
+    "dimensions": [
+      {
+        "key": "scale",
+        "label": "销量规模",
+        "invert": false
+      },
+      {
+        "key": "growth",
+        "label": "增长趋势",
+        "invert": false
+      },
+      {
+        "key": "price_comp",
+        "label": "价格竞争力",
+        "invert": false
+      },
+      {
+        "key": "rating",
+        "label": "评分口碑",
+        "invert": false
+      },
+      {
+        "key": "review_wall",
+        "label": "评论墙壁垒",
+        "invert": false
+      },
+      {
+        "key": "usp_diff",
+        "label": "卖点差异化",
+        "invert": false
+      },
+      {
+        "key": "weak_exposure",
+        "label": "差评软肋暴露",
+        "invert": true
+      },
+      {
+        "key": "variant_cov",
+        "label": "变体覆盖",
+        "invert": false
+      },
+      {
+        "key": "buybox",
+        "label": "BuyBox稳定性",
+        "invert": false
+      }
+    ],
+    "rows": [
+      {
+        "entity": "B0xxxA",
+        "isOurTarget": false,
+        "scores": {
+          "scale": 9,
+          "growth": 8,
+          "price_comp": 5,
+          "rating": 7,
+          "review_wall": 1,
+          "usp_diff": 8,
+          "weak_exposure": 2,
+          "variant_cov": 5,
+          "buybox": 6
+        }
+      },
+      {
+        "entity": "B0xxxB",
+        "isOurTarget": false,
+        "scores": {
+          "scale": 5,
+          "growth": 2,
+          "price_comp": 6,
+          "rating": 1,
+          "review_wall": 8,
+          "usp_diff": 8,
+          "weak_exposure": 7,
+          "variant_cov": 3,
+          "buybox": 9
+        }
+      },
+      {
+        "entity": "B0xxxC",
+        "isOurTarget": false,
+        "scores": {
+          "scale": 1,
+          "growth": 9,
+          "price_comp": 7,
+          "rating": 4,
+          "review_wall": 6,
+          "usp_diff": 3,
+          "weak_exposure": 3,
+          "variant_cov": 1,
+          "buybox": 7
+        }
+      },
+      {
+        "entity": "我方目标(甜蜜区差异化)",
+        "isOurTarget": true,
+        "scores": {
+          "scale": 2,
+          "growth": 3,
+          "price_comp": 3,
+          "rating": 2,
+          "review_wall": 4,
+          "usp_diff": 3,
+          "weak_exposure": 4,
+          "variant_cov": 8,
+          "buybox": 1
+        }
+      }
+    ]
+  },
+  "attack_surface": [
+    {
+      "competitor": "B0xxxA",
+      "weak_point": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "attack_difficulty": "中",
+      "our_counter": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "expected_gain": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "confidence": "High"
+    },
+    {
+      "competitor": "B0xxxA",
+      "weak_point": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "attack_difficulty": "中",
+      "our_counter": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "expected_gain": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "confidence": "Medium"
+    },
+    {
+      "competitor": "B0xxxB",
+      "weak_point": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "attack_difficulty": "低",
+      "our_counter": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "expected_gain": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "confidence": "High"
+    },
+    {
+      "competitor": "B0xxxB",
+      "weak_point": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "attack_difficulty": "中",
+      "our_counter": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "expected_gain": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "confidence": "High"
+    },
+    {
+      "competitor": "B0xxxC",
+      "weak_point": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "evidence": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "attack_difficulty": "低",
+      "our_counter": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "expected_gain": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "confidence": "Medium"
+    }
+  ],
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

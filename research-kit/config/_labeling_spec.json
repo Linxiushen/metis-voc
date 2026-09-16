@@ -1,0 +1,1004 @@
+{
+ "per_review_schema": [
+  {
+   "field": "review_id",
+   "type": "string",
+   "impl": "rule",
+   "source": "clean_reviews主键",
+   "note": "claim→REV锚可溯源,对齐MIND_DECODE的anchor:REV-xxxx"
+  },
+  {
+   "field": "asin / brand / category",
+   "type": "string",
+   "impl": "rule",
+   "source": "clean_reviews元数据",
+   "note": "rollup分组键与品类适用性校验(aspect_category_scope_ok)输入"
+  },
+  {
+   "field": "rating",
+   "type": "int(1-5)",
+   "impl": "rule",
+   "source": "clean_reviews",
+   "note": "星-文一致性(w_consistency)、severity放大、反讽星-文冲突检测输入"
+  },
+  {
+   "field": "review_ts / age_days",
+   "type": "date/int",
+   "impl": "rule",
+   "source": "clean_reviews.date;age_days=today-date",
+   "note": "recency_decay与窗口切分(all_time/r90d/r30d)输入"
+  },
+  {
+   "field": "verified_purchase",
+   "type": "bool",
+   "impl": "rule",
+   "source": "DataForSEO/Apify isVerified;SP-API全true",
+   "note": "w_verified乘性权重"
+  },
+  {
+   "field": "helpful_votes",
+   "type": "int|null",
+   "impl": "rule",
+   "source": "helpful/reviewReaction;缺失→null→中性1.0",
+   "note": "w_helpful对数压缩权重"
+  },
+  {
+   "field": "source_conf_level",
+   "type": "enum{High,Medium,Low}",
+   "impl": "rule",
+   "source": "源前缀映射:sp_api/keepa=High,dataforseo/brightdata/oxylabs/卖家精灵=Medium,helium/apify=Low",
+   "note": "w_source与Low不进定量红线;单条可被反刷单降级覆盖"
+  },
+  {
+   "field": "quadruples[]",
+   "type": "array<ACOS>",
+   "impl": "hybrid",
+   "source": "rule_v1子串+词典 / llm_mediator_v1整句抽取",
+   "note": "一评论多四元组数组;每元素含下列子字段;幂等键[review_id,sentence_idx,aspect_term,model_version]"
+  },
+  {
+   "field": "quadruples[].sentence_idx",
+   "type": "int",
+   "impl": "rule",
+   "source": "分句切分",
+   "note": "从0起,定位来源句,幂等键组成"
+  },
+  {
+   "field": "quadruples[].aspect_term",
+   "type": "string|null",
+   "impl": "hybrid",
+   "source": "原文span;隐式为NULL",
+   "note": "保留原文大小写供回显引用"
+  },
+  {
+   "field": "quadruples[].aspect_term_span",
+   "type": "[int,int]|null",
+   "impl": "rule",
+   "source": "字符区间",
+   "note": "高亮定位;隐式null"
+  },
+  {
+   "field": "quadruples[].aspect_is_implicit",
+   "type": "bool",
+   "impl": "hybrid",
+   "source": "无显式方面词靠观点词/句法推断",
+   "note": "true时经opinion反查类目提示词典"
+  },
+  {
+   "field": "quadruples[].aspect_category",
+   "type": "enum(12类+OVERALL)",
+   "impl": "hybrid",
+   "source": "canonical三级映射+seed命中;UNMAPPED交LLM",
+   "note": "QUALITY/DURABILITY/BATTERY/SIZE/FUNCTIONALITY/SHIPPING/PRICE/APPEARANCE/SMELL_NOISE/COMPATIBILITY/INSTRUCTION/CUSTOMER_SERVICE;OVERALL不进12类rollup"
+  },
+  {
+   "field": "quadruples[].opinion_term",
+   "type": "string|null",
+   "impl": "hybrid",
+   "source": "原文span含否定+程度整段作用域",
+   "note": "隐式观点(仅评分)填NULL"
+  },
+  {
+   "field": "quadruples[].opinion_term_span",
+   "type": "[int,int]|null",
+   "impl": "rule",
+   "source": "字符区间",
+   "note": "高亮"
+  },
+  {
+   "field": "quadruples[].polarity",
+   "type": "enum{pos,neg,neu}",
+   "impl": "rule",
+   "source": "polarity_score阈值±0.15切分",
+   "note": "下游neg_ratio用"
+  },
+  {
+   "field": "quadruples[].polarity_score",
+   "type": "float(-1..1)",
+   "impl": "hybrid",
+   "source": "clip(base×neg_factor×intensifier_factor×irony_factor,-1,1);LLM回归+SP-API锚校准",
+   "note": "确定性可复现;词典未命中base=0"
+  },
+  {
+   "field": "quadruples[].confidence",
+   "type": "float(0..1)",
+   "impl": "rule",
+   "source": "clip(0.30·f_extract+0.25·f_pair+0.20·f_lex+0.25·f_src-penalties,0,1)",
+   "note": "<0.35标quarantine,不进定量排序仅供LLM复核/质性引用"
+  },
+  {
+   "field": "quadruples[].aspect_category_scope_ok",
+   "type": "bool",
+   "impl": "rule",
+   "source": "类目×品类适用表(BATTERY仅electronics,SMELL_NOISE仅home/appliance)",
+   "note": "不符则false并-0.20 confidence,防误挂"
+  },
+  {
+   "field": "quadruples[].signals_return_risk",
+   "type": "bool",
+   "impl": "rule",
+   "source": "aspect∈{DURABILITY,QUALITY,SIZE,COMPATIBILITY}且polarity=neg",
+   "note": "喂MIND_DECODE return_risk表"
+  },
+  {
+   "field": "quadruples[].is_ironic",
+   "type": "bool",
+   "impl": "hybrid",
+   "source": "确定性反讽模式库+星文冲突;LLM兜底",
+   "note": "true表示polarity_score已翻转校正"
+  },
+  {
+   "field": "quadruples[].extractor",
+   "type": "enum{rule_v1,llm_mediator_v1,bert_absa_v1}",
+   "impl": "rule",
+   "source": "抽取器标记",
+   "note": "基线vs生产A/B与幂等回填model_version"
+  },
+  {
+   "field": "labels.review_intent",
+   "type": "enum×多标",
+   "impl": "hybrid",
+   "source": "REVIEW_INTENT seeds/正则",
+   "note": "praise/complaint/comparison/question/feature_request/return_reason/usage_tip;路由决策管道"
+  },
+  {
+   "field": "labels.jtbd_scenario[]",
+   "type": "array<enum>",
+   "impl": "hybrid",
+   "source": "JTBD_SCENARIO seeds(开放集)",
+   "note": "细分蓝海;规则覆盖Top场景长尾交LLM"
+  },
+  {
+   "field": "labels.buyer_persona[]",
+   "type": "array<enum>",
+   "impl": "hybrid",
+   "source": "BUYER_PERSONA seeds",
+   "note": "人群定向;隐含人群交LLM"
+  },
+  {
+   "field": "labels.defect_mode[]",
+   "type": "array<enum>",
+   "impl": "rule",
+   "source": "DEFECT_MODE部件+失效动词正则",
+   "note": "部件级失效=QC清单;句式确定性强纯规则"
+  },
+  {
+   "field": "labels.unmet_need[]",
+   "type": "array<enum>+slot",
+   "impl": "hybrid",
+   "source": "UNMET_NEED愿望句式规则抽,填槽交LLM归一",
+   "note": "wish/if only/should have;差评白空间正向版"
+  },
+  {
+   "field": "labels.competitor_switch",
+   "type": "enum×多标+brand_span",
+   "impl": "hybrid",
+   "source": "COMPETITOR_SWITCH句式规则+品牌NER/LLM",
+   "note": "竞品痛点=你的卖点;品牌实体需NER/LLM"
+  },
+  {
+   "field": "labels.deal_breaker_severity",
+   "type": "enum{deal_breaker,major,minor,cosmetic_nit,none}",
+   "impl": "hybrid",
+   "source": "DEAL_BREAKER_SEVERITY seeds+rating/defect联合",
+   "note": "rating<=2抬底至major;returned/refund→deal_breaker"
+  },
+  {
+   "field": "labels.emotion_intensity",
+   "type": "enum{delight,satisfaction,neutral,frustration,anger,regret,disappointment}",
+   "impl": "hybrid",
+   "source": "EMOTION_INTENSITY词典+感叹号/全大写",
+   "note": "regret/anger差评最强流失预警;delight进A+文案"
+  },
+  {
+   "field": "trust.factor_scores",
+   "type": "object{w_source,w_verified,w_recency,w_length,w_helpful,w_consistency,w_spam}",
+   "impl": "rule",
+   "source": "trust_weighting各因子公式",
+   "note": "落review_weight_ledger供溯源HITL抽审"
+  },
+  {
+   "field": "trust.spam_flags[]",
+   "type": "array<enum>",
+   "impl": "hybrid",
+   "source": "5类反刷单信号(MinHash/burst/披露正则等)",
+   "note": "is_duplicate/burst_flag/vine_flag/farm_suspect;farm嵌入聚类为LLM增强"
+  },
+  {
+   "field": "trust.evidence_weight",
+   "type": "float[0,3.0]",
+   "impl": "rule",
+   "source": "w_source×w_verified×w_recency×w_length×w_helpful×w_consistency×w_spam",
+   "note": "Low或confidence降级→记0不进定量rollup;裁剪[0,3]防单条支配"
+  },
+  {
+   "field": "trust.in_quant_rollup",
+   "type": "bool",
+   "impl": "rule",
+   "source": "confidence!=Low且evidence_weight>0且四元组confidence>=0.35",
+   "note": "定量/定性池分流总闸"
+  }
+ ],
+ "taxonomies": {
+  "aspect_category": {
+   "enum": [
+    "QUALITY",
+    "DURABILITY",
+    "BATTERY",
+    "SIZE",
+    "FUNCTIONALITY",
+    "SHIPPING",
+    "PRICE",
+    "APPEARANCE",
+    "SMELL_NOISE",
+    "COMPATIBILITY",
+    "INSTRUCTION",
+    "CUSTOMER_SERVICE",
+    "OVERALL"
+   ],
+   "scope_rules": {
+    "BATTERY": [
+     "electronics"
+    ],
+    "SMELL_NOISE": [
+     "home",
+     "appliance",
+     "furniture",
+     "outdoor"
+    ]
+   },
+   "canonicalization": [
+    {
+     "canonical": "carry_bag",
+     "category": "SHIPPING",
+     "synonyms": [
+      "carry bag",
+      "carrying bag",
+      "storage bag",
+      "storage sack",
+      "pouch",
+      "sack",
+      "case"
+     ]
+    },
+    {
+     "canonical": "weld_joint",
+     "category": "DURABILITY",
+     "synonyms": [
+      "weld",
+      "welding",
+      "joint",
+      "seam",
+      "connector",
+      "hinge"
+     ]
+    },
+    {
+     "canonical": "battery_life",
+     "category": "BATTERY",
+     "synonyms": [
+      "battery life",
+      "battery",
+      "charge",
+      "runtime",
+      "run time",
+      "juice",
+      "power"
+     ]
+    },
+    {
+     "canonical": "seat_height",
+     "category": "SIZE",
+     "synonyms": [
+      "seat height",
+      "too low",
+      "too tall",
+      "low seat",
+      "height of seat",
+      "sits low"
+     ]
+    },
+    {
+     "canonical": "fit_sizing",
+     "category": "SIZE",
+     "synonyms": [
+      "fit",
+      "sizing",
+      "size",
+      "runs large",
+      "runs small",
+      "too big",
+      "too small",
+      "dimensions"
+     ]
+    },
+    {
+     "canonical": "build_material",
+     "category": "QUALITY",
+     "synonyms": [
+      "material",
+      "fabric",
+      "build",
+      "build quality",
+      "construction",
+      "make",
+      "workmanship"
+     ]
+    },
+    {
+     "canonical": "smell",
+     "category": "SMELL_NOISE",
+     "synonyms": [
+      "smell",
+      "odor",
+      "odour",
+      "stink",
+      "chemical smell",
+      "off-gassing"
+     ]
+    },
+    {
+     "canonical": "noise",
+     "category": "SMELL_NOISE",
+     "synonyms": [
+      "noise",
+      "noisy",
+      "loud",
+      "squeak",
+      "rattle",
+      "hum",
+      "quiet"
+     ]
+    },
+    {
+     "canonical": "instructions_manual",
+     "category": "INSTRUCTION",
+     "synonyms": [
+      "instructions",
+      "manual",
+      "directions",
+      "guide",
+      "assembly instructions",
+      "setup guide"
+     ]
+    },
+    {
+     "canonical": "customer_service",
+     "category": "CUSTOMER_SERVICE",
+     "synonyms": [
+      "customer service",
+      "support",
+      "seller response",
+      "refund",
+      "return process",
+      "warranty",
+      "rma"
+     ]
+    },
+    {
+     "canonical": "compatibility",
+     "category": "COMPATIBILITY",
+     "synonyms": [
+      "compatible",
+      "fits with",
+      "works with",
+      "adapter",
+      "accessory",
+      "attachment"
+     ]
+    },
+    {
+     "canonical": "price_value",
+     "category": "PRICE",
+     "synonyms": [
+      "price",
+      "value",
+      "worth it",
+      "expensive",
+      "overpriced",
+      "cheap for the price",
+      "great deal",
+      "bang for buck"
+     ]
+    }
+   ],
+   "implicit_hints": {
+    "FUNCTIONALITY": [
+     "shallow",
+     "tips over",
+     "doesn't work",
+     "won't stay"
+    ],
+    "SHIPPING": [
+     "ripped",
+     "thin fabric",
+     "arrived torn"
+    ],
+    "STABILITY_GROUND->FUNCTIONALITY": [
+     "sinks",
+     "tilted",
+     "wobbles",
+     "sinks into the sand"
+    ]
+   }
+  },
+  "polarity_lexicon": {
+   "base_strength": {
+    "0.9": [
+     "terrible",
+     "broke",
+     "snapped",
+     "love",
+     "excellent",
+     "perfect",
+     "useless"
+    ],
+    "0.7": [
+     "flimsy",
+     "cheap",
+     "sturdy",
+     "durable",
+     "great",
+     "damaged",
+     "overpriced"
+    ],
+    "0.5": [
+     "good",
+     "bad",
+     "works",
+     "comfortable",
+     "loud",
+     "small-fit"
+    ],
+    "0.3": [
+     "okay",
+     "fine",
+     "decent",
+     "a little off"
+    ]
+   },
+   "note": "极端词/love/excellent为正,broke/terrible/useless为负;符号由词条极性方向表指定,base为|强度|"
+  },
+  "use_case_jtbd": {
+   "impl": "hybrid",
+   "values": [
+    "camping_outdoor",
+    "tailgate_party",
+    "fishing",
+    "beach_pool",
+    "sports_event",
+    "backyard_patio",
+    "travel_portable",
+    "office_desk",
+    "gaming",
+    "gift_giving",
+    "everyday_home"
+   ],
+   "patterns": {
+    "camping_outdoor": "camping|campsite|campground|hiking|backpacking|RV|tent|off.?grid",
+    "tailgate_party": "tailgate|tailgating|cookout|bbq|barbecue|party|gathering|get.?together",
+    "fishing": "fishing|fish|lake|dock|pier|kayak|boat",
+    "beach_pool": "beach|sand|poolside|pool|oceanside|seaside",
+    "sports_event": "soccer game|little league|football game|sidelines|bleachers|kids.? games|sporting event",
+    "backyard_patio": "backyard|patio|deck|porch|yard|garden",
+    "travel_portable": "travel|flight|airplane|road trip|carry.?on|fits in (?:the )?trunk|easy to (?:carry|transport|pack)",
+    "office_desk": "office|desk|work from home|cubicle|wfh",
+    "gaming": "gaming|streaming setup|long gaming sessions",
+    "gift_giving": "gift|present|gave (?:it|this) to|bought for my",
+    "everyday_home": "living room|bedroom|everyday use|daily use|around the house"
+   }
+  },
+  "defect_mode": {
+   "impl": "rule",
+   "values": [
+    "frame_broke",
+    "stitching_seam_failure",
+    "zipper_failure",
+    "hardware_loose_stripped",
+    "fabric_tear",
+    "buckle_clip_snapped",
+    "leg_bent_collapsed",
+    "coating_peeling_rust",
+    "cupholder_broke",
+    "electronics_dead",
+    "battery_swell_fail",
+    "leak",
+    "no_defect"
+   ],
+   "patterns": {
+    "frame_broke": "frame (?:broke|bent|snapped|cracked)|frame is flimsy|frame gave (?:out|way)",
+    "stitching_seam_failure": "stitch(?:ing)? (?:came|ripped|unraveled)|seam (?:ripped|split|tore)|threads coming",
+    "zipper_failure": "zipper (?:broke|stuck|jammed|split|won'?t)|broken zipper",
+    "hardware_loose_stripped": "screws? (?:stripped|loose|missing)|bolts? (?:loose|missing)|nuts? came off|stripped thread",
+    "fabric_tear": "fabric (?:tore|ripped)|tore (?:a )?hole|ripped after|material tore",
+    "buckle_clip_snapped": "buckle (?:broke|snapped)|clip (?:broke|snapped)|clasp broke",
+    "leg_bent_collapsed": "legs? (?:bent|collapsed|buckled|gave out)|collapsed under",
+    "coating_peeling_rust": "peeling|rust(?:ed|ing)?|coating (?:came|flaked)|paint chipp",
+    "cupholder_broke": "cup ?holder (?:broke|ripped|tore|useless)",
+    "electronics_dead": "stopped (?:working|charging)|won'?t (?:turn on|power)|dead after|quit working",
+    "battery_swell_fail": "battery (?:swell|swollen|died|won'?t hold)|won'?t hold a charge",
+    "leak": "leak(?:s|ed|ing)?|water got in|seeped"
+   }
+  },
+  "intent": {
+   "impl": "hybrid",
+   "values": [
+    "praise",
+    "complaint",
+    "comparison",
+    "question",
+    "feature_request",
+    "return_reason",
+    "usage_tip"
+   ],
+   "patterns": {
+    "praise": "love it|highly recommend|best .* i(?:'ve| have) ever|so happy with|exceeded expectations|works great",
+    "complaint": "disappointed|waste of money|do not buy|terrible|stopped working|would not recommend",
+    "comparison": "better than|worse than|compared to|vs\\b|unlike (?:my|the) (?:old|previous)|switched from",
+    "question": "does (?:it|this) (?:come|work|fit)\\??|can (?:i|it)|is (?:it|this) .*\\?|anyone know|how do (?:i|you)",
+    "feature_request": "wish it (?:had|came)|i wish there was|would be (?:great|nice|better) if|please add|needs a|should (?:have|include) (?:a|an)",
+    "return_reason": "(?:i )?returned (?:it|this)|had to return|sent it back|requested a refund|returning because",
+    "usage_tip": "pro tip|what i did was|i recommend (?:using|buying)|make sure to|tip:|workaround"
+   }
+  },
+  "persona": {
+   "impl": "hybrid",
+   "values": [
+    "for_tall",
+    "for_heavy_bigandtall",
+    "for_elderly",
+    "for_kids",
+    "for_pets",
+    "for_professional",
+    "for_beginner",
+    "for_disability_mobility",
+    "for_plus_size",
+    "self_use",
+    "for_gift_recipient"
+   ],
+   "patterns": {
+    "for_tall": "for tall|tall people|6.?[2-9]\"|i(?:'m| am) tall|long legs|tall enough",
+    "for_heavy_bigandtall": "big and tall|heavy person|plus.?size|[23]\\d\\d ?lbs?|holds my weight|for larger|weight capacity",
+    "for_elderly": "elderly|my (?:mom|dad|mother|father|grandma|grandpa)|senior|aging parents|easy for (?:her|him) to get (?:up|out)",
+    "for_kids": "for my kids?|toddler|child|children|my son|my daughter",
+    "for_pets": "my dog|my cat|pet|for the dog",
+    "for_professional": "professional use|contractor|commercial|for my business|everyday at work|heavy.?duty use",
+    "for_beginner": "beginner|first.?time|new to|novice|entry.?level",
+    "for_disability_mobility": "disabled|wheelchair|mobility|bad (?:back|knees|hips)|surgery recovery|arthritis",
+    "for_plus_size": "plus.?size|curvy|fuller figure",
+    "for_gift_recipient": "bought for my|gave to my|gift for"
+   }
+  },
+  "feature_request": {
+   "impl": "hybrid",
+   "values": [
+    "missing_feature",
+    "wants_more_of",
+    "wants_less_of",
+    "wants_variant_option",
+    "wants_accessory",
+    "size_gap",
+    "material_upgrade_wish",
+    "no_unmet_need"
+   ],
+   "patterns": {
+    "trigger": "wish it (?:had|came with|included|was)|if only it (?:had|were|was)|i wish there (?:was|were)|would (?:be (?:great|nice|perfect|better)|have been better) if|should (?:have|include|come with|be)|the only thing missing|just needs? (?:a|an|more)|please (?:add|make|include|offer)",
+    "wants_more_of": "(?:needs?|wish it had) more (?:padding|storage|room|support|cushion)",
+    "wants_variant_option": "(?:wish it came|available) in (?:a )?(?:bigger|larger|different) (?:size|color)",
+    "wants_accessory": "needs? a (?:carrying )?(?:case|bag|cover|strap)"
+   },
+   "note": "slot_filling(具体缺什么)为LLM增强点"
+  },
+  "competitor": {
+   "impl": "hybrid",
+   "values": [
+    "switched_from_competitor",
+    "switched_to_this",
+    "better_than_alt",
+    "worse_than_alt",
+    "considered_alt",
+    "repeat_same_brand",
+    "named_competitor",
+    "no_mention"
+   ],
+   "patterns": {
+    "switched_from_competitor": "switched from|upgraded from|replaced my (?:old )?|coming from (?:a )?|used to (?:have|use|own)",
+    "better_than_alt": "better than|way better than|superior to|beats (?:my|the)|holds up better than",
+    "worse_than_alt": "not as (?:good|sturdy|comfortable) as|worse than|my old one was better|inferior to",
+    "considered_alt": "was going to (?:buy|get)|almost bought|instead of (?:the|a)|compared to (?:the )?",
+    "repeat_same_brand": "my (?:second|third|fourth)|bought again|third one i(?:'ve| have) bought"
+   },
+   "note": "named_competitor品牌实体串需NER/LLM;句式框架规则先抓"
+  },
+  "severity": {
+   "impl": "hybrid",
+   "values": [
+    "deal_breaker",
+    "major",
+    "minor",
+    "cosmetic_nit",
+    "none"
+   ],
+   "patterns": {
+    "deal_breaker": "deal.?breaker|do(?:n'?t| not) (?:buy|waste)|returning (?:it|this)|unusable|dangerous|safety (?:hazard|issue)|never again|complete (?:waste|junk)|one star",
+    "major": "(?:really|very|extremely) disappointed|big problem|major (?:issue|flaw)|can'?t use it for",
+    "minor": "minor (?:issue|complaint|gripe)|small (?:issue|problem)|not a big deal|other than that|aside from",
+    "cosmetic_nit": "nitpick|just cosmetic|only complaint is (?:the color|the look)|superficial"
+   },
+   "amplifiers": "rating<=2抬底至major;显式returned/refund→deal_breaker"
+  },
+  "emotion": {
+   "impl": "hybrid",
+   "values": [
+    "delight",
+    "satisfaction",
+    "neutral",
+    "frustration",
+    "anger",
+    "regret",
+    "disappointment"
+   ],
+   "patterns": {
+    "delight": "love(?:d)? it|obsessed|absolutely amazing|blown away|best purchase|can'?t (?:live without|recommend enough)|!{2,}",
+    "satisfaction": "happy with|satisfied|works well|no complaints|does the job|glad i bought",
+    "frustration": "frustrating|annoying|ridiculous|so frustrating|pain to|waste of time",
+    "anger": "furious|angry|scam|ripped off|disgusting|appalled",
+    "regret": "regret (?:buying|purchasing)|should(?:'ve| have) (?:known|bought|returned)|wish i (?:hadn'?t|had never)|sorry i bought",
+    "disappointment": "disappointed|let down|expected (?:better|more)|underwhelmed|sadly"
+   },
+   "note": "ALL.?CAPS正/负向作情绪强调修饰;反讽与混合情绪交LLM"
+  }
+ },
+ "linguistics_rules": [
+  {
+   "rule": "分句+子句切分",
+   "how": "先按句末标点[.!?…]与换行切句;再按并列/转折连词{but,however,though,although,while,whereas,但,不过,只是}切子句。转折词后子句极性权重更高,confidence+0.05。每子句独立配对一组aspect-opinion实现一评论多四元组。"
+  },
+  {
+   "rule": "否定处理+作用域",
+   "how": "否定触发词{not,no,never,none,hardly,barely,without,doesn't,don't,didn't,isn't,wasn't,can't,won't,不,没,无,别}。作用域从否定词向右到下一标点/转折连词/because,最多跨5 token。域内opinion施加neg_factor=-0.8翻转。双重否定相互抵消不翻转。'not only...but also'视强调不翻转。"
+  },
+  {
+   "rule": "程度副词放大/缩小",
+   "how": "紧邻(左1-2 token)修饰opinion时施intensifier_factor: extremely/absolutely=1.6,very/really/so=1.3,quite/pretty=1.15,基准=1.0,slightly/a bit/somewhat=0.6,barely=0.5。'too'+形容词恒为该方面neg(factor=1.2且base强制取负)。感叹号+0.05幅度,全大写词×1.1。"
+  },
+  {
+   "rule": "方面-观点就近配对",
+   "how": "同一子句内每个opinion配对token绝对距离最近的候选aspect(须seed/canonical命中)。无显式aspect有opinion→隐式方面:opinion反查类目提示词典推断aspect_category,aspect_is_implicit=true。一aspect配多opinion时取|分值|最大作主,其余并列输出。"
+  },
+  {
+   "rule": "方面词归一(三级映射)",
+   "how": "aspect_term小写化、去复数去限定词后查同义词→canonical→aspect_category。命中canonical直接得类目;未命中退seed子串匹配;仍未命中且有观点词→标UNMAPPED交LLM mediator(-0.15 confidence)。"
+  },
+  {
+   "rule": "极性连续打分",
+   "how": "polarity_score=clip(base_polarity(opinion)×neg_factor×intensifier_factor×irony_factor,-1,1)。base来自极性词典(极端0.9/强0.7/中0.5/弱0.3),未命中base=0=neu。离散polarity由±0.15阈值切分。"
+  },
+  {
+   "rule": "简单反讽(高精度低召回)",
+   "how": "仅确定模式:(1)正向词+负面场景短语('great if you enjoy [负面]','perfect for [不想要场景]','love how it [负面动词]');(2)star<=2但规则分>0.3的星-文冲突→is_ironic疑似,irony_factor=-1翻转并-0.15 confidence交LLM复核;(3)引号包裹正向词+'yeah right/not'。命中即is_ironic=true并翻转polarity_score。剩余反讽/比较级隐含贬义交LLM。"
+  },
+  {
+   "rule": "隐式方面/观点缺失兜底",
+   "how": "子句既无aspect又无opinion→丢弃不产四元组(避免噪声挂FUNCTIONALITY)。仅有整体情感词无方面→记aspect_category=OVERALL(不进12类rollup,仅供sentiment_12w趋势)。"
+  },
+  {
+   "rule": "类目品类适用性校验",
+   "how": "aspect_category经scope_rules表校验(BATTERY仅electronics,SMELL_NOISE仅home/appliance/furniture/outdoor)。品类不符则aspect_category_scope_ok=false且confidence-0.20,防误挂。"
+  }
+ ],
+ "trust_weighting": {
+  "factors": [
+   {
+    "factor": "w_source",
+    "formula": "High(sp_api/keepa)=1.0; Medium(dataforseo/brightdata/oxylabs/卖家精灵)=0.85; Low(helium/apify/无verified/被降级)=0(不进定量)"
+   },
+   {
+    "factor": "w_verified",
+    "formula": "1.0 if verified else 0.55"
+   },
+   {
+    "factor": "w_recency",
+    "formula": "0.5^(age_days/540); 地板clamp下限0.25 (rollup变体用半衰期180天:0.5^(age_days/180))"
+   },
+   {
+    "factor": "w_length",
+    "formula": "clip(0.4 + 0.6*tanh(token_count/40) + 0.15*has_aspect_hit, 0.4, 1.15)"
+   },
+   {
+    "factor": "w_helpful",
+    "formula": "1 + 0.30*log10(1 + helpful_votes); 缺失→1.0"
+   },
+   {
+    "factor": "w_consistency",
+    "formula": "1.0 if sign(rating-3)==sign(polarity_score) or |polarity_score|<0.15 else 0.7"
+   },
+   {
+    "factor": "w_spam",
+    "formula": "Π(各命中刷单信号的降权因子, 未命中=1.0)"
+   },
+   {
+    "factor": "confidence(四元组级)",
+    "formula": "clip(0.30*f_extract + 0.25*f_pair + 0.20*f_lex + 0.25*f_src - penalties, 0, 1); f_extract=显式双1.0/一显一隐0.6/双隐0.3; f_pair=1/(1+token_dist/5),跨子句0.4; f_lex=|base_polarity|,未命中0.2; f_src=High1.0/Med0.7/Low0.4; penalties=反讽-0.15+scope_false-0.20+UNMAPPED-0.15+否定跨标点-0.05+官方冲突-0.1"
+   }
+  ],
+  "composite_formula": "evidence_weight = clip(w_source × w_verified × w_recency × w_length × w_helpful × w_consistency × w_spam, 0, 3.0)。前置闸:若source==Low或单条被反刷单降级或四元组confidence<0.35 → evidence_weight=0且不进定量rollup,只入定性池。加权rollup:avg_polarity=Σ(w·polarity_score)/Σw; neg_ratio=Σ(w·I(neg))/Σw; mention_count用有效计数Σw。每条落review_weight_ledger供溯源HITL。",
+  "spam_signals": [
+   {
+    "signal": "template_near_duplicate",
+    "pattern": "同asin/品牌下body 3-gram shingle→MinHash签名,Jaccard≥0.8或SimHash汉明距离≤3;去数字/表情归一后完全相同",
+    "action": "整簇每条w_spam*=0.2;簇内保留最早1条为代表,其余is_duplicate=true排除定量rollup(仅留1票)"
+   },
+   {
+    "signal": "extreme_star_no_detail",
+    "pattern": "rating∈{1,5}且token_count<8且无aspect seed命中且无具体名词(全泛化词great/love/perfect/worst)",
+    "action": "w_spam*=0.3;不参与neg_aspect_top5的mention计数"
+   },
+   {
+    "signal": "burst_time_cluster",
+    "pattern": "同asin滑窗≤3天评论数>历史日均5×(z-score:daily>mean+3*std)且簇内verified<0.5",
+    "action": "簇内每条w_spam*=0.4;打burst_flag;簇占该asin总评>30%触发HITL"
+   },
+   {
+    "signal": "incentivized_disclosure",
+    "pattern": "正则命中'received (this|a)? free'/'in exchange for (my|an)?(honest)? review'/'discount(ed)? in exchange'/'complimentary'/'sent to me (for free|to test)'/'vine'",
+    "action": "free/exchange类w_spam*=0.15且confidence降Low(不进定量);vine_flag类w_spam*=0.6保留但标注"
+   },
+   {
+    "signal": "reviewer_farm_correlation",
+    "pattern": "(有reviewer_id时)同组reviewer_id多无关asin高频共现或短期大量五星;MVP无id时降级为同asin正文风格指纹(标点/emoji/句长分布)聚类异常",
+    "action": "w_spam*=0.25;farm_suspect=true进spam_ledger累积画像(嵌入聚类为LLM增强)"
+   }
+  ]
+ },
+ "gold_tables": [
+  {
+   "table_id": "gold_asin_aspect_rollup_weighted",
+   "grain": "asin × aspect_category × window_key(all_time|r90d|r30d)",
+   "columns": [
+    {
+     "name": "mention_count",
+     "formula": "COUNT(DISTINCT review_id) 命中该aspect(同评论多句去重)"
+    },
+    {
+     "name": "mention_rate",
+     "formula": "mention_count / asin_total_reviews_in_window"
+    },
+    {
+     "name": "eff_mention",
+     "formula": "Σ evidence_weight(有效证据密度,替代裸计数)"
+    },
+    {
+     "name": "avg_polarity_weighted",
+     "formula": "Σ(polarity_score_i·w_i)/Σw_i, w_i=evidence_weight"
+    },
+    {
+     "name": "neg_ratio_weighted",
+     "formula": "Σ(w_i·I(polarity=neg))/Σw_i"
+    },
+    {
+     "name": "pos_ratio_weighted",
+     "formula": "Σ(w_i·I(polarity=pos))/Σw_i"
+    },
+    {
+     "name": "neu_ratio_weighted",
+     "formula": "1 - neg_ratio_weighted - pos_ratio_weighted"
+    },
+    {
+     "name": "polarity_dispersion",
+     "formula": "sqrt(Σ w_i·(polarity_score_i - avg_polarity_weighted)^2 / Σw_i);高=两极分化(批次差异)"
+    },
+    {
+     "name": "verified_share",
+     "formula": "Σ(w_i·I(verified))/Σw_i"
+    },
+    {
+     "name": "return_risk_rate",
+     "formula": "Σ(w_i·I(signals_return_risk))/Σw_i"
+    }
+   ],
+   "why": "所有下游表的加权事实底座;加权版抗水军/无验证/陈旧噪声,直接改变'哪个方面在拖后腿'的选品判断"
+  },
+  {
+   "table_id": "gold_aspect_importance",
+   "grain": "category × aspect_category",
+   "columns": [
+    {
+     "name": "importance_score",
+     "formula": "归一化: z(mention_rate_across_asins)·0.5 + z(|corr(aspect_neg, review_rating)|)·0.5;方面被谈越普及且与总评相关越强=越重要"
+    },
+    {
+     "name": "rating_elasticity",
+     "formula": "β from OLS: review_rating ~ Σ aspect_neg_flags;单位aspect负面对星级的边际影响"
+    },
+    {
+     "name": "is_hygiene_or_delighter",
+     "formula": "neg侧elasticity高且pos侧低→hygiene(必须做对);pos侧高→delighter(卖点);供Kano联表"
+    }
+   ],
+   "why": "决定改良/卖点资源投向权重最大的方面,防止把低影响cosmetic当核心痛点"
+  },
+  {
+   "table_id": "gold_opportunity_whitespace_rank",
+   "grain": "category × (aspect_category | defect_mode | unmet_need)",
+   "columns": [
+    {
+     "name": "pain_frequency",
+     "formula": "Σ evidence_weight where neg,按category跨asin聚合"
+    },
+    {
+     "name": "severity_weight",
+     "formula": "Σ(evidence_weight·severity_score),severity_score:deal_breaker=1.0/major=0.7/minor=0.3/cosmetic=0.1"
+    },
+    {
+     "name": "unmet_supply_gap",
+     "formula": "1 - (satisfied_asin_count / total_asin_count),该痛点被市场解决的稀缺度"
+    },
+    {
+     "name": "opportunity_score",
+     "formula": "(pain_frequency_norm·0.4 + severity_weight_norm·0.35 + unmet_supply_gap·0.25)·importance_score"
+    },
+    {
+     "name": "rank",
+     "formula": "DENSE_RANK按opportunity_score DESC分category"
+    }
+   ],
+   "why": "直接输出'先攻哪个痛点/白空间'的选品优先级排序,融合频次×严重度×供给稀缺×方面重要度"
+  },
+  {
+   "table_id": "gold_kano_classification",
+   "grain": "category × aspect_category",
+   "columns": [
+    {
+     "name": "pos_mention_share",
+     "formula": "Σ(w·I(aspect,pos))/Σ(w over asin)"
+    },
+    {
+     "name": "neg_mention_share",
+     "formula": "Σ(w·I(aspect,neg))/Σ(w over asin)"
+    },
+    {
+     "name": "kano_class",
+     "formula": "neg高&pos低→must-be(基础必备);neg高&pos高→one-dimensional(线性满意);neg低&pos高→attractive(兴奋型/差异化);两低→indifferent"
+    },
+    {
+     "name": "satisfaction_coef",
+     "formula": "pos_share/(pos_share+neg_share)"
+    },
+    {
+     "name": "dissatisfaction_coef",
+     "formula": "neg_share/(pos_share+neg_share)"
+    }
+   ],
+   "why": "区分must-be(做错就死)vs attractive(做对惊喜)=产品定义与差异化卖点分层,避免在indifferent方面浪费"
+  },
+  {
+   "table_id": "gold_usecase_aspect_matrix",
+   "grain": "category × jtbd_scenario × aspect_category",
+   "columns": [
+    {
+     "name": "cell_mention",
+     "formula": "Σ evidence_weight where(jtbd_scenario命中 AND aspect命中)"
+    },
+    {
+     "name": "cell_neg_ratio",
+     "formula": "Σ(w·I(neg))/Σw within cell"
+    },
+    {
+     "name": "scenario_aspect_lift",
+     "formula": "cell_neg_ratio / overall_aspect_neg_ratio;>1=该方面在该场景下痛点被放大"
+    },
+    {
+     "name": "whitespace_flag",
+     "formula": "高scenario频次 AND 高cell_neg_ratio AND 低满足asin数→变体化选品信号(如'露营加固版')"
+    }
+   ],
+   "why": "把泛品类拆成用途×方面的可攻细分,直接指导变体选品与场景化listing关键词"
+  },
+  {
+   "table_id": "gold_aspect_trend",
+   "grain": "asin × aspect_category × month(rolling)",
+   "columns": [
+    {
+     "name": "neg_ratio_weighted_m",
+     "formula": "月度加权neg_ratio(recency半衰期180天)"
+    },
+    {
+     "name": "mention_share_m",
+     "formula": "月度该方面eff_mention/asin月度总eff_mention"
+    },
+    {
+     "name": "trend_slope",
+     "formula": "OLS斜率over最近6个月neg_ratio_weighted_m;>0=恶化(新批次质量下滑预警)"
+    },
+    {
+     "name": "change_point_flag",
+     "formula": "CUSUM/相邻月Δ>2σ标记突变点,对应供应链/批次切换"
+    }
+   ],
+   "why": "捕捉'现在这个品的问题'随批次漂移,恶化趋势=避坑信号,改善趋势=时机信号"
+  },
+  {
+   "table_id": "gold_competitor_gap",
+   "grain": "category × aspect_category × (my_asin vs competitor_asin_set)",
+   "columns": [
+    {
+     "name": "my_avg_polarity_w",
+     "formula": "本品加权avg_polarity(经SP-API锚校准a,b修正)"
+    },
+    {
+     "name": "comp_avg_polarity_w",
+     "formula": "竞品集加权avg_polarity(应用同品类coverage_bias与(a,b)先验平移)"
+    },
+    {
+     "name": "gap",
+     "formula": "my_avg_polarity_w - comp_avg_polarity_w;负=本品在该方面落后"
+    },
+    {
+     "name": "switch_reason_share",
+     "formula": "Σ(w·I(competitor_switch∈{switched_from,worse_than_alt}))命中该aspect/竞品提及总数;竞品离开原因=你的卖点"
+    },
+    {
+     "name": "defensible_moat_flag",
+     "formula": "gap>0且comp neg高且my pos高→护城河卖点;gap<0且importance高→紧急追赶项"
+    }
+   ],
+   "why": "逐方面竞品相对竞争力+转换叙事,直接喂差异化定位与'比竞品更X'卖点证据链"
+  }
+ ],
+ "impl_plan": {
+  "deterministic_now": [
+   "分句/子句切分(标点+转折连词)",
+   "否定触发词+5-token作用域检测与neg_factor翻转、双重否定抵消",
+   "程度副词intensifier_factor缩放、'too'+形容词强制负、感叹号/全大写修饰",
+   "方面词三级归一(小写化/去复数→同义词→canonical→aspect_category)",
+   "seed子串命中的aspect_category分类与UNMAPPED标记",
+   "极性词典打分polarity_score=clip(base×neg×intensifier×irony)与±0.15离散化",
+   "aspect_category_scope_ok品类适用性校验",
+   "四元组就近配对(token距离最短启发式)",
+   "confidence四分量加权+penalties计算",
+   "确定性反讽3模式(正向词+负面场景、星文冲突star<=2且分>0.3、引号+yeah right)",
+   "DEFECT_MODE部件+失效动词正则(纯规则)",
+   "REVIEW_INTENT/JTBD/PERSONA/UNMET/COMPETITOR/SEVERITY/EMOTION的seed/正则命中(规则基线层)",
+   "全部trust因子:w_source/w_verified/w_recency/w_length/w_helpful/w_consistency",
+   "反刷单:MinHash近重复、extreme_star_no_detail、burst z-score时间簇、incentivized_disclosure正则、无reviewer_id时的风格指纹",
+   "evidence_weight合成、Low/quarantine前置闸、定量vs定性池分流",
+   "全部7张gold表的加权rollup/统计/OLS斜率/CUSUM/DENSE_RANK/Kano象限判定",
+   "SP-API锚校准的线性(a,b)最小二乘修正基线与MAE监控",
+   "review_weight_ledger与spam_ledger落表溯源"
+  ],
+  "llm_enhanced_later": [
+   "aspect-mediator整句一次性输出ACOS四元组数组(取代seed命中,解决隐式方面/长距离配对/UNMAPPED/跨品类零样本)",
+   "LLM回归连续polarity_score并用SP-API官方情感做锚校准base",
+   "反讽/比较级隐含贬义/条件式抱怨兜底(规则外剩余部分)",
+   "JTBD/PERSONA长尾与隐含表述扩充",
+   "UNMET_NEED的slot_filling(具体缺什么功能/变体/配件归一化)",
+   "named_competitor品牌实体NER/LLM识别",
+   "SEVERITY/EMOTION混合意图与语境化判定",
+   "SP-API topic→aspect_category语义映射与校准残差诊断",
+   "反刷单reviewer_farm的嵌入聚类账号农场画像",
+   "BERT-ABSA作为LLM与纯规则之间的中间判别式档位(可插拔extractor,幂等键回填A/B)"
+  ]
+ },
+ "differentiation_note": "六维度经对抗检查确保正交不重叠:ABSA四元组=方面级情感事实(what+how positive);REVIEW_INTENT=沟通功能(为什么写这条,路由管道);JTBD=使用场景(在哪用);PERSONA=谁在用;DEFECT_MODE=QUALITY/DURABILITY负面的部件级细化(不与aspect_category重叠,是其下钻);UNMET_NEED=愿望/白空间(正向缺口,非既有方面评价);COMPETITOR=相对参照系;SEVERITY=阻断严重度(决策权重,与polarity正交:强负≠致命);EMOTION=情感能量(排序权重,与polarity正交:neg可以是frustration或regret)。每标签均改变具体选品动作:DEFECT_MODE→QC清单;UNMET_NEED→变体定义;SEVERITY→改良投入优先级;COMPETITOR→差异化卖点;JTBD×aspect→场景变体。每张gold表落一个决策:rollup=事实底座、importance=资源投向、opportunity_rank=先攻谁、Kano=must-be/delighter分层、usecase_matrix=变体化、trend=避坑时机、competitor_gap=定位。确定性部分全部可离线纯Python编码(正则/词典/MinHash/OLS/CUSUM/加权聚合),LLM仅在契约不变前提下热替换抽取/实体/语义映射/聚类四类增强点,规则分永远作为离线基线与降级fallback。"
+}

@@ -1,0 +1,600 @@
+{
+  "meta": {
+    "category": "折叠露营椅 Folding Camping Chair",
+    "marketplace": "Amazon US",
+    "window_days": 7,
+    "total_reviews": 9,
+    "avg_rating": 3,
+    "method_note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+  },
+  "absa_12": [
+    {
+      "aspect": "DURABILITY",
+      "aspect_cn": "耐用性",
+      "neg_ratio": 0.8,
+      "pos_ratio": 0.4,
+      "neg_count": 4,
+      "pos_count": 9,
+      "mention_total": 6,
+      "strategic": true
+    },
+    {
+      "aspect": "QUALITY",
+      "aspect_cn": "做工稳定性",
+      "neg_ratio": 0.7,
+      "pos_ratio": 0.3,
+      "neg_count": 7,
+      "pos_count": 8,
+      "mention_total": 9,
+      "strategic": true
+    },
+    {
+      "aspect": "SIZE",
+      "aspect_cn": "尺寸(高个偏矮)",
+      "neg_ratio": 0.6,
+      "pos_ratio": 0.2,
+      "neg_count": 1,
+      "pos_count": 2,
+      "mention_total": 3,
+      "strategic": true
+    },
+    {
+      "aspect": "SHIPPING",
+      "aspect_cn": "物流(收纳袋撕破)",
+      "neg_ratio": 0.5,
+      "pos_ratio": 0.1,
+      "neg_count": 4,
+      "pos_count": 5,
+      "mention_total": 6,
+      "strategic": false
+    },
+    {
+      "aspect": "FUNCTIONALITY",
+      "aspect_cn": "功能(杯架浅)",
+      "neg_ratio": 0.4,
+      "pos_ratio": 0.8,
+      "neg_count": 7,
+      "pos_count": 8,
+      "mention_total": 9,
+      "strategic": false
+    },
+    {
+      "aspect": "PORTABILITY",
+      "aspect_cn": "便携收纳",
+      "neg_ratio": 0.3,
+      "pos_ratio": 0.7,
+      "neg_count": 1,
+      "pos_count": 2,
+      "mention_total": 3,
+      "strategic": false
+    },
+    {
+      "aspect": "COMFORT",
+      "aspect_cn": "舒适度",
+      "neg_ratio": 0.2,
+      "pos_ratio": 0.6,
+      "neg_count": 4,
+      "pos_count": 5,
+      "mention_total": 6,
+      "strategic": false
+    },
+    {
+      "aspect": "PRICE",
+      "aspect_cn": "价格/性价比",
+      "neg_ratio": 0.1,
+      "pos_ratio": 0.5,
+      "neg_count": 7,
+      "pos_count": 8,
+      "mention_total": 9,
+      "strategic": false
+    },
+    {
+      "aspect": "APPEARANCE",
+      "aspect_cn": "外观颜值",
+      "neg_ratio": 0.8,
+      "pos_ratio": 0.4,
+      "neg_count": 1,
+      "pos_count": 2,
+      "mention_total": 7,
+      "strategic": false
+    },
+    {
+      "aspect": "WEIGHT_CAP",
+      "aspect_cn": "承重能力",
+      "neg_ratio": 0.7,
+      "pos_ratio": 0.3,
+      "neg_count": 4,
+      "pos_count": 5,
+      "mention_total": 1,
+      "strategic": true
+    },
+    {
+      "aspect": "SETUP",
+      "aspect_cn": "组装易用",
+      "neg_ratio": 0.1,
+      "pos_ratio": 0.5,
+      "neg_count": 2,
+      "pos_count": 7,
+      "mention_total": 3,
+      "strategic": false
+    },
+    {
+      "aspect": "STABILITY_GROUND",
+      "aspect_cn": "地面稳定(下陷)",
+      "neg_ratio": 0.8,
+      "pos_ratio": 0.4,
+      "neg_count": 5,
+      "pos_count": 1,
+      "mention_total": 6,
+      "strategic": true
+    }
+  ],
+  "pos_drivers": [
+    {
+      "driver": "Portability/Lightweight",
+      "driver_cn": "便携轻量易收纳",
+      "pos_count": 4,
+      "pos_ratio": 0.5,
+      "linked_band": "$25-40甜蜜区"
+    },
+    {
+      "driver": "Value for money",
+      "driver_cn": "性价比高",
+      "pos_count": 7,
+      "pos_ratio": 0.4,
+      "linked_band": "$15-25/$25-40"
+    },
+    {
+      "driver": "Cup holder/features",
+      "driver_cn": "杯架等功能好用",
+      "pos_count": 1,
+      "pos_ratio": 0.3,
+      "linked_band": "$25-40"
+    },
+    {
+      "driver": "Comfort/padding",
+      "driver_cn": "坐感舒适",
+      "pos_count": 4,
+      "pos_ratio": 0.2,
+      "linked_band": "$40-65溢价"
+    },
+    {
+      "driver": "Look/color",
+      "driver_cn": "外观配色好看",
+      "pos_count": 7,
+      "pos_ratio": 0.1,
+      "linked_band": "$40-65"
+    }
+  ],
+  "sentiment_12w": [
+    {
+      "week": "W1",
+      "pos": 0.3,
+      "neg": 0.7,
+      "net": 0.4,
+      "volume": 7
+    },
+    {
+      "week": "W2",
+      "pos": 0.2,
+      "neg": 0.6,
+      "net": 0.3,
+      "volume": 1
+    },
+    {
+      "week": "W3",
+      "pos": 0.1,
+      "neg": 0.5,
+      "net": 0.2,
+      "volume": 8
+    },
+    {
+      "week": "W4",
+      "pos": 0.8,
+      "neg": 0.4,
+      "net": 0.1,
+      "volume": 2
+    },
+    {
+      "week": "W5",
+      "pos": 0.7,
+      "neg": 0.3,
+      "net": 0.8,
+      "volume": 9
+    },
+    {
+      "week": "W6",
+      "pos": 0.6,
+      "neg": 0.2,
+      "net": 0.7,
+      "volume": 3
+    },
+    {
+      "week": "W7",
+      "pos": 0.5,
+      "neg": 0.1,
+      "net": 0.6,
+      "volume": 6
+    },
+    {
+      "week": "W8",
+      "pos": 0.4,
+      "neg": 0.8,
+      "net": 0.5,
+      "volume": 4
+    },
+    {
+      "week": "W9",
+      "pos": 0.3,
+      "neg": 0.7,
+      "net": 0.4,
+      "volume": 7
+    },
+    {
+      "week": "W10",
+      "pos": 0.2,
+      "neg": 0.6,
+      "net": 0.3,
+      "volume": 5
+    },
+    {
+      "week": "W11",
+      "pos": 0.6,
+      "neg": 0.2,
+      "net": 0.7,
+      "volume": 1
+    },
+    {
+      "week": "W12",
+      "pos": 0.5,
+      "neg": 0.1,
+      "net": 0.6,
+      "volume": 4
+    }
+  ],
+  "unmet_matrix": [
+    {
+      "need": "Anti-sink legs on soft ground",
+      "need_cn": "软地面防下陷",
+      "frequency": 0.8,
+      "severity": 0.3,
+      "solvability": 0.8,
+      "quadrant": "右上·优先做",
+      "anchor": "REV-8842"
+    },
+    {
+      "need": "Reinforced welds / weight hold",
+      "need_cn": "焊点加固承重150kg",
+      "frequency": 0.7,
+      "severity": 0.4,
+      "solvability": 0.7,
+      "quadrant": "右上·优先做",
+      "anchor": "REV-9013"
+    },
+    {
+      "need": "Taller seat for >180cm",
+      "need_cn": "加高款(>180cm)",
+      "frequency": 0.6,
+      "severity": 0.5,
+      "solvability": 0.6,
+      "quadrant": "机会·快赢",
+      "anchor": "REV-8771"
+    },
+    {
+      "need": "Tear-proof carry bag",
+      "need_cn": "耐撕收纳袋",
+      "frequency": 0.5,
+      "severity": 0.6,
+      "solvability": 0.5,
+      "quadrant": "快赢·低成本",
+      "anchor": "REV-8802"
+    },
+    {
+      "need": "Deeper cup holder",
+      "need_cn": "加深杯架",
+      "frequency": 0.4,
+      "severity": 0.7,
+      "solvability": 0.4,
+      "quadrant": "锦上添花",
+      "anchor": "REV-8790"
+    },
+    {
+      "need": "Better lumbar comfort",
+      "need_cn": "腰部支撑",
+      "frequency": 0.3,
+      "severity": 0.8,
+      "solvability": 0.3,
+      "quadrant": "观察",
+      "anchor": "REV-8815"
+    }
+  ],
+  "jtbd": [
+    {
+      "job": "在松软沙地/草地上坐得稳不下陷",
+      "type": "functional",
+      "importance": 9,
+      "satisfaction": 9,
+      "opportunity": 8
+    },
+    {
+      "job": "承重大体型用户不担心塌陷断裂",
+      "type": "functional",
+      "importance": 8,
+      "satisfaction": 1,
+      "opportunity": 3
+    },
+    {
+      "job": "高个子坐着腿不憋屈(加高)",
+      "type": "functional",
+      "importance": 7,
+      "satisfaction": 6,
+      "opportunity": 2
+    },
+    {
+      "job": "轻松搬运且收纳袋不撕破",
+      "type": "functional",
+      "importance": 6,
+      "satisfaction": 2,
+      "opportunity": 6
+    },
+    {
+      "job": "在朋友面前显得会挑装备(体面)",
+      "type": "social",
+      "importance": 5,
+      "satisfaction": 3,
+      "opportunity": 1
+    },
+    {
+      "job": "户外放松时感到舒适惬意",
+      "type": "emotional",
+      "importance": 4,
+      "satisfaction": 8,
+      "opportunity": 5
+    }
+  ],
+  "segments": [
+    {
+      "seg": "沙滩海钓党",
+      "scene": "沙滩/海钓",
+      "share": 0.8,
+      "avg_rating": 6,
+      "top_pain": "软沙下陷歪倒",
+      "size_pref": "标准款+防陷脚"
+    },
+    {
+      "seg": "家庭露营者",
+      "scene": "营地露营",
+      "share": 0.7,
+      "avg_rating": 5,
+      "top_pain": "收纳袋撕破",
+      "size_pref": "标准款多色"
+    },
+    {
+      "seg": "音乐节/观演",
+      "scene": "音乐节/看演出",
+      "share": 0.6,
+      "avg_rating": 4,
+      "top_pain": "久坐腰累",
+      "size_pref": "轻量便携款"
+    },
+    {
+      "seg": "球赛看台党(tailgating)",
+      "scene": "赛事/尾门派对",
+      "share": 0.5,
+      "avg_rating": 3,
+      "top_pain": "承重不足",
+      "size_pref": "加固承重款"
+    },
+    {
+      "seg": "高个户外用户",
+      "scene": "露营/钓鱼",
+      "share": 0.4,
+      "avg_rating": 2,
+      "top_pain": "座位偏矮腿憋屈",
+      "size_pref": "加高款(>180cm)"
+    }
+  ],
+  "scenes": [
+    {
+      "scene": "露营 Camping",
+      "share": 0.1,
+      "neg_hotspot": "收纳袋撕破/焊点松"
+    },
+    {
+      "scene": "沙滩海钓 Beach/Fishing",
+      "share": 0.8,
+      "neg_hotspot": "软沙下陷"
+    },
+    {
+      "scene": "庭院后院 Backyard",
+      "share": 0.7,
+      "neg_hotspot": "长期使用褪色"
+    },
+    {
+      "scene": "观演赛事 Concert/Tailgating",
+      "share": 0.6,
+      "neg_hotspot": "久坐不适/承重"
+    },
+    {
+      "scene": "钓鱼徒步 Fishing/Hiking",
+      "share": 0.5,
+      "neg_hotspot": "偏重难背"
+    }
+  ],
+  "comp_heatmap": {
+    "aspects": [
+      "DURABILITY",
+      "QUALITY",
+      "SIZE",
+      "SHIPPING",
+      "FUNCTIONALITY",
+      "WEIGHT_CAP",
+      "STABILITY_GROUND",
+      "COMFORT"
+    ],
+    "cols": [
+      "B0xxxA",
+      "B0xxxB",
+      "B0xxxC",
+      "our_target"
+    ],
+    "matrix": [
+      [
+        0.2,
+        0.1,
+        0.8,
+        0.7
+      ],
+      [
+        0.3,
+        0.2,
+        0.1,
+        0.8
+      ],
+      [
+        0.4,
+        0.3,
+        0.2,
+        0.1
+      ],
+      [
+        0.5,
+        0.4,
+        0.3,
+        0.2
+      ],
+      [
+        0.6,
+        0.5,
+        0.4,
+        0.3
+      ],
+      [
+        0.7,
+        0.6,
+        0.5,
+        0.4
+      ],
+      [
+        0.8,
+        0.7,
+        0.6,
+        0.5
+      ],
+      [
+        0.1,
+        0.8,
+        0.7,
+        0.6
+      ]
+    ]
+  },
+  "return_risk": [
+    {
+      "aspect": "DURABILITY",
+      "neg_count": 5,
+      "return_propensity": 0.5,
+      "est_return_contrib": 0.6,
+      "econ_hit_usd": 4
+    },
+    {
+      "aspect": "QUALITY",
+      "neg_count": 8,
+      "return_propensity": 0.4,
+      "est_return_contrib": 0.7,
+      "econ_hit_usd": 5
+    },
+    {
+      "aspect": "STABILITY_GROUND",
+      "neg_count": 2,
+      "return_propensity": 0.3,
+      "est_return_contrib": 0.8,
+      "econ_hit_usd": 0.5
+    },
+    {
+      "aspect": "SIZE",
+      "neg_count": 5,
+      "return_propensity": 0.2,
+      "est_return_contrib": 0.1,
+      "econ_hit_usd": 0.6
+    },
+    {
+      "aspect": "SHIPPING",
+      "neg_count": 8,
+      "return_propensity": 0.1,
+      "est_return_contrib": 0.2,
+      "econ_hit_usd": 0.7
+    }
+  ],
+  "culture": [
+    {
+      "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "listing_action": "标题突出'Heavy Duty 150kg/330lb',承重做主卖点"
+    },
+    {
+      "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "listing_action": "五点与A+覆盖tailgating/beach场景,拓长尾流量"
+    },
+    {
+      "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "listing_action": "尺寸表同时标注cm与in,加高款主打'for tall people 6ft+'"
+    },
+    {
+      "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "listing_action": "情感模型加反讽校正,避免误判为好评"
+    },
+    {
+      "signal": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+      "listing_action": "关键词'camping chair for sand'长尾,主图演示防陷脚"
+    }
+  ],
+  "quotes": [
+    {
+      "aspect": "STABILITY_GROUND",
+      "quote": "【原创虚构样例】演示角色希望使用说明清楚标出部件方向；这不是消费者评价。",
+      "star": 3,
+      "helpful": 4,
+      "anchor": "REV-8842"
+    },
+    {
+      "aspect": "DURABILITY",
+      "quote": "【原创虚构样例】演示角色希望使用说明清楚标出部件方向；这不是消费者评价。",
+      "star": 4,
+      "helpful": 5,
+      "anchor": "REV-9013"
+    },
+    {
+      "aspect": "SIZE",
+      "quote": "【原创虚构样例】演示角色希望使用说明清楚标出部件方向；这不是消费者评价。",
+      "star": 5,
+      "helpful": 6,
+      "anchor": "REV-8771"
+    },
+    {
+      "aspect": "SHIPPING",
+      "quote": "【原创虚构样例】演示角色希望使用说明清楚标出部件方向；这不是消费者评价。",
+      "star": 6,
+      "helpful": 2,
+      "anchor": "REV-8802"
+    },
+    {
+      "aspect": "FUNCTIONALITY",
+      "quote": "【原创虚构样例】演示角色希望使用说明清楚标出部件方向；这不是消费者评价。",
+      "star": 7,
+      "helpful": 3,
+      "anchor": "REV-8790"
+    }
+  ],
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

@@ -1,0 +1,431 @@
+{
+  "briefId": "BRF-SYNTHETIC-DEMO",
+  "createdBy": "demo@example.com",
+  "createdAt": "2000-01-01T00:00:00Z",
+  "caseName": "合成报告样例｜不代表真实市场",
+  "completeness": 5,
+  "sections": {
+    "s1_sellerProfile": {
+      "sellerType": {
+        "value": "factory",
+        "options": [
+          {
+            "v": "brand",
+            "label": "品牌方(重塑造/高毛利容忍)"
+          },
+          {
+            "v": "reseller",
+            "label": "铺货(重周转/低SKU黏性)"
+          },
+          {
+            "v": "factory",
+            "label": "工厂(成本优势/自控供应链)"
+          }
+        ],
+        "default": "reseller",
+        "mapsTo": "preset.playbook",
+        "effect": "工厂型: monetization权重+0.03, competition惩罚-0.02"
+      },
+      "supplyChain": {
+        "type": "radar",
+        "axes": [
+          "打样sampling",
+          "改模tooling",
+          "认证certification",
+          "交期leadTime",
+          "柔性flexibility"
+        ],
+        "value": [
+          9,
+          4,
+          8,
+          3,
+          7
+        ],
+        "scale": [
+          7,
+          2
+        ],
+        "default": [
+          8,
+          3,
+          7,
+          2,
+          6
+        ]
+      },
+      "moqUnits": {
+        "value": 1,
+        "unit": "件",
+        "default": 3
+      },
+      "targetGrossMargin": {
+        "value": 3,
+        "unit": "%",
+        "default": 4,
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      "budgetBand": {
+        "value": "3-10w",
+        "options": [
+          "<1w",
+          "1-3w",
+          "3-10w",
+          "10w+"
+        ],
+        "unit": "USD/月",
+        "default": "1-3w"
+      },
+      "hasLiveAsin": {
+        "value": false,
+        "default": false
+      },
+      "spapiAuthorized": {
+        "value": true,
+        "default": false
+      },
+      "storeAuthorized": {
+        "value": true,
+        "default": false
+      }
+    },
+    "s2_researchGoals": {
+      "goals": {
+        "value": [
+          "entry",
+          "pricing",
+          "gtm"
+        ],
+        "options": [
+          {
+            "v": "entry",
+            "label": "进入决策"
+          },
+          {
+            "v": "redesign",
+            "label": "存量改款"
+          },
+          {
+            "v": "teardown",
+            "label": "竞品拆解"
+          },
+          {
+            "v": "pricing",
+            "label": "定价"
+          },
+          {
+            "v": "gtm",
+            "label": "GTM上市"
+          }
+        ],
+        "default": [
+          "entry"
+        ]
+      },
+      "primaryGoal": {
+        "value": "entry",
+        "default": "entry"
+      },
+      "goalWeightMap": {
+        "type": "weightSet",
+        "nodes": [
+          "P1摘要",
+          "P2需求",
+          "P3竞争",
+          "P4单位经济",
+          "P5GTM"
+        ],
+        "value": [
+          0.6,
+          0.5,
+          0.4,
+          0.3,
+          0.2
+        ],
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "editable": true
+      }
+    },
+    "s3_categoryScope": {
+      "categoryTerms": {
+        "type": "chips",
+        "value": [
+          "folding camping chair",
+          "portable camp chair",
+          "outdoor folding chair",
+          "heavy duty camping chair"
+        ],
+        "default": []
+      },
+      "competitorAsins": {
+        "type": "chips",
+        "value": [
+          "B0xxxA",
+          "B0xxxB",
+          "B0xxxC"
+        ],
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "default": []
+      },
+      "excludeBrands": {
+        "type": "虚构样例角色",
+        "value": [
+          "虚构样例角色",
+          "虚构样例角色"
+        ],
+        "default": []
+      },
+      "priceRange": {
+        "type": "rangeSlider",
+        "min": 6,
+        "max": 2,
+        "unit": "USD",
+        "default": {
+          "min": 4,
+          "max": 9
+        },
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      "marketplaces": {
+        "value": [
+          "US"
+        ],
+        "options": [
+          "US",
+          "CA",
+          "UK",
+          "DE",
+          "FR",
+          "JP",
+          "AU"
+        ],
+        "default": [
+          "US"
+        ]
+      },
+      "reportLanguage": {
+        "value": "zh",
+        "options": [
+          "zh",
+          "en"
+        ],
+        "default": "zh"
+      }
+    },
+    "s4_constraintsCompliance": {
+      "hazmatBattery": {
+        "value": false,
+        "default": false
+      },
+      "hazmatLiquid": {
+        "value": false,
+        "default": false
+      },
+      "fdaCosmetic": {
+        "value": false,
+        "default": false
+      },
+      "certRequired": {
+        "value": [
+          "CPSIA-静置强度"
+        ],
+        "options": [
+          "CPC",
+          "UL",
+          "CE",
+          "FDA",
+          "MSDS",
+          "FCC",
+          "CARB",
+          "CPSIA-静置强度"
+        ],
+        "default": []
+      },
+      "dimWeightSensitive": {
+        "value": true,
+        "default": false,
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      "dimWeightRatio": {
+        "value": 1,
+        "unit": "体积重/实重",
+        "default": 7
+      },
+      "seasonWindow": {
+        "type": "rangeSlider",
+        "startMonth": 8,
+        "endMonth": 2,
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。",
+        "default": {
+          "startMonth": 2,
+          "endMonth": 6
+        }
+      }
+    },
+    "s5_dataMethods": {
+      "sources": {
+        "type": "toggleGrid",
+        "spapi": {
+          "on": true,
+          "authStatus": "已授权"
+        },
+        "keepa": {
+          "on": true
+        },
+        "dataforseo": {
+          "on": true
+        },
+        "aba": {
+          "on": true,
+          "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+        },
+        "helium": {
+          "on": false
+        }
+      },
+      "dataWindowDays": {
+        "value": 9,
+        "options": [
+          2,
+          6,
+          1,
+          5
+        ],
+        "default": 9
+      },
+      "confidenceGate": {
+        "value": "High",
+        "options": [
+          "Low",
+          "Medium",
+          "High"
+        ],
+        "default": "Medium",
+        "mapsTo": "rankInclusionThreshold",
+        "effect": "High: 仅三源一致(如B0xxxA)进定量排序,B0xxxC(Low单源)剔除"
+      },
+      "syntheticRespondents": {
+        "value": true,
+        "default": false,
+        "note": "SYNTHETIC｜虚构软件测试条目；没有真实来源、评论、评分或经营证据。"
+      },
+      "humanReviewStrictness": {
+        "value": "strict",
+        "options": [
+          "light",
+          "standard",
+          "strict"
+        ],
+        "default": "standard"
+      }
+    },
+    "s6_opportunityWeights": {
+      "type": "weightSet",
+      "preset": {
+        "value": "seasonal",
+        "options": [
+          "standard",
+          "seasonal",
+          "gift",
+          "durable",
+          "custom"
+        ],
+        "default": "standard"
+      },
+      "weights": {
+        "demand": {
+          "value": 0.4,
+          "default": 0.4
+        },
+        "growth": {
+          "value": 0.8,
+          "default": 0.8
+        },
+        "competition": {
+          "value": 0.6,
+          "default": 0.6
+        },
+        "monetization": {
+          "value": 0.2,
+          "default": 0.2
+        },
+        "season": {
+          "value": 0.4,
+          "default": 0.4
+        }
+      },
+      "normalizedSum": 2,
+      "mapsTo": "opportunity-scoring.yaml",
+      "livePreview": {
+        "opportunityScore": 8,
+        "fiveDim": {
+          "demand": 0.8,
+          "growth": 0.4,
+          "competition": 0.4,
+          "monetization": 0.6,
+          "season": 0.8
+        }
+      }
+    },
+    "s7_deliveryPrefs": {
+      "views": {
+        "value": [
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "P5"
+        ],
+        "options": [
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "P5"
+        ],
+        "default": [
+          "P1"
+        ]
+      },
+      "exportFormat": {
+        "value": [
+          "web",
+          "pdf"
+        ],
+        "options": [
+          "web",
+          "pdf",
+          "pptx",
+          "notion"
+        ],
+        "default": [
+          "web"
+        ]
+      },
+      "deliveryLanguage": {
+        "value": "zh",
+        "options": [
+          "zh",
+          "en"
+        ],
+        "default": "zh"
+      },
+      "turnaround": {
+        "value": "deep",
+        "options": [
+          "fast",
+          "standard",
+          "deep"
+        ],
+        "default": "standard"
+      }
+    }
+  },
+  "fixture_provenance": {
+    "synthetic": true,
+    "source_mode": "synthetic_fixture",
+    "description": "人工编写的虚构软件测试样例；不含真实用户评价，不代表真实品牌、市场、公司或经营结果。",
+    "evidence_mode": "template_demo",
+    "decision_readiness": "insufficient_evidence"
+  }
+}

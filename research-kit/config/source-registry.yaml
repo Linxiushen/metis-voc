@@ -1,0 +1,176 @@
+# ============================================================================
+# 跨境选品数据管道 — 数据源注册表（可插拔）
+# 原则：官方 API 优先 > 数据商 API > 自建爬虫兜底；有官方 API 的源禁止抓取
+# 每个源可独立开关，应对反爬断供 / API 政策变更 / 数据商停更
+# ============================================================================
+version: 1.0
+updated: 2026-07-08
+
+defaults:
+  official_api_first: true          # 有官方 API 的源禁止走抓取
+  respect_robots: true
+  min_request_interval_ms: 1000      # 请求间隔 ≥1s + 随机抖动
+  jitter_ms: 500
+  never_scrape_with_seller_account: true   # 自有卖家账号绝不跑抓取
+  gdpr_drop_personal_fields: true    # 默认丢弃 reviewer 昵称/头像/位置
+  retention_days_pii: 30             # 涉 PII 数据发货后 ≤30 天删除
+
+# ----------------------------------------------------------------------------
+# 一、SP-API 自有数据基座（一方自用免费；第三方开发者 2026-01-31 起收费）
+#     计费：年费 $1400 + GET 分层(Basic 250万/月免费, 超量 $0.40/千次); PUT/PATCH/POST 不计量
+#     对策：逐 ASIN GET 压最低，多用批量 + Data Kiosk 单次大查询
+# ----------------------------------------------------------------------------
+sp_api:
+  enabled: true
+  auth: LWA
+  marketplaces: [US, UK, DE, FR, IT, ES, JP, CA]   # 按需增删
+  endpoints:
+    catalog_items:
+      version: 2022-04-01
+      ops: [searchCatalogItems, getCatalogItem]
+      role: product_listing
+      rate_rps: 2
+      burst: 2
+      keyword_search_app_rps: 50     # identifier 搜索不受此限
+      included_data: [attributes, dimensions, identifiers, images, productTypes, relationships, salesRanks, summaries]
+      purpose: ASIN→品类→变体→标识符→排名 主数据（salesRanks 只给排名不给绝对销量）
+    product_pricing_v0:
+      version: v0
+      ops: [getCompetitivePricing, getItemOffersBatch]
+      role: pricing
+      rate_rps: {getCompetitivePricing: 10, getItemOffersBatch: 0.5}
+      purpose: 公开 ASIN 当前报价/BuyBox/最低价/offer数（仅当前快照，无历史）
+    product_pricing_v2022:
+      version: 2022-05-01
+      ops: [getCompetitiveSummary, getFeaturedOfferExpectedPrice]
+      rate_rps: {getCompetitiveSummary: 0.033}
+      purpose: 更细当前竞价 + BuyBox 期望价（定价/利润）
+    reports:
+      version: 2021-06-30
+      flow: createReport -> poll getReport -> getReportDocument
+      rate_rps: {createReport: 0.0167, getReport: 2.0}
+      retention_days: 90
+      report_types:
+        sales_traffic: GET_SALES_AND_TRAFFIC_REPORT           # 需 brand_analytics 角色
+        fba_inventory: GET_FBA_MYI_UNSUPPRESSED_INVENTORY_DATA
+        restock: GET_RESTOCK_INVENTORY_RECOMMENDATIONS_REPORT
+        returns: GET_FLAT_FILE_RETURNS_DATA_BY_RETURN_DATE     # 单次 ≤60 天, 含 return-reason-code
+        browse_tree: GET_XML_BROWSE_TREE_DATA
+        aba_search_terms: GET_BRAND_ANALYTICS_SEARCH_TERMS_REPORT   # ≈1200万条, 需 Brand Registry
+        aba_sqp: GET_BRAND_ANALYTICS_SEARCH_QUERY_PERFORMANCE_REPORT
+        aba_market_basket: GET_BRAND_ANALYTICS_MARKET_BASKET_REPORT
+    data_kiosk:
+      version: 2023-11-15
+      type: graphql
+      flow: createQuery -> poll getQuery -> getDocument(JSONL)
+      role: brand_analytics
+      concurrency: 1                 # 同 query/卖家/应用 同时仅 1 未完成请求
+      schedulable: false             # 不支持调度, 需自建定时
+      datasets:
+        sales_traffic: Analytics_SalesAndTraffic_2024_04_24    # salesAndTrafficByAsin / ByDate
+        economics: Analytics_Economics_2024_03_15              # sales/returns/ads/fees/netProceeds (ASIN/SKU 粒度) = 算单品净利最佳源
+      billing_note: 2026 收费是否单列未明确, 2026-04-30 前实测确认
+    product_fees:
+      version: v0
+      ops: [getMyFeesEstimateForASIN, getMyFeesEstimates]
+      batch_max: 20
+      purpose: 佣金 + FBA 费估算（毛利必备）
+    fba_inventory:
+      version: v1
+      ops: [getInventorySummaries]
+      rate_rps: 2
+      purpose: 自有断货/补货风险（仅自有）
+    customer_feedback:
+      version: 2024-06-01
+      ops: [getItemReviewTopics, getItemReviewTrends, getBrowseNodeReviewTopics, getBrowseNodeReturnTopics]
+      refresh: weekly
+      scope: own_brand_only          # 唯一官方评论 API, 仅自己品牌
+      purpose: 聚合主题(每ASIN 10正+10负)+情感, 作第三方全文的校准锚。不返回逐条正文
+
+# ----------------------------------------------------------------------------
+# 二、竞品情报第三方（补 SP-API 缺口 — 竞品销量/BSR/评分历史）
+# ----------------------------------------------------------------------------
+competitor_intel:
+  keepa:
+    enabled: true
+    role: 竞品量化底座主力
+    token_model: {unit: 1_product_per_token, ttl: 1h}
+    tiers: {min: {price_eur_month: 49, tokens_per_min: 20}, max: {price_eur_month: 4499, tokens_per_min: 4000}}
+    csv_fields:
+      SALES_BSR: 3
+      RATING: 16                     # 0-50
+      COUNT_REVIEWS: 17
+      BUY_BOX: 18
+    extra_fields: [salesRankDrops30, salesRankDrops90, salesRankDrops180, salesRankDrops365, monthlySold, deltaPercent90_monthlySold, parentAsin, variationCSV]
+    caveats:
+      - ratingCount 历史自 2025-04-09 停更, 评论数趋势须切第三方逐条统计或 monthlySold
+      - monthlySold 仅月销≥50 才显示
+  seller_sprite:                     # 卖家精灵
+    enabled: true
+    role: 库存流转估销量（相邻日库存差）+ 子体销量拆分
+    coverage: ≈5000万动销品
+    caveat: 断货/隐藏库存/FBM 场景失效
+  smartscout:
+    enabled: false
+    role: 库存流转 / 卖家结构 备选
+  jungle_scout:
+    enabled: false
+    role: 抽样交叉校验与置信度标定
+
+# ----------------------------------------------------------------------------
+# 三、竞品评论逐条全文（抓取型 ToS 灰区，用商用 API 不自建硬爬）
+# ----------------------------------------------------------------------------
+review_scrapers:
+  primary:
+    dataforseo:
+      enabled: true
+      endpoint: merchant/amazon/reviews (task_post -> tasks_ready -> task_get/advanced)
+      async: true
+      rate: 2000 calls/min
+      batch_max: 100
+      cost_per_1k: [0.75, 1.5]
+      role: 大批量常规增量主力（性价比首选）
+  anti_bot_fallback:
+    bright_data:
+      enabled: true
+      model: pay_per_success
+      residential_ip: true           # 抗 Cloudflare
+      free_tier: 5000/month
+      cost_per_1k: [0.75, 1.0]
+      role: 反爬严重站点 / 大促峰值
+    oxylabs:
+      enabled: false
+      source: amazon_reviews
+      scheduler: true
+      cost_per_1k: [1.25, 1.35]
+  flexible_incremental:
+    apify_junglee:
+      enabled: false
+      fields: [reviewTitle, reviewDescription, ratingScore, reviewedIn, isVerified, reviewImages, reviewReaction, variant, productAsin]
+      params: {maxReviews: null, sort: recent, reviewsCutoffDate: null, includeGdprSensitive: false}
+      cost_per_1k: 3
+  incremental:
+    sort: recent
+    cursor_key: [source, marketplace, asin, entity]     # entity=review
+    dedup_key: review_id | sha256(asin|marketplace|date|rating|substr(text,0,120))
+
+# ----------------------------------------------------------------------------
+# 四、需求 / 趋势信号
+# ----------------------------------------------------------------------------
+demand_signals:
+  aba:            {via: sp_api.reports, cadence: weekly, needs: brand_registry, use: 市场级搜索频率排名/点击转化份额}
+  google_trends:  {enabled: true, note: 2025-07 alpha 白名单, lag_days: 2, use: 5年周斜率(早期增速)}
+  keyword_planner: {enabled: true, quota: 15000_ops_day, use: 月度搜索量序列}
+  tiktok_shop:    {enabled: true, api: partner_best_selling, qps: 50, use: 唯一官方热销源}
+  pinterest_trends: {enabled: false, use: 早期趋势}
+  reddit:         {enabled: false, cost: "$0.24/1k", use: 站外声量}
+  youtube_data_v3: {enabled: false, quota: 10000_units_day}
+
+# ----------------------------------------------------------------------------
+# 五、多平台扩展 adapter（可插拔，MVP 后开启）
+# ----------------------------------------------------------------------------
+marketplace_adapters:
+  ebay:     {enabled: false, apis: [Browse(5000/day), MarketplaceInsights(受限,需申请)]}
+  walmart:  {enabled: false, apis: [Catalog/Item search(200/min)]}
+  lazada:   {enabled: false, api: open_platform}
+  shopee:   {enabled: false, api: open_platform}
