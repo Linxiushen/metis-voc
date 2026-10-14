@@ -1,5 +1,7 @@
 # Metis VOC
 
+[Developed with Codex: engineering case study](docs/CODEX_BUILD_CASE_STUDY.md)
+
 An evidence-aware product research workspace for cross-border commerce. It connects research briefs, market observations, customer evidence, product concepts, human review and recorded decisions.
 
 [中文](README.md) · [Setup](docs/QUICKSTART.md) · [Architecture](docs/ARCHITECTURE.md) · [Limitations](docs/LIMITATIONS.md)
